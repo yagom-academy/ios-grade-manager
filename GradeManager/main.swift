@@ -7,3 +7,8 @@
 import Foundation
 
 let gradeManager = GradeManager()
+
+
+while !gradeManager.isDone {
+    gradeManager.receiveMenuInput()
+}
