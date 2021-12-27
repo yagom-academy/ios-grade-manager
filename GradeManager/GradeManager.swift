@@ -17,6 +17,7 @@ class GradeManager {
     let addStudentPrompt = "추가할 학생의 이름을 입력해주세요"
     let invalidInputPrompt = "입력이 잘못되었습니다. 다시 확인해주세요."
     
+    var studentDictionary: [String:Student] = [:]
     
     func run() {
         while !gradeManager.isDone {
