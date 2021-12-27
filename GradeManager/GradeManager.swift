@@ -54,10 +54,19 @@ class GradeManager {
         print(addStudentPrompt)
         let receivedInput = readLine()
         
-        guard let receivedInput = receivedInput else {
+        guard let studentName = receivedInput, studentName != "" else {
             print(invalidInputPrompt)
             return
         }
+        
+        guard studentDictionary[studentName] == nil else {
+            print("\(studentName)은/는 이미 존재하는 학생입니다. 추가하지 않습니다.")
+            return
+        }
+        
+        let newStudentEntity = Student(name: studentName)
+        studentDictionary[studentName] = newStudentEntity
+        print("\(studentName) 학생을 추가했습니다.")
 
     }
     
