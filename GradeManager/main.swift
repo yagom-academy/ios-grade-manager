@@ -5,3 +5,5 @@
 // 
 
 import Foundation
+
+let gradeManager = GradeManager()
