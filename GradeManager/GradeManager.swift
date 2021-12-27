@@ -15,6 +15,7 @@ class GradeManager {
     let invalidMenuInputPrompt = "뭔가 입력이 잘못되었습니다. 1~5 사이의 숫자 혹은 X를 입력해주세요."
     let closeProgramPrompt = "프로그램을 종료합니다..."
     let addStudentPrompt = "추가할 학생의 이름을 입력해주세요"
+    let removeStudentPrompt = "삭제할 학생의 이름을 입력해주세요"
     let invalidInputPrompt = "입력이 잘못되었습니다. 다시 확인해주세요."
     
     var studentDictionary: [String:Student] = [:]
@@ -71,8 +72,21 @@ class GradeManager {
     }
     
     private func removeStudent() {
-        print(#function)
-
+        print(removeStudentPrompt)
+        let receivedInput = readLine()
+        
+        guard let studentName = receivedInput, studentName != "" else {
+            print(invalidInputPrompt)
+            return
+        }
+        
+        guard studentDictionary[studentName] != nil else {
+            print("\(studentName) 학생을 찾지 못했습니다.")
+            return
+        }
+        
+        studentDictionary.removeValue(forKey: studentName)
+        print("\(studentName) 학생을 삭제하였습니다.")
     }
     
     private func addOrModifyGrade() {
