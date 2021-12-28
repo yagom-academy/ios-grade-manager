@@ -9,9 +9,18 @@ import Foundation
 
 let validInputPattern = "^[\\s\\da-zA-Z]+$"
 
+extension String {
+    func isValidInput() -> Bool {
+        if let _ = self.range(of: validInputPattern, options: .regularExpression) {
+            return true
+        }
+        return false
+    }
+}
+
 func readValildLine() -> String? {
     let input = readLine()
-    guard let _ = input?.range(of: validInputPattern, options: .regularExpression) else{
+    guard let validInput = input, validInput.isValidInput() else{
         return nil
     }
     return input
