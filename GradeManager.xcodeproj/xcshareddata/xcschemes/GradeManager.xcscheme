@@ -48,6 +48,16 @@
                ReferencedContainer = "container:GradeManager.xcodeproj">
             </BuildableReference>
          </TestableReference>
+         <TestableReference
+            skipped = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "C245DE8D277AA55900DBBBD2"
+               BuildableName = "DeleteStudentTests.xctest"
+               BlueprintName = "DeleteStudentTests"
+               ReferencedContainer = "container:GradeManager.xcodeproj">
+            </BuildableReference>
+         </TestableReference>
       </Testables>
    </TestAction>
    <LaunchAction

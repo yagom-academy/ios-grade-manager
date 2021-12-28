@@ -18,4 +18,8 @@ struct Storage {
         let students = storage.keys.sorted(by: <)
         return students
     }
+    
+    mutating func deleteStudent(_ student: String) {
+        storage.removeValue(forKey: student)
+    }
 }
