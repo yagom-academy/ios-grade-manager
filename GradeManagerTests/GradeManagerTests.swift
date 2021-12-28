@@ -81,6 +81,63 @@ class GradeManagerTests: XCTestCase {
     }
     
     
+    func test_validateStudentName호출시_빈문자열또는nil을전달한경우_false를반환하는지(){
+        let inputs = ["",nil]
+        
+        let result = inputs.compactMap { name in
+            sut.validateStudentName(of: name)
+        }
+        
+        XCTAssertEqual(result, Array(repeating: false, count: 2))
+    }
+    
+    func test_validateStudentName호출시_영어숫자이외의값이포함된문자열을전달한경우_false를반환하는지(){
+        let inputs = ["홍길동","Tom##","@#$%^"]
+        
+        let result = inputs.compactMap { name in
+            sut.validateStudentName(of: name)
+        }
+        
+        XCTAssertEqual(result, Array(repeating: false, count: 3))
+    }
+    
+    func test_validateStudentName호출시_영어숫자로만이루어진문자열을전달하는경우_true를반환하는지(){
+        let inputs = ["tom","Tom","tom2","22"]
+        
+        let result = inputs.compactMap{ name in
+            sut.validateStudentName(of: name)
+        }
+        
+        XCTAssertEqual(result, Array(repeating: true, count: 4))
+    }
+    
+    func test_addStudent호출시_영어숫자만이루어진문자열을전달하고_이미존재하는학생인경우_redundantName을반환하는지(){
+        let input = "Micky"
+        sut.students.insert(Student(name: "Micky"))
+        
+        let result = sut.addStudent(input)
+        
+        XCTAssertEqual(result, .redundantName(of: "Micky"))
+    }
+    
+    func test_addStudent호출시_영어숫자만이루어진문자열을전달하고_대소문자만다른같은이름의학생이이미존재하는경우_redundantName을반환하는지(){
+        let input = "mICKY"
+        sut.students.insert(Student(name: "Micky"))
+        
+        let result = sut.addStudent(input)
+        
+        XCTAssertEqual(result, .redundantName(of: "Micky"))
+    }
+    
+    func test_addStudent호출시_영어숫자만이루어지는문자열을전달하고_존재하지않는학생인경우_success를반환하는지(){
+        let input = "Micky"
+        
+        let result = sut.addStudent(input)
+        
+        XCTAssertEqual(result, .success(of: "Micky"))
+     
+    }
+    
 
 
 }
