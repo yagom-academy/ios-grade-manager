@@ -51,7 +51,11 @@ class MenuManager: MenuManagable {
     }
 
     func run() -> Bool { return true }
-    func add(student: Student) { }
+    
+    func add(student: Student) {
+        students.insert(student)
+    }
+    
     func delete(student: Student) { }
     func find(name: String) { }
 }
