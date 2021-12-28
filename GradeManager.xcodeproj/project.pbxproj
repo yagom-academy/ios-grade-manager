@@ -9,6 +9,9 @@
 /* Begin PBXBuildFile section */
 		C245DE732779AB3000DBBBD2 /* CheckFirstMenuInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = C245DE722779AB3000DBBBD2 /* CheckFirstMenuInput.swift */; };
 		C245DE772779AB3500DBBBD2 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7912FBD277479C20027600C /* main.swift */; };
+		C245DE7F277AA16C00DBBBD2 /* AddStudentTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C245DE7E277AA16C00DBBBD2 /* AddStudentTests.swift */; };
+		C245DE85277AA20F00DBBBD2 /* Storage.swift in Sources */ = {isa = PBXBuildFile; fileRef = C245DE84277AA20F00DBBBD2 /* Storage.swift */; };
+		C245DE86277AA21100DBBBD2 /* Storage.swift in Sources */ = {isa = PBXBuildFile; fileRef = C245DE84277AA20F00DBBBD2 /* Storage.swift */; };
 		C7912FBE277479C20027600C /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7912FBD277479C20027600C /* main.swift */; };
 /* End PBXBuildFile section */
 
@@ -27,12 +30,22 @@
 /* Begin PBXFileReference section */
 		C245DE702779AB3000DBBBD2 /* FilterSelectionMenu.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FilterSelectionMenu.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		C245DE722779AB3000DBBBD2 /* CheckFirstMenuInput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckFirstMenuInput.swift; sourceTree = "<group>"; };
+		C245DE7C277AA16C00DBBBD2 /* AddStudentTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = AddStudentTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		C245DE7E277AA16C00DBBBD2 /* AddStudentTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddStudentTests.swift; sourceTree = "<group>"; };
+		C245DE84277AA20F00DBBBD2 /* Storage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Storage.swift; sourceTree = "<group>"; };
 		C7912FBA277479C20027600C /* GradeManager */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = GradeManager; sourceTree = BUILT_PRODUCTS_DIR; };
 		C7912FBD277479C20027600C /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
 		C245DE6D2779AB3000DBBBD2 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		C245DE79277AA16C00DBBBD2 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -57,11 +70,20 @@
 			path = FilterSelectionMenu;
 			sourceTree = "<group>";
 		};
+		C245DE7D277AA16C00DBBBD2 /* AddStudentTests */ = {
+			isa = PBXGroup;
+			children = (
+				C245DE7E277AA16C00DBBBD2 /* AddStudentTests.swift */,
+			);
+			path = AddStudentTests;
+			sourceTree = "<group>";
+		};
 		C7912FB1277479C20027600C = {
 			isa = PBXGroup;
 			children = (
 				C7912FBC277479C20027600C /* GradeManager */,
 				C245DE712779AB3000DBBBD2 /* FilterSelectionMenu */,
+				C245DE7D277AA16C00DBBBD2 /* AddStudentTests */,
 				C7912FBB277479C20027600C /* Products */,
 			);
 			sourceTree = "<group>";
@@ -71,6 +93,7 @@
 			children = (
 				C7912FBA277479C20027600C /* GradeManager */,
 				C245DE702779AB3000DBBBD2 /* FilterSelectionMenu.xctest */,
+				C245DE7C277AA16C00DBBBD2 /* AddStudentTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -79,6 +102,7 @@
 			isa = PBXGroup;
 			children = (
 				C7912FBD277479C20027600C /* main.swift */,
+				C245DE84277AA20F00DBBBD2 /* Storage.swift */,
 			);
 			path = GradeManager;
 			sourceTree = "<group>";
@@ -101,6 +125,23 @@
 			name = FilterSelectionMenu;
 			productName = FilterSelectionMenu;
 			productReference = C245DE702779AB3000DBBBD2 /* FilterSelectionMenu.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		C245DE7B277AA16C00DBBBD2 /* AddStudentTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = C245DE80277AA16C00DBBBD2 /* Build configuration list for PBXNativeTarget "AddStudentTests" */;
+			buildPhases = (
+				C245DE78277AA16C00DBBBD2 /* Sources */,
+				C245DE79277AA16C00DBBBD2 /* Frameworks */,
+				C245DE7A277AA16C00DBBBD2 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = AddStudentTests;
+			productName = AddStudentTests;
+			productReference = C245DE7C277AA16C00DBBBD2 /* AddStudentTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
 		C7912FB9277479C20027600C /* GradeManager */ = {
@@ -133,6 +174,9 @@
 					C245DE6F2779AB3000DBBBD2 = {
 						CreatedOnToolsVersion = 13.1;
 					};
+					C245DE7B277AA16C00DBBBD2 = {
+						CreatedOnToolsVersion = 13.1;
+					};
 					C7912FB9277479C20027600C = {
 						CreatedOnToolsVersion = 13.0;
 					};
@@ -153,12 +197,20 @@
 			targets = (
 				C7912FB9277479C20027600C /* GradeManager */,
 				C245DE6F2779AB3000DBBBD2 /* FilterSelectionMenu */,
+				C245DE7B277AA16C00DBBBD2 /* AddStudentTests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
 		C245DE6E2779AB3000DBBBD2 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		C245DE7A277AA16C00DBBBD2 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -177,11 +229,21 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		C245DE78277AA16C00DBBBD2 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C245DE7F277AA16C00DBBBD2 /* AddStudentTests.swift in Sources */,
+				C245DE86277AA21100DBBBD2 /* Storage.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		C7912FB6277479C20027600C /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 				C7912FBE277479C20027600C /* main.swift in Sources */,
+				C245DE85277AA20F00DBBBD2 /* Storage.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -224,6 +286,48 @@
 				MACOSX_DEPLOYMENT_TARGET = 11.6;
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.hyunSu.FilterSelectionMenu;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+			};
+			name = Release;
+		};
+		C245DE81277AA16C00DBBBD2 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@loader_path/../Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 11.6;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.hyunSu.AddStudentTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+			};
+			name = Debug;
+		};
+		C245DE82277AA16C00DBBBD2 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@loader_path/../Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 11.6;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.hyunSu.AddStudentTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = NO;
 				SWIFT_VERSION = 5.0;
@@ -371,6 +475,15 @@
 			buildConfigurations = (
 				C245DE742779AB3000DBBBD2 /* Debug */,
 				C245DE752779AB3000DBBBD2 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		C245DE80277AA16C00DBBBD2 /* Build configuration list for PBXNativeTarget "AddStudentTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C245DE81277AA16C00DBBBD2 /* Debug */,
+				C245DE82277AA16C00DBBBD2 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
