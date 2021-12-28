@@ -9,6 +9,6 @@ import Foundation
 
 enum StudentDeletionResult: Equatable{
     case invalidName
-    case notExistence(of: String)
-    case success(of: String)
+    case notExistence(name: String)
+    case success(name: String)
 }

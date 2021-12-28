@@ -117,7 +117,7 @@ class GradeManagerTests: XCTestCase {
         
         let result = sut.addStudent(input)
         
-        XCTAssertEqual(result, .redundantName(of: "Micky"))
+        XCTAssertEqual(result, .redundantName(name: "Micky"))
     }
     
     func test_addStudent호출시_영어숫자만이루어진문자열을전달하고_대소문자만다른같은이름의학생이이미존재하는경우_redundantName을반환하는지(){
@@ -126,7 +126,7 @@ class GradeManagerTests: XCTestCase {
         
         let result = sut.addStudent(input)
         
-        XCTAssertEqual(result, .redundantName(of: "Micky"))
+        XCTAssertEqual(result, .redundantName(name: "Micky"))
     }
     
     func test_addStudent호출시_영어숫자만이루어지는문자열을전달하고_존재하지않는학생인경우_success를반환하는지(){
@@ -134,7 +134,7 @@ class GradeManagerTests: XCTestCase {
         
         let result = sut.addStudent(input)
         
-        XCTAssertEqual(result, .success(of: "Micky"))
+        XCTAssertEqual(result, .success(name: "Micky"))
      
     }
     
@@ -151,7 +151,7 @@ class GradeManagerTests: XCTestCase {
         
         let result = sut.deleteStudent(input)
         
-        XCTAssertEqual(result,.notExistence(of: "Micky"))
+        XCTAssertEqual(result,.notExistence(name: "Micky"))
     }
     
     func test_deleteStudent호출시_전달된학생이름이대소문자만다른같은이름의학생인경우_true를반환하는지(){
@@ -160,7 +160,7 @@ class GradeManagerTests: XCTestCase {
         
         let result = sut.deleteStudent(input)
         
-        XCTAssertEqual(result, .success(of: "Micky"))
+        XCTAssertEqual(result, .success(name: "Micky"))
     }
     
     func test_deleteStudent호출시_전달된학생이름이존재하는학생인경우_true를반환하는지(){
@@ -169,7 +169,7 @@ class GradeManagerTests: XCTestCase {
         
         let result = sut.deleteStudent(input)
         
-        XCTAssertEqual(result, .success(of: "Micky"))
+        XCTAssertEqual(result, .success(name: "Micky"))
     }
     
 }

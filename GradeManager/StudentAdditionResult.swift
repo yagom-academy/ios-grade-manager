@@ -9,6 +9,6 @@ import Foundation
 
 enum StudentAdditionResult: Equatable{
     case invalidName
-    case redundantName(of: String)
-    case success(of: String)
+    case redundantName(name: String)
+    case success(name: String)
 }

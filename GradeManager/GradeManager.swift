@@ -49,11 +49,11 @@ struct GradeManager{
         let newStudent = Student(name: name.prefix(1).uppercased() + name.lowercased().dropFirst())
         
         if students.contains(newStudent){
-            return .redundantName(of: newStudent.name)
+            return .redundantName(name: newStudent.name)
         }
         
         students.insert(newStudent)
-        return .success(of: newStudent.name)
+        return .success(name: newStudent.name)
     }
     
     mutating func deleteStudent(_ name: String?) -> StudentDeletionResult{
@@ -63,10 +63,10 @@ struct GradeManager{
         }
         
         guard let removedStudent = students.remove(Student(name: name.prefix(1).uppercased() + name.lowercased().dropFirst())) else {
-            return .notExistence(of: name)
+            return .notExistence(name: name)
         }
         
-        return .success(of: removedStudent.name)
+        return .success(name: removedStudent.name)
     }
 }
 
