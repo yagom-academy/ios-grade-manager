@@ -138,6 +138,38 @@ class GradeManagerTests: XCTestCase {
      
     }
     
-
-
+    func test_deleteStudent호출시_전달된학생이름이유효하지않는경우_invalidName을반환하는지(){
+        let input = "홍길동"
+        
+        let result = sut.deleteStudent(input)
+        
+        XCTAssertEqual(result, .invalidName)
+    }
+    
+    func test_deleteStudent호출시_전달된학생이름이존재하지않는학생인경우_notExistence를반환하는지(){
+        let input = "Micky"
+        
+        let result = sut.deleteStudent(input)
+        
+        XCTAssertEqual(result,.notExistence(of: "Micky"))
+    }
+    
+    func test_deleteStudent호출시_전달된학생이름이대소문자만다른같은이름의학생인경우_true를반환하는지(){
+        let input = "mICKY"
+        let _ = sut.addStudent("Micky")
+        
+        let result = sut.deleteStudent(input)
+        
+        XCTAssertEqual(result, .success(of: "Micky"))
+    }
+    
+    func test_deleteStudent호출시_전달된학생이름이존재하는학생인경우_true를반환하는지(){
+        let input = "Micky"
+        let _ = sut.addStudent("Micky")
+        
+        let result = sut.deleteStudent(input)
+        
+        XCTAssertEqual(result, .success(of: "Micky"))
+    }
+    
 }

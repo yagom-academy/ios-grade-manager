@@ -17,6 +17,8 @@
 		C29C8DD4277AC9A900E4A48D /* Student.swift in Sources */ = {isa = PBXBuildFile; fileRef = C29C8DD2277AC9A400E4A48D /* Student.swift */; };
 		C29C8DD9277AD7E500E4A48D /* StudentAdditionResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = C29C8DD8277AD7E500E4A48D /* StudentAdditionResult.swift */; };
 		C29C8DDA277AD96D00E4A48D /* StudentAdditionResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = C29C8DD8277AD7E500E4A48D /* StudentAdditionResult.swift */; };
+		C29C8DDC277AE34600E4A48D /* StudentDeletionResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = C29C8DDB277AE34600E4A48D /* StudentDeletionResult.swift */; };
+		C29C8DDD277AE43D00E4A48D /* StudentDeletionResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = C29C8DDB277AE34600E4A48D /* StudentDeletionResult.swift */; };
 		C7912FBE277479C20027600C /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7912FBD277479C20027600C /* main.swift */; };
 /* End PBXBuildFile section */
 
@@ -39,6 +41,7 @@
 		C29C8DCD277AA99E00E4A48D /* MenuInputValidationResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuInputValidationResult.swift; sourceTree = "<group>"; };
 		C29C8DD2277AC9A400E4A48D /* Student.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Student.swift; sourceTree = "<group>"; };
 		C29C8DD8277AD7E500E4A48D /* StudentAdditionResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudentAdditionResult.swift; sourceTree = "<group>"; };
+		C29C8DDB277AE34600E4A48D /* StudentDeletionResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudentDeletionResult.swift; sourceTree = "<group>"; };
 		C7912FBA277479C20027600C /* GradeManager */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = GradeManager; sourceTree = BUILT_PRODUCTS_DIR; };
 		C7912FBD277479C20027600C /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -95,6 +98,7 @@
 				C29C8DCD277AA99E00E4A48D /* MenuInputValidationResult.swift */,
 				C29C8DD2277AC9A400E4A48D /* Student.swift */,
 				C29C8DD8277AD7E500E4A48D /* StudentAdditionResult.swift */,
+				C29C8DDB277AE34600E4A48D /* StudentDeletionResult.swift */,
 			);
 			path = GradeManager;
 			sourceTree = "<group>";
@@ -189,6 +193,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				C29C8DCA277A996100E4A48D /* main.swift in Sources */,
+				C29C8DDD277AE43D00E4A48D /* StudentDeletionResult.swift in Sources */,
 				C29C8DD1277AAC7200E4A48D /* MenuInputValidationResult.swift in Sources */,
 				C29C8DDA277AD96D00E4A48D /* StudentAdditionResult.swift in Sources */,
 				C29C8DC5277A981200E4A48D /* GradeManagerTests.swift in Sources */,
@@ -203,6 +208,7 @@
 			files = (
 				C7912FBE277479C20027600C /* main.swift in Sources */,
 				C29C8DCE277AA99E00E4A48D /* MenuInputValidationResult.swift in Sources */,
+				C29C8DDC277AE34600E4A48D /* StudentDeletionResult.swift in Sources */,
 				C29C8DD9277AD7E500E4A48D /* StudentAdditionResult.swift in Sources */,
 				C29C8DCC277AA8DE00E4A48D /* GradeManager.swift in Sources */,
 				C29C8DD3277AC9A400E4A48D /* Student.swift in Sources */,
