@@ -14,7 +14,7 @@ struct GradeManager{
     func validateMenuNumber(of input: String?) -> MenuInputValidationResult{
                 
         guard let input = input, !input.isEmpty else {
-            return .invalid
+            return .invalidMenuNumber
         }
         
         if input.lowercased() == "x" {
@@ -22,10 +22,10 @@ struct GradeManager{
         }
         
         guard let menuNum = Int(input), 1...5 ~= menuNum else {
-            return .invalid
+            return .invalidMenuNumber
         }
         
-        return .valid(of: menuNum)
+        return .validMenuNumber(of: menuNum)
         
     }
     
@@ -80,8 +80,8 @@ extension GradeManager{
             let menu = readLine()
         
             switch validateMenuNumber(of: menu){
-            case .valid(let menuNum): startMenu(of: menuNum)
-            case .invalid: print("뭔가 입력이 잘못되었습니다. 1~5 사이의 숫자 혹은 X를 입력해주세요.")
+            case .validMenuNumber(let menuNum): startMenu(of: menuNum)
+            case .invalidMenuNumber: print("뭔가 입력이 잘못되었습니다. 1~5 사이의 숫자 혹은 X를 입력해주세요.")
             case .exit:
                 print("프로그램을 종료합니다...")
                 break loop
@@ -92,7 +92,7 @@ extension GradeManager{
     mutating func startMenu(of menu: Int){
         switch menu{
         case 1: startStudentAddition()
-        case 2: deleteStudentAddition()
+        case 2: startStudentDeletion()
         default: break
         }
     }
@@ -109,7 +109,7 @@ extension GradeManager{
         }
     }
     
-    mutating func deleteStudentAddition(){
+    mutating func startStudentDeletion(){
         
         print("삭제할 학생의 이름을 입력해주세요")
         let newName = readLine()

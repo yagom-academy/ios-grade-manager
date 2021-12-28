@@ -8,7 +8,7 @@
 import Foundation
 
 enum MenuInputValidationResult : Equatable{
-    case valid(of: Int)
-    case invalid
+    case validMenuNumber(of: Int)
+    case invalidMenuNumber
     case exit
 }
