@@ -8,6 +8,4 @@ import Foundation
 
 let gradeManager = GradeManager()
 
-
-
 gradeManager.run()
