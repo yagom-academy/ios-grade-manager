@@ -122,8 +122,8 @@ class MenuManager: MenuManagable {
             print(Behavior.nameExist(student).output)
             return
         }
-        print(Behavior.addedStudent(student).output)
         students.insert(student)
+        print(Behavior.addedStudent(student).output)
     }
     
     func delete(student: Student?) {
@@ -132,8 +132,8 @@ class MenuManager: MenuManagable {
             print(Behavior.noStudent(student).output)
             return
         }
-        print(Behavior.deletedStudent(student).output)
         students.remove(student)
+        print(Behavior.deletedStudent(student).output)
     }
     
     func find(name: String) -> Student? {
