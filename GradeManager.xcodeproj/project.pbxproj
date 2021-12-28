@@ -7,7 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		C2BDBDCA277AE2BF008E2FCA /* util.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2BDBDC9277AE2BF008E2FCA /* util.swift */; };
+		C2BDBDCA277AE2BF008E2FCA /* Util.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2BDBDC9277AE2BF008E2FCA /* Util.swift */; };
+		C2BDBDCC277AF099008E2FCA /* Progress.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2BDBDCB277AF099008E2FCA /* Progress.swift */; };
+		C2BDBDCE277AF0BC008E2FCA /* StudentDictionary.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2BDBDCD277AF0BC008E2FCA /* StudentDictionary.swift */; };
 		C7912FBE277479C20027600C /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7912FBD277479C20027600C /* main.swift */; };
 /* End PBXBuildFile section */
 
@@ -24,7 +26,9 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		C2BDBDC9277AE2BF008E2FCA /* util.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = util.swift; sourceTree = "<group>"; };
+		C2BDBDC9277AE2BF008E2FCA /* Util.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Util.swift; sourceTree = "<group>"; };
+		C2BDBDCB277AF099008E2FCA /* Progress.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Progress.swift; sourceTree = "<group>"; };
+		C2BDBDCD277AF0BC008E2FCA /* StudentDictionary.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudentDictionary.swift; sourceTree = "<group>"; };
 		C7912FBA277479C20027600C /* GradeManager */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = GradeManager; sourceTree = BUILT_PRODUCTS_DIR; };
 		C7912FBD277479C20027600C /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -60,7 +64,9 @@
 			isa = PBXGroup;
 			children = (
 				C7912FBD277479C20027600C /* main.swift */,
-				C2BDBDC9277AE2BF008E2FCA /* util.swift */,
+				C2BDBDC9277AE2BF008E2FCA /* Util.swift */,
+				C2BDBDCB277AF099008E2FCA /* Progress.swift */,
+				C2BDBDCD277AF0BC008E2FCA /* StudentDictionary.swift */,
 			);
 			path = GradeManager;
 			sourceTree = "<group>";
@@ -123,8 +129,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C2BDBDCC277AF099008E2FCA /* Progress.swift in Sources */,
 				C7912FBE277479C20027600C /* main.swift in Sources */,
-				C2BDBDCA277AE2BF008E2FCA /* util.swift in Sources */,
+				C2BDBDCA277AE2BF008E2FCA /* Util.swift in Sources */,
+				C2BDBDCE277AF0BC008E2FCA /* StudentDictionary.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
