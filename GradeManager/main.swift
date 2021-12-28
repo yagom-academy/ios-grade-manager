@@ -7,20 +7,20 @@
 import Foundation
 
 class GradeManager {
-    private var students = Set<String>()
+    private var students: Dictionary<String, Dictionary<String, String>> = [:]
     
     private func addStudent() {
         print("추가할 학생의 이름을 입력해주세요")
         
         guard let input = readLine(), !input.isEmpty else {
-            print("입력이 잘못되었습니다. 다시 확인해주세요")
+            print("입력이 잘못되었습니다. 다시 확인해주세요.")
             return
         }
-        if students.contains(input) {
+        if students.keys.contains(input) {
             print("\(input)은 이미 존재하는 학생입니다. 추가하지 않습니다.")
             return
         }
-        students.insert(input)
+        students[input] = [:]
         print("\(input) 학생을 추가했습니다.")
     }
     
@@ -31,15 +31,15 @@ class GradeManager {
             print("입력이 잘못되었습니다. 다시 확인해주세요")
             return
         }
-        if !students.contains(input) {
+        if !students.keys.contains(input) {
             print("\(input) 학생을 찾지 못했습니다.")
             return
         }
-        students.remove(input)
+        students[input] = nil
         print("\(input) 학생을 삭제하였습니다.")
     }
 
-    private func changeMenu(menu: String) {
+    private func changeMenu(_ menu: String) {
         switch menu {
         case "1":
             addStudent()
@@ -50,7 +50,9 @@ class GradeManager {
         case "4":
             print("delete grade")
         case "5":
-            print("print")
+            print("print score")
+        case "0":
+            print(students)
         default:
             print("뭔가 입력이 잘못되었습니다. 1~5 사이의 숫자 혹은 X를 입력해주세요.")
         }
@@ -65,7 +67,7 @@ class GradeManager {
                 print("프로그램을 종료합니다...")
                 return
             }
-            changeMenu(menu: input)
+            changeMenu(input)
         }
     }
 }
