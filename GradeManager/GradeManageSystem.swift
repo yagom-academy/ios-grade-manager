@@ -21,16 +21,18 @@ class GradeManageSystem {
     var studentDictionary: [String:Student] = [:]
     
     
-    func receiveMenuInput() {
+    func receiveMenuInputFromCmd() {
         print(menuInputPrompt)
         
         let receivedInput = readLine()
         
         switch receivedInput {
         case "1":
-            addStudent()
+            let inputName = receiveInputFromCmd(after: addStudentPrompt)
+            addStudent(inputName)
         case "2":
-            removeStudent()
+            let inputName = receiveInputFromCmd(after: removeStudentPrompt)
+            removeStudent(inputName)
         case "3":
             addOrModifyGrade()
         case "4":
@@ -45,11 +47,15 @@ class GradeManageSystem {
         }
     }
     
-    func addStudent() {
-        print(addStudentPrompt)
+    func receiveInputFromCmd(after prompt: String) -> String? {
+        print(prompt)
         let receivedInput = readLine()
-        
-        guard let studentName = receivedInput, studentName != "" else {
+        return receivedInput
+    }
+    
+    func addStudent(_ studentName: String?) {
+
+        guard let studentName = studentName, studentName != "" else {
             print(invalidInputPrompt)
             return
         }
@@ -65,11 +71,9 @@ class GradeManageSystem {
 
     }
     
-    func removeStudent() {
-        print(removeStudentPrompt)
-        let receivedInput = readLine()
+    func removeStudent(_ studentName: String?) {
         
-        guard let studentName = receivedInput, studentName != "" else {
+        guard let studentName = studentName, studentName != "" else {
             print(invalidInputPrompt)
             return
         }
