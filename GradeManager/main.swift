@@ -34,3 +34,18 @@ class InputManager: InputManagable {
         return Student(name: name ?? "")
     }
 }
+
+class MenuManager: MenuManagable {
+    var students: [Student]
+    var inputManager: InputManagable
+    
+    init(inputManager: InputManagable) {
+        self.inputManager = inputManager
+        self.students = []
+    }
+
+    func run() -> Bool { return true }
+    func add(student: Student) { }
+    func delete(student: Student) { }
+    func find(name: String) { }
+}
