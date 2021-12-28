@@ -18,7 +18,7 @@ extension String {
     }
 }
 
-func readValildLine() -> String? {
+func readValidLine() -> String? {
     let input = readLine()
     guard let validInput = input, validInput.isValidInput() else{
         return nil

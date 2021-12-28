@@ -17,12 +17,12 @@ class ProgressController {
             
             switch currentState {
             case .mainMenu:
-                currentState = ProgressState.makeFromCommand(command: readValildLine())
+                currentState = ProgressState.makeFromCommand(command: readValidLine())
                 continue mainLoop
             case .addStudent:
-                studentInformation.addStudent(name: readValildLine())
+                studentInformation.addStudent(name: readValidLine())
             case .deleteStudent:
-                studentInformation.removeStudent(forName: readValildLine())
+                studentInformation.removeStudent(forName: readValidLine())
             case .addOrChangeGrade:
                 break
             case .deleteGrade:
