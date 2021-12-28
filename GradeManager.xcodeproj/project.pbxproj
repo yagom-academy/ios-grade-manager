@@ -12,6 +12,8 @@
 		C245DE7F277AA16C00DBBBD2 /* AddStudentTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C245DE7E277AA16C00DBBBD2 /* AddStudentTests.swift */; };
 		C245DE85277AA20F00DBBBD2 /* Storage.swift in Sources */ = {isa = PBXBuildFile; fileRef = C245DE84277AA20F00DBBBD2 /* Storage.swift */; };
 		C245DE86277AA21100DBBBD2 /* Storage.swift in Sources */ = {isa = PBXBuildFile; fileRef = C245DE84277AA20F00DBBBD2 /* Storage.swift */; };
+		C245DE88277AA46400DBBBD2 /* ScoreManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C245DE87277AA46400DBBBD2 /* ScoreManager.swift */; };
+		C245DE89277AA49D00DBBBD2 /* ScoreManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C245DE87277AA46400DBBBD2 /* ScoreManager.swift */; };
 		C7912FBE277479C20027600C /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7912FBD277479C20027600C /* main.swift */; };
 /* End PBXBuildFile section */
 
@@ -33,6 +35,7 @@
 		C245DE7C277AA16C00DBBBD2 /* AddStudentTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = AddStudentTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		C245DE7E277AA16C00DBBBD2 /* AddStudentTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddStudentTests.swift; sourceTree = "<group>"; };
 		C245DE84277AA20F00DBBBD2 /* Storage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Storage.swift; sourceTree = "<group>"; };
+		C245DE87277AA46400DBBBD2 /* ScoreManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScoreManager.swift; sourceTree = "<group>"; };
 		C7912FBA277479C20027600C /* GradeManager */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = GradeManager; sourceTree = BUILT_PRODUCTS_DIR; };
 		C7912FBD277479C20027600C /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -103,6 +106,7 @@
 			children = (
 				C7912FBD277479C20027600C /* main.swift */,
 				C245DE84277AA20F00DBBBD2 /* Storage.swift */,
+				C245DE87277AA46400DBBBD2 /* ScoreManager.swift */,
 			);
 			path = GradeManager;
 			sourceTree = "<group>";
@@ -224,6 +228,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C245DE89277AA49D00DBBBD2 /* ScoreManager.swift in Sources */,
 				C245DE772779AB3500DBBBD2 /* main.swift in Sources */,
 				C245DE732779AB3000DBBBD2 /* CheckFirstMenuInput.swift in Sources */,
 			);
@@ -242,6 +247,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C245DE88277AA46400DBBBD2 /* ScoreManager.swift in Sources */,
 				C7912FBE277479C20027600C /* main.swift in Sources */,
 				C245DE85277AA20F00DBBBD2 /* Storage.swift in Sources */,
 			);
