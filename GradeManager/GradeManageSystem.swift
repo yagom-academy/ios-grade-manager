@@ -67,7 +67,7 @@ class GradeManageSystem {
         }
         
         guard studentDictionary[studentName] == nil else {
-            print("\(studentName)은/는 이미 존재하는 학생입니다. 추가하지 않습니다.")
+            print("\(studentName)은 이미 존재하는 학생입니다. 추가하지 않습니다.")
             return
         }
         
