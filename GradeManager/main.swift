@@ -3,6 +3,7 @@ import Foundation
 protocol InputManagable {
     func readUserInput() -> String?
     func toStudent() -> Student?
+    func toMenu() -> String?
 }
 
 protocol MenuManagable {
@@ -32,6 +33,14 @@ class InputManager: InputManagable {
     func toStudent() -> Student? {
         guard let name: String = readUserInput() else { return nil }
         return Student(name: name)
+    }
+    
+    func toMenu() -> String? {
+        guard let menu: String = readUserInput(),
+                MenuManager.Command.isValid(input: menu) else {
+                    return nil
+                }
+        return menu
     }
 }
 
