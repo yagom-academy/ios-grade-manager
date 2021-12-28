@@ -96,10 +96,7 @@ class MenuManager: MenuManagable {
         print(Behavior.menu.output)
         guard let userInput = inputManager.toMenu() else { print(Behavior.wrongMenu.output); return true }
         inputToMenu(input: userInput)
-        if userInput == Command.end.rawValue {
-            return false
-        }
-        return true
+        return userInput != Command.end.rawValue
     }
     
     func inputToMenu(input: String) {
