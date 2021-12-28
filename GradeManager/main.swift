@@ -36,10 +36,8 @@ class InputManager: InputManagable {
     }
     
     func toMenu() -> String? {
-        guard let menu: String = readUserInput(),
-                MenuManager.Command.isValid(input: menu) else {
-                    return nil
-                }
+        guard let menu: String = readUserInput(), MenuManager.Command.isValid(input: menu)
+        else { return nil }
         return menu
     }
 }
