@@ -6,7 +6,7 @@ protocol InputManagable {
 }
 
 protocol MenuManagable {
-    var students: [Student] { get set }
+    var students: Set<Student> { get set }
     func run() -> Bool
     func add(student: Student)
     func delete(student: Student)
@@ -15,6 +15,12 @@ protocol MenuManagable {
 
 struct Student {
     let name: String
+}
+
+extension Student: Hashable {
+    static func == (lhs: Student, rhs: Student) -> Bool {
+        return lhs.name == rhs.name
+    }
 }
 
 class InputManager: InputManagable {
@@ -36,12 +42,12 @@ class InputManager: InputManagable {
 }
 
 class MenuManager: MenuManagable {
-    var students: [Student]
+    var students: Set<Student>
     var inputManager: InputManagable
     
     init(inputManager: InputManagable) {
         self.inputManager = inputManager
-        self.students = []
+        self.students = Set<Student>()
     }
 
     func run() -> Bool { return true }
