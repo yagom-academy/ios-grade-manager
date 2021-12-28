@@ -50,6 +50,12 @@ class GradeManageSystem {
     func receiveInputFromCmd(after prompt: String) -> String? {
         print(prompt)
         let receivedInput = readLine()
+        
+        let regexExpression = "^[a-zA-Z0-9_.-]*$"
+        let regexTest = NSPredicate(format:"SELF MATCHES %@", regexExpression)
+        
+        guard regexTest.evaluate(with: receivedInput) else { return nil }
+        
         return receivedInput
     }
     
