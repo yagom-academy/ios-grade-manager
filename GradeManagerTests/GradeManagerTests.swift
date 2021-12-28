@@ -29,7 +29,7 @@ class GradeManagerTests: XCTestCase {
         
         let result = sut.validateMenuNumber(of: input)
         
-        XCTAssertEqual(result, .invalid)
+        XCTAssertEqual(result, .invalidMenuNumber)
     }
     
     func test_validateMenuNumber호출시_nil값을전달한경우_invalid를반환하는지(){
@@ -37,7 +37,7 @@ class GradeManagerTests: XCTestCase {
         
         let result = sut.validateMenuNumber(of: input)
         
-        XCTAssertEqual(result, .invalid)
+        XCTAssertEqual(result, .invalidMenuNumber)
     }
     
     func test_validateMenuNumber호출시_1보다작은값또는5보다큰값을전달한경우_invalid를반환하는지(){
@@ -47,7 +47,7 @@ class GradeManagerTests: XCTestCase {
             sut.validateMenuNumber(of:menuNum)
         }
         
-        XCTAssertEqual(result, Array(repeating: .invalid, count: 4))
+        XCTAssertEqual(result, Array(repeating: .invalidMenuNumber, count: 4))
     }
     
     func test_validateMenuNumber호출시_숫자또는X가아닌다른값을전달한경우_invalid을반환하는지(){
@@ -57,7 +57,7 @@ class GradeManagerTests: XCTestCase {
             sut.validateMenuNumber(of:menuNum)
         }
         
-        XCTAssertEqual(result, Array(repeating: .invalid, count: 4))
+        XCTAssertEqual(result, Array(repeating: .invalidMenuNumber, count: 4))
     }
     
     func test_validateMenuNumber호출시_1에서5사이값을전달한경우_해당숫자를rawvalue로하는valid_를반환하는지(){
@@ -67,7 +67,7 @@ class GradeManagerTests: XCTestCase {
             sut.validateMenuNumber(of:menuNum)
         }
         
-        XCTAssertEqual(result, [.valid(of: 1),.valid(of: 2),.valid(of: 3),.valid(of: 4),.valid(of: 5)])
+        XCTAssertEqual(result, [.validMenuNumber(of: 1),.validMenuNumber(of: 2),.validMenuNumber(of: 3),.validMenuNumber(of: 4),.validMenuNumber(of: 5)])
     }
     
     func test_validateMenuNumber호출시_X를전달한경우_음수1을반환하는지(){
