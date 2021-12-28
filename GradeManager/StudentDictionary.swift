@@ -11,7 +11,7 @@ struct StudentDictionary {
     private var nameForGrades = [String: [String: Int]]()
     
     mutating func addStudent(name input: String?) {
-        guard let name = input, name.isEmpty == false else {
+        guard let name = input else {
             print("입력이 잘못되었습니다. 다시 확인해주세요.")
             return
         }
@@ -24,7 +24,7 @@ struct StudentDictionary {
     }
     
     mutating func removeStudent(forName input: String?) {
-        guard let name = input, name.isEmpty == false else {
+        guard let name = input else {
             print("입력이 잘못되었습니다. 다시 확인해주세요")
             return
         }

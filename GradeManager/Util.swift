@@ -20,8 +20,8 @@ extension String {
 
 func readValidLine() -> String? {
     let input = readLine()
-    guard let validInput = input, validInput.isValidInput() else{
+    guard let validInput = input, validInput.isValidInput(), validInput.isEmpty == false else{
         return nil
     }
-    return input
+    return validInput
 }
