@@ -25,19 +25,13 @@ extension Student: Hashable {
 
 class InputManager: InputManagable {
     func readUserInput() -> String? {
-        let userInput: String? = readLine()
-        if userInput == nil || userInput == "" {
-            return nil
-        }
+        guard let userInput: String = readLine(), userInput != "" else { return nil }
         return userInput
     }
     
     func toStudent() -> Student? {
-        let name: String? = readUserInput()
-        if name == nil {
-            return nil
-        }
-        return Student(name: name ?? "")
+        guard let name: String = readUserInput() else { return nil }
+        return Student(name: name)
     }
 }
 
