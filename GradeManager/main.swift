@@ -111,6 +111,8 @@ class MenuManager: MenuManagable {
             delete(student: inputManager.toStudent(message: Behavior.needDeleteName.output))
         case Command.end.rawValue:
             print(Behavior.programEnd.output)
+        case Command.gradeAdd.rawValue, Command.gradeDelete.rawValue, Command.show.rawValue:
+            print("아직 준비되지 않은 기능입니다.")
         default:
             print(Behavior.wrongMenu.output)
         }
