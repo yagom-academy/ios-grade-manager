@@ -56,7 +56,9 @@ class MenuManager: MenuManagable {
         students.insert(student)
     }
     
-    func delete(student: Student) { }
+    func delete(student: Student) {
+        students.remove(student)
+    }
     
     func find(name: String) -> Student? {
         let filtered: [Student] = students.filter({ ($0).name == name })
