@@ -10,7 +10,7 @@ protocol MenuManagable {
     func run() -> Bool
     func add(student: Student)
     func delete(student: Student)
-    func find(name: String)
+    func find(name: String) -> Student?
 }
 
 struct Student {
@@ -57,5 +57,12 @@ class MenuManager: MenuManagable {
     }
     
     func delete(student: Student) { }
-    func find(name: String) { }
+    
+    func find(name: String) -> Student? {
+        let filtered: [Student] = students.filter({ ($0).name == name })
+        if filtered.count == 0 {
+            return nil
+        }
+        return filtered[0]
+    }
 }
