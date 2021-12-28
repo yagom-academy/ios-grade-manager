@@ -129,12 +129,12 @@ class MenuManager: MenuManagable {
     
     func delete(student: Student?) {
         guard let student: Student = student else { print(Behavior.wrongInput.output); return }
-        if !students.contains(student){
-            print(Behavior.noStudent(student).output)
+        if students.contains(student){
+            students.remove(student)
+            print(Behavior.deletedStudent(student).output)
             return
         }
-        students.remove(student)
-        print(Behavior.deletedStudent(student).output)
+        print(Behavior.noStudent(student).output)
     }
 }
 
