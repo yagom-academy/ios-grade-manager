@@ -7,7 +7,4 @@
 import Foundation
 
 var manager: ScoreManager = ScoreManager()
-while manager.isExit == false {
-    manager.showMenuList()
-    manager.read()
-}
+manager.run()

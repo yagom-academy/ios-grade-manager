@@ -16,6 +16,11 @@
 		C245DE89277AA49D00DBBBD2 /* ScoreManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C245DE87277AA46400DBBBD2 /* ScoreManager.swift */; };
 		C245DE91277AA55900DBBBD2 /* DeleteStudentTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C245DE90277AA55900DBBBD2 /* DeleteStudentTests.swift */; };
 		C245DE95277AA56100DBBBD2 /* Storage.swift in Sources */ = {isa = PBXBuildFile; fileRef = C245DE84277AA20F00DBBBD2 /* Storage.swift */; };
+		C245DE96277AA7CD00DBBBD2 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7912FBD277479C20027600C /* main.swift */; };
+		C245DE97277AA7CD00DBBBD2 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7912FBD277479C20027600C /* main.swift */; };
+		C245DE98277AA7D000DBBBD2 /* ScoreManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C245DE87277AA46400DBBBD2 /* ScoreManager.swift */; };
+		C245DE99277AA7D100DBBBD2 /* ScoreManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C245DE87277AA46400DBBBD2 /* ScoreManager.swift */; };
+		C245DE9A277AA7D400DBBBD2 /* Storage.swift in Sources */ = {isa = PBXBuildFile; fileRef = C245DE84277AA20F00DBBBD2 /* Storage.swift */; };
 		C7912FBE277479C20027600C /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7912FBD277479C20027600C /* main.swift */; };
 /* End PBXBuildFile section */
 
@@ -278,6 +283,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				C245DE89277AA49D00DBBBD2 /* ScoreManager.swift in Sources */,
+				C245DE9A277AA7D400DBBBD2 /* Storage.swift in Sources */,
 				C245DE772779AB3500DBBBD2 /* main.swift in Sources */,
 				C245DE732779AB3000DBBBD2 /* CheckFirstMenuInput.swift in Sources */,
 			);
@@ -287,8 +293,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C245DE98277AA7D000DBBBD2 /* ScoreManager.swift in Sources */,
 				C245DE7F277AA16C00DBBBD2 /* AddStudentTests.swift in Sources */,
 				C245DE86277AA21100DBBBD2 /* Storage.swift in Sources */,
+				C245DE96277AA7CD00DBBBD2 /* main.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -296,8 +304,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C245DE99277AA7D100DBBBD2 /* ScoreManager.swift in Sources */,
 				C245DE91277AA55900DBBBD2 /* DeleteStudentTests.swift in Sources */,
 				C245DE95277AA56100DBBBD2 /* Storage.swift in Sources */,
+				C245DE97277AA7CD00DBBBD2 /* main.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

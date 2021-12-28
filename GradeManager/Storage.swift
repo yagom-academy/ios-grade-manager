@@ -10,8 +10,12 @@ import Foundation
 struct Storage {
     private var storage: [String: Int] = [:]
     
-    mutating func addStudent(_ student: String) {
+    @discardableResult mutating func addStudent(_ student: String) -> Bool {
+        guard storage[student] == nil else {
+            return false
+        }
         storage[student] = 5
+        return true
     }
     
     func list() -> [String] {
@@ -19,7 +23,12 @@ struct Storage {
         return students
     }
     
-    mutating func deleteStudent(_ student: String) {
+    @discardableResult mutating func deleteStudent(_ student: String) -> Bool {
+        guard storage[student] != nil else {
+            return false
+        }
+
         storage.removeValue(forKey: student)
+        return true
     }
 }
