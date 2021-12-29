@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct Student {
+struct Student: Hashable {
     let name: String
     var grades: Dictionary<String,String>
     
@@ -22,8 +22,3 @@ struct Student {
     }
 }
 
-extension Student: Hashable, Equatable {
-    static func == (lhs: Student, rhs: Student) -> Bool {
-        return lhs.name == rhs.name
-    }
-}
