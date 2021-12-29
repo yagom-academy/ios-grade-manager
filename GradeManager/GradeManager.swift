@@ -11,24 +11,31 @@ struct GradeManager {
     mutating func selectMenu(_ menu: String) -> Bool {
         switch Menu(rawValue: menu) {
         case .addStudent:
-            print("추가할 학생의 이름을 입력해주세요")
+            print(K.explanatoryTextForAddStudent)
             guard let name = readLine(), verifyStudentName(name) else {
-                print("입력이 잘못되었습니다. 다시 확인해주세요.")
+                print(K.explanatoryTextForInvaildInput)
                 return false
             }
             
             _ = addStudent(name)
             return false
         case .deleteStudent:
-            print("삭제할 학생의 이름을 입력해주세요")
+            print(K.explanatoryTextForDeleteStudent)
             guard let name = readLine(), verifyStudentName(name) else {
-                print("입력이 잘못되었습니다. 다시 확인해주세요.")
+                print(K.explanatoryTextForInvaildInput)
                 return false
             }
             
             _ = deleteStudent(name)
             return false
         case .addGradeForSubject:
+            print(K.explanatoryTextForAddGradeForSubject)
+            
+            guard let gradeInfo = readLine(), verifyGradeInfo(gradeInfo) else {
+                print(K.explanatoryTextForInvaildInput)
+                return false
+            }
+            
             return false
         case .deleteGradeForSubject:
             return false
@@ -63,13 +70,17 @@ struct GradeManager {
         return true
     }
     
+    mutating func addGradeForSubject(_ student: Student, _ gradeForSubject: [String: String]) -> Bool {
+        return false
+    }
+    
     private func exitProgram() -> Bool {
-        print("프로그램을 종료합니다...")
+        print(K.explanatoryTextForExitProgram)
         return true
     }
 
     private func isInvaildMenuFormat() -> Bool {
-        print("뭔가 입력이 잘못되었습니다. 1~5 사이의 숫자 혹은 X를 입력해주세요")
+        print(K.explanatoryTextForIsInvaildMenuFormat)
         return false
     }
     
@@ -81,7 +92,6 @@ struct GradeManager {
     }
     
     private func verifyGradeInfo(_ gradeInfo: String) -> Bool {
-        // 이거 해야함
         return true
     }
 }
