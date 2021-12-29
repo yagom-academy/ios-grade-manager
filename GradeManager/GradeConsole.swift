@@ -80,7 +80,7 @@ struct GradeConsole {
         }
     }
     
-    private func validate(_ input: String) -> Bool{
+    func validate(_ input: String) -> Bool{
         let input = input.replacingOccurrences(of: " ", with: "")
         let isNumberic = (Double(input) != nil)
         let isAlphabet = input.range(of: "[^a-zA-Z0-9+-]", options: .regularExpression ) == nil

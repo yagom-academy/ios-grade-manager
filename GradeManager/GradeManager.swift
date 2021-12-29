@@ -45,12 +45,14 @@ class GradeManager {
         gradeConsole.showDeleteStudentResult(deleteStudent(by: name), name: name)
     }
     
-    private func addStudent(by name: String) -> Bool{
+    @discardableResult
+    func addStudent(by name: String) -> Bool{
         let (success,_) = students.insert(Student(name: name))
         return success
     }
     
-    private func deleteStudent(by name: String) -> Bool{
+    @discardableResult
+    func deleteStudent(by name: String) -> Bool{
         students.remove(Student(name: name)) != nil
     }
 }

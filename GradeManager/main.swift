@@ -9,6 +9,6 @@ import Foundation
 let gradeManger = GradeManager()
 
 while gradeManger.running {
-    
+
     gradeManger.step()
 }
