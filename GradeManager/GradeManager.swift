@@ -33,7 +33,7 @@ struct GradeManager {
         case .addGradeForSubject:
             print(K.explanatoryTextForAddGradeForSubject)
             
-            guard let gradeInfo = readLine(), verifyGradeInfo(gradeInfo) else {
+            guard let gradeInfo = readLine(), verifyAdditinalGradeInfo(gradeInfo) else {
                 print(K.explanatoryTextForInvaildInput)
                 return false
             }
@@ -46,9 +46,24 @@ struct GradeManager {
             let subject = gradeArray[1]
             let grade = gradeArray[2]
             
-            _ = addGradeForSubject(String(name), subject, grade)
+            _ = addGradeForSubject(name, subject, grade)
             return false
         case .deleteGradeForSubject:
+            print(K.explanatoryTextForDeleteGradeForSubject)
+            
+            guard let gradeInfo = readLine(), verifyDeletionGradeInfo(gradeInfo) else {
+                print(K.explanatoryTextForInvaildInput)
+                return false
+            }
+            
+            let gradeArray = gradeInfo
+                .split(separator: " ")
+                .map{ String($0) }
+            
+            let name = gradeArray[0]
+            let subject = gradeArray[1]
+            
+            _ = deleteGradeForSubject(name, subject)
             return false
         case .calculateGPA:
             return false
@@ -87,8 +102,25 @@ struct GradeManager {
             return false
         }
         
-        student.gradeForSubject.updateValue(subject, forKey: grade)
+        student.gradeForSubject.updateValue(grade, forKey: subject)
+        students[name] = student
         print("\(name) 학생의 \(subject) 과목이 \(grade)로 추가(변경) 되었습니다.")
+        return true
+    }
+    
+    mutating func deleteGradeForSubject(_ name: String, _ subject: String) -> Bool {
+        guard var student = students[name] else {
+            print("\(name) 학생을 찾지 못했습니다.")
+            return false
+        }
+        
+        if student.gradeForSubject[subject] == nil {
+            print("\(subject) 과목의 성적을 찾지 못했습니다.")
+            return false
+        }
+       
+        student.gradeForSubject.removeValue(forKey: subject)
+        print("\(name) 학생의 \(subject) 과목의 성적이 삭제되었습니다.")
         return true
     }
     
@@ -103,23 +135,36 @@ struct GradeManager {
     }
     
     private func verifyStudentName(_ name: String) -> Bool {
-        let pattern = "[^a-zA-Z0-9]"
-        let result = name.isEmpty == false
-            && name.range(of: pattern, options: .regularExpression) == nil
-        return result
-    }
-    
-    private func verifyGradeInfo(_ gradeInfo: String) -> Bool {
-        // 1. 띄어쓰기로 스플릿 하기 전에 숫자, 영어, 공백만 가능
-        let pattern = "[^a-zA-Z0-9\\s]"
-        
-        let result = gradeInfo.isEmpty == false
-            && gradeInfo.range(of: pattern, options: .regularExpression) == nil
-        guard result == true else {
+        if name.isEmpty == true {
             return false
         }
         
-        // 2. 띄어쓰기로 스플릿 했을 때 원소 3개여야함
+        let pattern = "^[0-9a-zA-Z]*$"
+        if name.range(of: pattern, options: .regularExpression) == nil {
+            return false
+        }
+        return true
+    }
+    
+    private func verifyAdditinalGradeInfo(_ gradeInfo: String) -> Bool {
+        if gradeInfo.isEmpty == true {
+            return false
+        }
+        
+        var gradeInfoAfterDeleteSpace = gradeInfo
+            .replacingOccurrences(of: " ", with: "")
+            .map{ Array(String($0)) }
+        gradeInfoAfterDeleteSpace.removeLast()
+        
+        let gradeInfoAfterDeleteSpaceAndLastWord = gradeInfoAfterDeleteSpace
+            .map{ String($0) }
+            .joined()
+        
+        let pattern = "^[0-9a-zA-Z]*$"
+        if gradeInfoAfterDeleteSpaceAndLastWord.range(of: pattern, options: .regularExpression) == nil {
+            return false
+        }
+        
         let gradeArray = gradeInfo
             .split(separator: " ")
             .map{ String($0) }
@@ -127,9 +172,31 @@ struct GradeManager {
             return false
         }
         
-        // 3. 성적이 A+ ~ F 사이여야함
         let grade = gradeArray[2]
         if K.grades[grade] == nil {
+            return false
+        }
+        
+        return true
+    }
+    
+    private func verifyDeletionGradeInfo(_ gradeInfo: String) -> Bool {
+        if gradeInfo.isEmpty == true {
+            return false
+        }
+        
+        let gradeInfoAfterDeleteSpace = gradeInfo
+            .replacingOccurrences(of: " ", with: "")
+        
+        let pattern = "^[0-9a-zA-Z]*$"
+        if gradeInfoAfterDeleteSpace.range(of: pattern, options: .regularExpression) == nil {
+            return false
+        }
+        
+        let gradeArray = gradeInfo
+            .split(separator: " ")
+            .map{ String($0) }
+        guard gradeArray.count == 2 else {
             return false
         }
         

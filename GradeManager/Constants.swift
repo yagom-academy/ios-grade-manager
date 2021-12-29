@@ -17,6 +17,7 @@ struct K {
 """
     static let explanatoryTextForAddStudent = "추가할 학생의 이름을 입력해주세요"
     static let explanatoryTextForDeleteStudent = "삭제할 학생의 이름을 입력해주세요"
+    static let explanatoryTextForDeleteGradeForSubject = "성적을 삭제할 학생의 이름, 과목 이름을 띄어쓰기로 구분하여 차례로 작성해주세요."
     static let explanatoryTextForInvaildInput = "입력이 잘못되었습니다. 다시 확인해주세요."
     static let explanatoryTextForExitProgram = "프로그램을 종료합니다..."
     static let explanatoryTextForIsInvaildMenuFormat = "뭔가 입력이 잘못되었습니다. 1~5 사이의 숫자 혹은 X를 입력해주세요"

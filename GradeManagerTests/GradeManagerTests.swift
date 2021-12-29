@@ -77,6 +77,26 @@ final class GradeManagerTests: XCTestCase {
         XCTAssertEqual(result, false)
     }
     
+    func test_성적삭제_성공() {
+        test_성적추가_성공()
+        let name = "joel"
+        let subject = "Swift"
+        
+        let result = gradeManager.deleteGradeForSubject(name, subject)
+        
+        XCTAssertEqual(result, true)
+    }
+    
+    func test_성적삭제_실패() {
+        test_성적추가_성공()
+        let name = "joel"
+        let subject = "Kotiln"
+        
+        let result = gradeManager.deleteGradeForSubject(name, subject)
+        
+        XCTAssertEqual(result, false)
+    }
+    
     override func setUpWithError() throws {
         try super.setUpWithError()
     }
