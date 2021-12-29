@@ -7,9 +7,9 @@
 
 import Foundation
 
-struct GradeManager{
+struct GradeManager {
     
-    var students : Set<Student> = Set()
+    var students: Set<Student> = Set()
     
     func validateMenuNumber(of input: String?) -> Bool {
                 
@@ -29,7 +29,7 @@ struct GradeManager{
         
     }
     
-    func validateStudentName(of name: String?) -> Bool{
+    func validateStudentName(of name: String?) -> Bool {
         
         let pattern = "^[A-Za-z0-9]*$"
         
@@ -44,7 +44,7 @@ struct GradeManager{
         
         let newStudent = Student(name: name)
         
-        return students.insert(newStudent)
+        return self.students.insert(newStudent)
     }
     
     mutating func deleteStudent(_ name: String) -> Student? {
@@ -52,7 +52,7 @@ struct GradeManager{
     }
 }
 
-extension GradeManager{
+extension GradeManager {
     
     mutating func startProgram(){
         
@@ -117,7 +117,7 @@ extension GradeManager{
             return
         }
         
-        switch self.deleteStudent(name){
+        switch self.deleteStudent(name) {
         case .some(let removedStudent): print("\(removedStudent.name) 학생을 삭제하였습니다.")
         case .none: print("\(name) 학생을 찾지 못했습니다.")
         }

@@ -7,14 +7,14 @@
 
 import Foundation
 
-struct Student: Hashable{
+struct Student: Hashable {
     let name: String
     
-    init(name: String){
+    init(name: String) {
         self.name = name.uppercasingFirstAndLowercasingRest()
     }
     
-    static func == (lhs: Student, rhs: Student) -> Bool{
+    static func == (lhs: Student, rhs: Student) -> Bool {
         return lhs.name == rhs.name
     }
 }
