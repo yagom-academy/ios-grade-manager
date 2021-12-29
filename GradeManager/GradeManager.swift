@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct GradeManager {
+class GradeManager {
     
     var students: Set<Student> = Set()
     private var programState: ProgramState!
@@ -41,21 +41,21 @@ struct GradeManager {
         return true
     }
     
-    mutating func addStudent(_ name: String) -> (inserted: Bool, memberAfterInsert: Student) {
+    func addStudent(_ name: String) -> (inserted: Bool, memberAfterInsert: Student) {
         
         let newStudent = Student(name: name)
         
         return self.students.insert(newStudent)
     }
     
-    mutating func deleteStudent(_ name: String) -> Student? {
+    func deleteStudent(_ name: String) -> Student? {
         return self.students.remove(Student(name: name))
     }
 }
 
 extension GradeManager {
     
-    mutating func startProgram(){
+    func startProgram(){
         programState = .run
         
         while programState == .run {
@@ -88,7 +88,7 @@ extension GradeManager {
         
     }
     
-    mutating func performSelectedMenu(of menu: GradeManagingMenu) {
+    func performSelectedMenu(of menu: GradeManagingMenu) {
         
         switch menu {
         case .addStudent: self.performStudentAdditionMenu()
@@ -99,7 +99,7 @@ extension GradeManager {
         }
     }
     
-    mutating func performStudentAdditionMenu() {
+    func performStudentAdditionMenu() {
 
         print("추가할 학생의 이름을 입력해주세요")
         let newName = readLine()
@@ -115,7 +115,7 @@ extension GradeManager {
         }
     }
     
-    mutating func performStudentDeletion() {
+    func performStudentDeletion() {
         
         print("삭제할 학생의 이름을 입력해주세요")
         let name = readLine()
