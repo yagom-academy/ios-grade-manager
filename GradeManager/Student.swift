@@ -7,4 +7,10 @@
 
 struct Student: Hashable {
     let name: String
+    var gradeForSubject: [String: String]
+    
+    init(name: String) {
+        self.name = name
+        gradeForSubject = [:]
+    }
 }
