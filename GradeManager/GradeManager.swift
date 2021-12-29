@@ -6,7 +6,7 @@
 //
 
 struct GradeManager {
-    private var students = Set<Student>()
+    private var students = [String: Student]()
     
     mutating func selectMenu(_ menu: String) -> Bool {
         switch Menu(rawValue: menu) {
@@ -17,8 +17,7 @@ struct GradeManager {
                 return false
             }
             
-            let student = Student(name: name)
-            _ = addStudent(student)
+            _ = addStudent(name)
             return false
         case .deleteStudent:
             print("삭제할 학생의 이름을 입력해주세요")
@@ -27,33 +26,9 @@ struct GradeManager {
                 return false
             }
             
-            let student = Student(name: name)
-            _ = deleteStudent(student)
+            _ = deleteStudent(name)
             return false
         case .addGradeForSubject:
-            let explanatoryTextForAddGradeForSubject = """
-                성적을 추가할 학생의 이름, 과목 이름, 성적(A+, A0, F 등)을 띄어쓰기로 구분하여 차례로 작성해주세요.
-                입력예) Mickey Swift A+
-                만약 학생의 성적 중 해당 과목이 존재하면 기존 점수가 갱신됩니다.
-                """
-            print(explanatoryTextForAddGradeForSubject)
-            
-            guard let gradeInfo = readLine(), verifyGradeInfo(gradeInfo) else {
-                print("입력이 잘못되었습니다. 다시 확인해주세요.")
-                return false
-            }
-            
-            let gradeInfoArray = gradeInfo
-                .split(separator: " ")
-                .map{ String($0) }
-        
-            let name = gradeInfoArray[0]
-            let subject = gradeInfoArray[1]
-            let grade = gradeInfoArray[2]
-            let gradeForSubject = [subject: grade]
-            
-            let student = Student(name: name)
-            _ = addGradeForSubject(student, gradeForSubject)
             return false
         case .deleteGradeForSubject:
             return false
@@ -66,32 +41,26 @@ struct GradeManager {
         }
     }
     
-    mutating func addStudent(_ student: Student) -> Bool {
-        if students.contains(student) == false {
-            print("\(student.name) 학생을 추가했습니다.")
-            students.insert(student)
+    mutating func addStudent(_ name: String) -> Bool {
+        if students[name] == nil {
+            students.updateValue(Student(name: name), forKey: name)
+            print("\(name) 학생을 추가했습니다.")
             return true
         }
         
-        print("\(student.name) 학생은 이미 존재하는 학생입니다. 추가하지 않습니다.")
+        print("\(name) 학생은 이미 존재하는 학생입니다. 추가하지 않습니다.")
         return false
     }
     
-    mutating func deleteStudent(_ student: Student) -> Bool {
-        if students.contains(student) == true {
-            print("\(student.name) 학생을 삭제하였습니다.")
-            students.remove(student)
-            return true
+    mutating func deleteStudent(_ name: String) -> Bool {
+        if students[name] == nil {
+            print("\(name) 학생을 찾지 못했습니다.")
+            return false
         }
         
-        print("\(student.name) 학생을 찾지 못했습니다.")
-        return false
-    }
-    
-    mutating func addGradeForSubject(_ student: Student, _ gradeForSubject: [String: String]) -> Bool {
-        
-            
-        return false
+        students[name] = nil
+        print("\(name) 학생을 삭제하였습니다.")
+        return true
     }
     
     private func exitProgram() -> Bool {
@@ -112,6 +81,7 @@ struct GradeManager {
     }
     
     private func verifyGradeInfo(_ gradeInfo: String) -> Bool {
+        // 이거 해야함
         return true
     }
 }

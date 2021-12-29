@@ -13,9 +13,4 @@ struct Student: Hashable {
         self.name = name
         gradeForSubject = [:]
     }
-    
-    init(name: String, gradeForSubject: [String: String]) {
-        self.name = name
-        self.gradeForSubject = gradeForSubject
-    }
 }
