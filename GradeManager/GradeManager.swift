@@ -12,6 +12,7 @@ struct GradeManager {
         switch Menu(rawValue: menu) {
         case .addStudent:
             print(K.explanatoryTextForAddStudent)
+            
             guard let name = readLine(), verifyStudentName(name) else {
                 print(K.explanatoryTextForInvaildInput)
                 return false
@@ -21,6 +22,7 @@ struct GradeManager {
             return false
         case .deleteStudent:
             print(K.explanatoryTextForDeleteStudent)
+            
             guard let name = readLine(), verifyStudentName(name) else {
                 print(K.explanatoryTextForInvaildInput)
                 return false
@@ -36,6 +38,15 @@ struct GradeManager {
                 return false
             }
             
+            let gradeArray = gradeInfo
+                .split(separator: " ")
+                .map{ String($0) }
+            
+            let name = gradeArray[0]
+            let subject = gradeArray[1]
+            let grade = gradeArray[2]
+            
+            _ = addGradeForSubject(String(name), subject, grade)
             return false
         case .deleteGradeForSubject:
             return false
@@ -70,8 +81,15 @@ struct GradeManager {
         return true
     }
     
-    mutating func addGradeForSubject(_ student: Student, _ gradeForSubject: [String: String]) -> Bool {
-        return false
+    mutating func addGradeForSubject(_ name: String, _ subject: String, _ grade: String) -> Bool {
+        guard var student = students[name] else {
+            print("\(name) 학생을 찾지 못했습니다.")
+            return false
+        }
+        
+        student.gradeForSubject.updateValue(subject, forKey: grade)
+        print("\(name) 학생의 \(subject) 과목이 \(grade)로 추가(변경) 되었습니다.")
+        return true
     }
     
     private func exitProgram() -> Bool {
@@ -92,6 +110,29 @@ struct GradeManager {
     }
     
     private func verifyGradeInfo(_ gradeInfo: String) -> Bool {
+        // 1. 띄어쓰기로 스플릿 하기 전에 숫자, 영어, 공백만 가능
+        let pattern = "[^a-zA-Z0-9\\s]"
+        
+        let result = gradeInfo.isEmpty == false
+            && gradeInfo.range(of: pattern, options: .regularExpression) == nil
+        guard result == true else {
+            return false
+        }
+        
+        // 2. 띄어쓰기로 스플릿 했을 때 원소 3개여야함
+        let gradeArray = gradeInfo
+            .split(separator: " ")
+            .map{ String($0) }
+        guard gradeArray.count == 3 else {
+            return false
+        }
+        
+        // 3. 성적이 A+ ~ F 사이여야함
+        let grade = gradeArray[2]
+        if K.grades[grade] == nil {
+            return false
+        }
+        
         return true
     }
 }
