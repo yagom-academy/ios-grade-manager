@@ -1,11 +1,14 @@
 //
 //  GradeManager - main.swift
-//  Created by yagom. 
+//  Created by yagom.
 //  Copyright © yagom. All rights reserved.
-// 
+//
 
 import Foundation
 
-let gradeConsole = GradeConsole()
+let gradeManger = GradeManager()
 
-while(gradeConsole.showMenu()){}
+while gradeManger.running {
+    
+    gradeManger.step()
+}

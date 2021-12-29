@@ -10,6 +10,7 @@
 		C2083A55277C35EB00C1616F /* GradeManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2083A54277C35EB00C1616F /* GradeManager.swift */; };
 		C2083A57277C35FC00C1616F /* GradeConsole.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2083A56277C35FC00C1616F /* GradeConsole.swift */; };
 		C2083A59277C361100C1616F /* Student.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2083A58277C361100C1616F /* Student.swift */; };
+		C2083A5D277C5B2C00C1616F /* Menu.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2083A5C277C5B2C00C1616F /* Menu.swift */; };
 		C7912FBE277479C20027600C /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7912FBD277479C20027600C /* main.swift */; };
 /* End PBXBuildFile section */
 
@@ -29,6 +30,7 @@
 		C2083A54277C35EB00C1616F /* GradeManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GradeManager.swift; sourceTree = "<group>"; };
 		C2083A56277C35FC00C1616F /* GradeConsole.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GradeConsole.swift; sourceTree = "<group>"; };
 		C2083A58277C361100C1616F /* Student.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Student.swift; sourceTree = "<group>"; };
+		C2083A5C277C5B2C00C1616F /* Menu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Menu.swift; sourceTree = "<group>"; };
 		C7912FBA277479C20027600C /* GradeManager */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = GradeManager; sourceTree = BUILT_PRODUCTS_DIR; };
 		C7912FBD277479C20027600C /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -67,6 +69,7 @@
 				C2083A54277C35EB00C1616F /* GradeManager.swift */,
 				C2083A56277C35FC00C1616F /* GradeConsole.swift */,
 				C2083A58277C361100C1616F /* Student.swift */,
+				C2083A5C277C5B2C00C1616F /* Menu.swift */,
 			);
 			path = GradeManager;
 			sourceTree = "<group>";
@@ -133,6 +136,7 @@
 				C2083A57277C35FC00C1616F /* GradeConsole.swift in Sources */,
 				C2083A55277C35EB00C1616F /* GradeManager.swift in Sources */,
 				C2083A59277C361100C1616F /* Student.swift in Sources */,
+				C2083A5D277C5B2C00C1616F /* Menu.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
