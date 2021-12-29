@@ -9,7 +9,7 @@ import Foundation
 
 struct Student {
     var name: String
-    var scores: [String:String]
+    var scores: [String: String]
     
     init(name: String) {
         self.name = name
