@@ -54,7 +54,7 @@ struct GradeManager{
 
 extension GradeManager{
     
-    mutating func start(){
+    mutating func startProgram(){
         
         loop: while true {
         
@@ -75,15 +75,15 @@ extension GradeManager{
                 break loop
             }
         
-            self.startMenu(of: selected)
+            self.performSelectedMenuAction(of: selected)
         }
     }
     
-    mutating func startMenu(of menu: GradeManagingMenu) {
+    mutating func performSelectedMenuAction(of menu: GradeManagingMenu) {
         
         switch menu {
-        case .addStudent: self.startStudentAddition()
-        case .deleteStudent: self.startStudentDeletion()
+        case .addStudent: self.performStudentAdditionMenuAction()
+        case .deleteStudent: self.performStudentDeletionAction()
         case .addOrUpdateGrade: break
         case .deleteGrade: break
         case .showGradePointAverage: break
@@ -91,7 +91,7 @@ extension GradeManager{
         }
     }
     
-    mutating func startStudentAddition(){
+    mutating func performStudentAdditionMenuAction() {
 
         print("추가할 학생의 이름을 입력해주세요")
         let newName = readLine()
@@ -107,7 +107,7 @@ extension GradeManager{
         }
     }
     
-    mutating func startStudentDeletion() {
+    mutating func performStudentDeletionAction() {
         
         print("삭제할 학생의 이름을 입력해주세요")
         let name = readLine()

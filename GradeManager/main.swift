@@ -7,4 +7,4 @@
 import Foundation
 
 var manager = GradeManager()
-manager.start()
+manager.startProgram()
