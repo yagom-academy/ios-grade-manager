@@ -17,6 +17,8 @@
 		C29C8E03277C422000E4A48D /* GradeManagingMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = C29C8E02277C422000E4A48D /* GradeManagingMenu.swift */; };
 		C29C8E04277C4E1000E4A48D /* Extension+String.swift in Sources */ = {isa = PBXBuildFile; fileRef = C29C8E00277C3E4300E4A48D /* Extension+String.swift */; };
 		C29C8E05277C4E2200E4A48D /* GradeManagingMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = C29C8E02277C422000E4A48D /* GradeManagingMenu.swift */; };
+		C29C8E07277C844200E4A48D /* ProgramState.swift in Sources */ = {isa = PBXBuildFile; fileRef = C29C8E06277C844200E4A48D /* ProgramState.swift */; };
+		C29C8E08277C8E1800E4A48D /* ProgramState.swift in Sources */ = {isa = PBXBuildFile; fileRef = C29C8E06277C844200E4A48D /* ProgramState.swift */; };
 		C7912FBE277479C20027600C /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7912FBD277479C20027600C /* main.swift */; };
 /* End PBXBuildFile section */
 
@@ -39,6 +41,7 @@
 		C29C8DD2277AC9A400E4A48D /* Student.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Student.swift; sourceTree = "<group>"; };
 		C29C8E00277C3E4300E4A48D /* Extension+String.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extension+String.swift"; sourceTree = "<group>"; };
 		C29C8E02277C422000E4A48D /* GradeManagingMenu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GradeManagingMenu.swift; sourceTree = "<group>"; };
+		C29C8E06277C844200E4A48D /* ProgramState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgramState.swift; sourceTree = "<group>"; };
 		C7912FBA277479C20027600C /* GradeManager */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = GradeManager; sourceTree = BUILT_PRODUCTS_DIR; };
 		C7912FBD277479C20027600C /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -94,6 +97,7 @@
 				C29C8DCB277AA8DE00E4A48D /* GradeManager.swift */,
 				C29C8DD2277AC9A400E4A48D /* Student.swift */,
 				C29C8E02277C422000E4A48D /* GradeManagingMenu.swift */,
+				C29C8E06277C844200E4A48D /* ProgramState.swift */,
 				C29C8E00277C3E4300E4A48D /* Extension+String.swift */,
 			);
 			path = GradeManager;
@@ -190,6 +194,7 @@
 			files = (
 				C29C8E04277C4E1000E4A48D /* Extension+String.swift in Sources */,
 				C29C8DCA277A996100E4A48D /* main.swift in Sources */,
+				C29C8E08277C8E1800E4A48D /* ProgramState.swift in Sources */,
 				C29C8DC5277A981200E4A48D /* GradeManagerTests.swift in Sources */,
 				C29C8DD4277AC9A900E4A48D /* Student.swift in Sources */,
 				C29C8E05277C4E2200E4A48D /* GradeManagingMenu.swift in Sources */,
@@ -201,6 +206,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C29C8E07277C844200E4A48D /* ProgramState.swift in Sources */,
 				C29C8E01277C3E4300E4A48D /* Extension+String.swift in Sources */,
 				C7912FBE277479C20027600C /* main.swift in Sources */,
 				C29C8DCC277AA8DE00E4A48D /* GradeManager.swift in Sources */,

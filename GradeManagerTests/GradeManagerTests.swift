@@ -45,7 +45,7 @@ class GradeManagerTests: XCTestCase {
     
     func test_validateMenuNumber호출시_1보다작은값또는마지막메뉴번호보다큰값을전달한경우_false를반환하는지() {
         
-        let inputs = ["-1","0","\(GradeManagingMenu.allCases.count)","\(GradeManagingMenu.allCases.count + 1)"]
+        let inputs = ["-1","0","\(GradeManagingMenu.allCases.count + 1)","\(GradeManagingMenu.allCases.count + 2)"]
         
         let result = inputs.compactMap { menuNum in
             sut.validateMenuNumber(of:menuNum)
@@ -67,16 +67,13 @@ class GradeManagerTests: XCTestCase {
     
     func test_validateMenuNumber호출시_1에서마지막메뉴사이값을전달한경우_true를반환하는지() {
         
-        var inputs: [String] = []
-        for menuNum in 1..<GradeManagingMenu.allCases.count {
-            inputs.append("\(menuNum)")
-        }
+        let inputs: [String] = GradeManagingMenu.allCases.map({ "\($0.rawValue)" })
             
         let result = inputs.compactMap { menuNum in
             self.sut.validateMenuNumber(of:menuNum)
         }
         
-        XCTAssertEqual(result, Array(repeating: true, count: GradeManagingMenu.allCases.count - 1))
+        XCTAssertEqual(result, Array(repeating: true, count: GradeManagingMenu.allCases.count))
     }
     
     func test_validateMenuNumber호출시_X또는x를전달한경우_true를반환하는지() {

@@ -13,16 +13,14 @@ enum GradeManagingMenu: Int, CaseIterable {
     case addOrUpdateGrade
     case deleteGrade
     case showGradePointAverage
-    case exit
     
     var menuName: String {
         switch self {
-        case .addStudent: return "\(self.rawValue): 학생추가,"
-        case .deleteStudent: return "\(self.rawValue): 학생삭제,"
-        case .addOrUpdateGrade: return "\(self.rawValue): 성적추가(변경),"
-        case .deleteGrade: return "\(self.rawValue): 성적삭제,"
-        case .showGradePointAverage: return "\(self.rawValue): 평점보기,"
-        case .exit: return "X: 종료"
+        case .addStudent: return "\(self.rawValue): 학생추가"
+        case .deleteStudent: return "\(self.rawValue): 학생삭제"
+        case .addOrUpdateGrade: return "\(self.rawValue): 성적추가(변경)"
+        case .deleteGrade: return "\(self.rawValue): 성적삭제"
+        case .showGradePointAverage: return "\(self.rawValue): 평점보기"
         }
     }
 }

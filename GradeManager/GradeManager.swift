@@ -10,6 +10,7 @@ import Foundation
 struct GradeManager {
     
     var students: Set<Student> = Set()
+    private var programState: ProgramState!
     
     func validateMenuNumber(of input: String?) -> Bool {
                 
@@ -17,11 +18,11 @@ struct GradeManager {
             return false
         }
         
-        if input.lowercased() == "x" {
+        if ProgramState.allCases.contains(where: { $0.rawValue == input.uppercased() }) {
             return true
         }
         
-        guard let menuNum = Int(input), 1..<GradeManagingMenu.allCases.count ~= menuNum else {
+        guard let menuNum = Int(input), GradeManagingMenu.allCases.contains(where: { $0.rawValue == menuNum }) else {
             return false
         }
         
@@ -55,28 +56,36 @@ struct GradeManager {
 extension GradeManager {
     
     mutating func startProgram(){
+        programState = .run
         
-        loop: while true {
+        while programState == .run {
         
-            let startMessage = GradeManagingMenu.allCases.reduce("원하는 기능을 입력해주세요.\n") { partialMessage, menu in
-                return "\(partialMessage) \(menu.menuName)"
+            var startMessage = GradeManagingMenu.allCases.reduce("원하는 기능을 입력해주세요.\n") { partialMessage, menu in
+                return "\(partialMessage)\(menu.menuName), "
             }
+            
+            startMessage += ProgramState.stop.stateName
+            
             print(startMessage)
         
-            let menu = readLine()
+            let input = readLine()
         
-            guard let menu = menu, self.validateMenuNumber(of: menu) else {
-                print("뭔가 입력이 잘못되었습니다. 1~\(GradeManagingMenu.allCases.count) 사이의 숫자 혹은 X를 입력해주세요.")
-                continue loop
+            guard let input = input, self.validateMenuNumber(of: input) else {
+                print("뭔가 입력이 잘못되었습니다. 1~\(GradeManagingMenu.allCases.count) 사이의 숫자 혹은 \(ProgramState.stop.rawValue)를 입력해주세요.")
+                continue
+            }
+            
+            if let programState = ProgramState(rawValue: input.uppercased()) {
+                self.programState = programState
             }
         
-            guard let menuNum = Int(menu), let selected = GradeManagingMenu(rawValue: menuNum) else {
-                print("프로그램을 종료합니다...")
-                break loop
+            if let menuNum = Int(input), let selected = GradeManagingMenu(rawValue: menuNum) {
+                self.performSelectedMenu(of: selected)
             }
-        
-            self.performSelectedMenu(of: selected)
         }
+        
+        print("프로그램을 종료합니다...")
+        
     }
     
     mutating func performSelectedMenu(of menu: GradeManagingMenu) {
@@ -87,7 +96,6 @@ extension GradeManager {
         case .addOrUpdateGrade: break
         case .deleteGrade: break
         case .showGradePointAverage: break
-        default : break
         }
     }
     
