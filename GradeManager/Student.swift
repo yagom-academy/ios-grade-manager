@@ -10,6 +10,10 @@ import Foundation
 struct Student: Hashable{
     let name: String
     
+    init(name: String){
+        self.name = name.prefix(1).uppercased() + name.lowercased().dropFirst()
+    }
+    
     static func == (lhs: Student, rhs: Student) -> Bool{
         return lhs.name == rhs.name
     }

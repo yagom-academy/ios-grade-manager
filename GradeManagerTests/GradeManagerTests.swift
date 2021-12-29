@@ -11,6 +11,7 @@ import XCTest
 class GradeManagerTests: XCTestCase {
     
     var sut: GradeManager!
+    var mickeyAsInputNameForTestCase: String = "Micky"
     
     override func setUpWithError() throws {
         try super.setUpWithError()
@@ -111,31 +112,34 @@ class GradeManagerTests: XCTestCase {
         XCTAssertEqual(result, Array(repeating: true, count: 4))
     }
     
-    func test_addStudent호출시_영어숫자만이루어진문자열을전달하고_이미존재하는학생인경우_redundantName을반환하는지(){
-        let input = "Micky"
-        sut.students.insert(Student(name: "Micky"))
+    func test_addStudent호출시_영어숫자만이루어진문자열을전달하고_이미존재하는학생인경우_튜플_false_student_를반환하는지() {
         
-        let result = sut.addStudent(input)
+        let mickey = Student(name: mickeyAsInputNameForTestCase)
+        sut.students.insert(mickey)
         
-        XCTAssertEqual(result, .redundantName(name: "Micky"))
+        let result = sut.addStudent(mickeyAsInputNameForTestCase)
+        
+        XCTAssertFalse(result.0)
+        XCTAssertEqual(result.1, mickey)
     }
     
-    func test_addStudent호출시_영어숫자만이루어진문자열을전달하고_대소문자만다른같은이름의학생이이미존재하는경우_redundantName을반환하는지(){
-        let input = "mICKY"
-        sut.students.insert(Student(name: "Micky"))
+    func test_addStudent호출시_영어숫자만이루어진문자열을전달하고_대소문자만다른같은이름의학생이이미존재하는경우_튜플_false_student_를반환하는지() {
         
-        let result = sut.addStudent(input)
+        let mickey = Student(name: mickeyAsInputNameForTestCase)
+        sut.students.insert(mickey)
         
-        XCTAssertEqual(result, .redundantName(name: "Micky"))
+        let result = sut.addStudent(mickeyAsInputNameForTestCase)
+        
+        XCTAssertFalse(result.0)
+        XCTAssertEqual(result.1, mickey)
     }
     
-    func test_addStudent호출시_영어숫자만이루어지는문자열을전달하고_존재하지않는학생인경우_success를반환하는지(){
-        let input = "Micky"
+    func test_addStudent호출시_영어숫자만이루어지는문자열을전달하고_존재하지않는학생인경우_튜플_true_newStudent_를반환하는지() {
         
-        let result = sut.addStudent(input)
+        let result = sut.addStudent(mickeyAsInputNameForTestCase)
         
-        XCTAssertEqual(result, .success(name: "Micky"))
-     
+        XCTAssertTrue(result.0)
+        XCTAssertEqual(result.1, Student(name: mickeyAsInputNameForTestCase))
     }
     
     func test_deleteStudent호출시_전달된학생이름이유효하지않는경우_invalidName을반환하는지(){
