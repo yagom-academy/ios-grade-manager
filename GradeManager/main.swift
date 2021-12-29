@@ -6,7 +6,7 @@
 
 import Foundation
 
-func main() {
+func playConsole() {
     var gradeManager = GradeManager()
     var isExit = false
 
@@ -19,4 +19,4 @@ func main() {
     } while isExit == false
 }
 
-main()
+playConsole()
