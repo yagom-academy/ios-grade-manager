@@ -11,7 +11,7 @@ struct Student: Hashable{
     let name: String
     
     init(name: String){
-        self.name = name.prefix(1).uppercased() + name.lowercased().dropFirst()
+        self.name = name.uppercasingFirstAndLowercasingRest()
     }
     
     static func == (lhs: Student, rhs: Student) -> Bool{

@@ -33,7 +33,7 @@ struct GradeManager{
         
         let pattern = "^[A-Za-z0-9]*$"
         
-        guard let name = name, !name.isEmpty, let _ = name.range(of: pattern, options: .regularExpression)  else {
+        guard let name = name, name.isNotEmpty, let _ = name.range(of: pattern, options: .regularExpression)  else {
             return false
         }
         
