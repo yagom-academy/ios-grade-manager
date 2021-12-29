@@ -1,7 +1,7 @@
 import Foundation
 
 protocol MenuManagable {
-    var students: Set<Student> { get set }
+    var students: Dictionary<String, Student> { get set }
     func run() -> Bool
     func add(student: Student?)
     func delete(student: Student?)
@@ -64,12 +64,12 @@ class MenuManager: MenuManagable {
         }
     }
     
-    var students: Set<Student>
+    var students: Dictionary<String, Student>
     var inputManager: InputManagable
     
     init(inputManager: InputManagable) {
         self.inputManager = inputManager
-        self.students = Set<Student>()
+        self.students = [String: Student]()
     }
 
     func run() -> Bool {
@@ -96,21 +96,22 @@ class MenuManager: MenuManagable {
     
     func add(student: Student?) {
         guard let student: Student = student else { print(Error.wrongInput.output); return }
-        if students.contains(student) {
+        guard students[student.name] == nil else {
             print(Error.nameExist(student).output)
             return
         }
-        students.insert(student)
+        students[student.name] = student
         print(Behavior.addedStudent(student).output)
+        return
     }
     
     func delete(student: Student?) {
         guard let student: Student = student else { print(Error.wrongInput.output); return }
-        if students.contains(student){
-            students.remove(student)
-            print(Behavior.deletedStudent(student).output)
+        guard students[student.name] != nil else {
+            print(Error.noStudent(student).output)
             return
         }
-        print(Error.noStudent(student).output)
+        students[student.name] = nil
+        print(Behavior.deletedStudent(student).output)
     }
 }
