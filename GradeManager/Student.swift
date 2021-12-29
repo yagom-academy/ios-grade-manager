@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct Student: Hashable {
+struct Student {
     let name: String
     var grades: Dictionary<String,String>
     
@@ -20,5 +20,15 @@ struct Student: Hashable {
         self.name = name
         self.grades = grades
     }
+    
+    static func isContain(_ name: String, in array: Array<Student>) -> Int? {
+        for i in 0..<array.count {
+            if array[i].name == name {
+                return i
+            }
+        }
+        return nil
+    }
 }
+
 
