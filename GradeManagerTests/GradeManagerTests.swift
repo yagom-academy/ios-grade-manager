@@ -25,60 +25,70 @@ class GradeManagerTests: XCTestCase {
     
  
     
-    func test_validateMenuNumber호출시_빈문자열을전달한경우_invalid를반환하는지(){
-        let input = ""
+    func test_validateMenuNumber호출시_빈문자열을전달한경우_false를반환하는지(){
         
-        let result = sut.validateMenuNumber(of: input)
+        let inputs = ["", " "]
         
-        XCTAssertEqual(result, .invalidMenuNumber)
+        let result = inputs.compactMap { input in
+            self.sut.validateMenuNumber(of:input)
+        }
+        
+        XCTAssertEqual(result, [false, false])
     }
     
-    func test_validateMenuNumber호출시_nil값을전달한경우_invalid를반환하는지(){
+    func test_validateMenuNumber호출시_nil값을전달한경우_false를반환하는지() {
+        
         let input: String? = nil
         
-        let result = sut.validateMenuNumber(of: input)
+        let result = self.sut.validateMenuNumber(of: input)
         
-        XCTAssertEqual(result, .invalidMenuNumber)
+        XCTAssertFalse(result)
     }
     
-    func test_validateMenuNumber호출시_1보다작은값또는5보다큰값을전달한경우_invalid를반환하는지(){
-        let inputs = ["-1","0","6","7"]
+    func test_validateMenuNumber호출시_1보다작은값또는마지막메뉴번호보다큰값을전달한경우_false를반환하는지() {
+        
+        let inputs = ["-1","0","\(GradeManagingMenu.allCases.count)","\(GradeManagingMenu.allCases.count + 1)"]
         
         let result = inputs.compactMap { menuNum in
             sut.validateMenuNumber(of:menuNum)
         }
         
-        XCTAssertEqual(result, Array(repeating: .invalidMenuNumber, count: 4))
+        XCTAssertEqual(result, Array(repeating: false, count: 4))
     }
     
-    func test_validateMenuNumber호출시_숫자또는X가아닌다른값을전달한경우_invalid을반환하는지(){
+    func test_validateMenuNumber호출시_숫자또는X가아닌다른값을전달한경우_false를반환하는지() {
+        
         let inputs = ["a","#","가","A"]
         
         let result = inputs.compactMap { menuNum in
-            sut.validateMenuNumber(of:menuNum)
+            self.sut.validateMenuNumber(of:menuNum)
         }
         
-        XCTAssertEqual(result, Array(repeating: .invalidMenuNumber, count: 4))
+        XCTAssertEqual(result, Array(repeating: false, count: 4))
     }
     
-    func test_validateMenuNumber호출시_1에서5사이값을전달한경우_해당숫자를rawvalue로하는valid_를반환하는지(){
-        let inputs = ["1","2","3","4","5"]
+    func test_validateMenuNumber호출시_1에서마지막메뉴사이값을전달한경우_true를반환하는지() {
+        
+        var inputs: [String] = []
+        for menuNum in 1..<GradeManagingMenu.allCases.count {
+            inputs.append("\(menuNum)")
+        }
             
         let result = inputs.compactMap { menuNum in
-            sut.validateMenuNumber(of:menuNum)
+            self.sut.validateMenuNumber(of:menuNum)
         }
         
-        XCTAssertEqual(result, [.validMenuNumber(of: 1),.validMenuNumber(of: 2),.validMenuNumber(of: 3),.validMenuNumber(of: 4),.validMenuNumber(of: 5)])
+        XCTAssertEqual(result, Array(repeating: true, count: GradeManagingMenu.allCases.count - 1))
     }
     
-    func test_validateMenuNumber호출시_X를전달한경우_음수1을반환하는지(){
+    func test_validateMenuNumber호출시_X또는x를전달한경우_true를반환하는지() {
         let inputs = ["X","x"]
         
         let result = inputs.compactMap { menuNum in
-            sut.validateMenuNumber(of:menuNum)
+            self.sut.validateMenuNumber(of:menuNum)
         }
         
-        XCTAssertEqual(result, Array(repeating: .exit, count: 2))
+        XCTAssertEqual(result, Array(repeating: true, count: 2))
     }
     
     

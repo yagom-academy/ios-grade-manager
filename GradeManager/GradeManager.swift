@@ -11,21 +11,21 @@ struct GradeManager{
     
     var students : Set<Student> = Set()
     
-    func validateMenuNumber(of input: String?) -> MenuInputValidationResult{
+    func validateMenuNumber(of input: String?) -> Bool {
                 
         guard let input = input, !input.isEmpty else {
-            return .invalidMenuNumber
+            return false
         }
         
         if input.lowercased() == "x" {
-            return .exit
+            return true
         }
         
-        guard let menuNum = Int(input), 1...5 ~= menuNum else {
-            return .invalidMenuNumber
+        guard let menuNum = Int(input), 1..<GradeManagingMenu.allCases.count ~= menuNum else {
+            return false
         }
         
-        return .validMenuNumber(of: menuNum)
+        return true
         
     }
     
@@ -56,26 +56,38 @@ extension GradeManager{
     
     mutating func start(){
         
-    loop: while true {
-            print("원하는 기능을 입력해주세요")
-            print("1: 학생추가, 2: 학생삭제, 3: 성적추가(변경), 4: 성적삭제, 5: 평점보기, X: 종료")
+        loop: while true {
+        
+            let startMessage = GradeManagingMenu.allCases.reduce("원하는 기능을 입력해주세요.\n") { partialMessage, menu in
+                return "\(partialMessage) \(menu.menuName)"
+            }
+            print(startMessage)
+        
             let menu = readLine()
         
-            switch validateMenuNumber(of: menu){
-            case .validMenuNumber(let menuNum): startMenu(of: menuNum)
-            case .invalidMenuNumber: print("뭔가 입력이 잘못되었습니다. 1~5 사이의 숫자 혹은 X를 입력해주세요.")
-            case .exit:
+            guard let menu = menu, self.validateMenuNumber(of: menu) else {
+                print("뭔가 입력이 잘못되었습니다. 1~\(GradeManagingMenu.allCases.count) 사이의 숫자 혹은 X를 입력해주세요.")
+                continue loop
+            }
+        
+            guard let menuNum = Int(menu), let selected = GradeManagingMenu(rawValue: menuNum) else {
                 print("프로그램을 종료합니다...")
                 break loop
             }
+        
+            self.startMenu(of: selected)
         }
     }
     
-    mutating func startMenu(of menu: Int){
-        switch menu{
-        case 1: startStudentAddition()
-        case 2: startStudentDeletion()
-        default: break
+    mutating func startMenu(of menu: GradeManagingMenu) {
+        
+        switch menu {
+        case .addStudent: self.startStudentAddition()
+        case .deleteStudent: self.startStudentDeletion()
+        case .addOrUpdateGrade: break
+        case .deleteGrade: break
+        case .showGradePointAverage: break
+        default : break
         }
     }
     

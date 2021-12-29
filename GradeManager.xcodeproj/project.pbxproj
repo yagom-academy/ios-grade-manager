@@ -10,12 +10,13 @@
 		C29C8DC5277A981200E4A48D /* GradeManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C29C8DC4277A981200E4A48D /* GradeManagerTests.swift */; };
 		C29C8DCA277A996100E4A48D /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7912FBD277479C20027600C /* main.swift */; };
 		C29C8DCC277AA8DE00E4A48D /* GradeManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C29C8DCB277AA8DE00E4A48D /* GradeManager.swift */; };
-		C29C8DCE277AA99E00E4A48D /* MenuInputValidationResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = C29C8DCD277AA99E00E4A48D /* MenuInputValidationResult.swift */; };
 		C29C8DD0277AAC6F00E4A48D /* GradeManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C29C8DCB277AA8DE00E4A48D /* GradeManager.swift */; };
-		C29C8DD1277AAC7200E4A48D /* MenuInputValidationResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = C29C8DCD277AA99E00E4A48D /* MenuInputValidationResult.swift */; };
 		C29C8DD3277AC9A400E4A48D /* Student.swift in Sources */ = {isa = PBXBuildFile; fileRef = C29C8DD2277AC9A400E4A48D /* Student.swift */; };
 		C29C8DD4277AC9A900E4A48D /* Student.swift in Sources */ = {isa = PBXBuildFile; fileRef = C29C8DD2277AC9A400E4A48D /* Student.swift */; };
 		C29C8E01277C3E4300E4A48D /* Extension+String.swift in Sources */ = {isa = PBXBuildFile; fileRef = C29C8E00277C3E4300E4A48D /* Extension+String.swift */; };
+		C29C8E03277C422000E4A48D /* GradeManagingMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = C29C8E02277C422000E4A48D /* GradeManagingMenu.swift */; };
+		C29C8E04277C4E1000E4A48D /* Extension+String.swift in Sources */ = {isa = PBXBuildFile; fileRef = C29C8E00277C3E4300E4A48D /* Extension+String.swift */; };
+		C29C8E05277C4E2200E4A48D /* GradeManagingMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = C29C8E02277C422000E4A48D /* GradeManagingMenu.swift */; };
 		C7912FBE277479C20027600C /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7912FBD277479C20027600C /* main.swift */; };
 /* End PBXBuildFile section */
 
@@ -35,9 +36,9 @@
 		C29C8DC2277A981200E4A48D /* GradeManagerTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = GradeManagerTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		C29C8DC4277A981200E4A48D /* GradeManagerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GradeManagerTests.swift; sourceTree = "<group>"; };
 		C29C8DCB277AA8DE00E4A48D /* GradeManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GradeManager.swift; sourceTree = "<group>"; };
-		C29C8DCD277AA99E00E4A48D /* MenuInputValidationResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuInputValidationResult.swift; sourceTree = "<group>"; };
 		C29C8DD2277AC9A400E4A48D /* Student.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Student.swift; sourceTree = "<group>"; };
 		C29C8E00277C3E4300E4A48D /* Extension+String.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extension+String.swift"; sourceTree = "<group>"; };
+		C29C8E02277C422000E4A48D /* GradeManagingMenu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GradeManagingMenu.swift; sourceTree = "<group>"; };
 		C7912FBA277479C20027600C /* GradeManager */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = GradeManager; sourceTree = BUILT_PRODUCTS_DIR; };
 		C7912FBD277479C20027600C /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -91,8 +92,8 @@
 			children = (
 				C7912FBD277479C20027600C /* main.swift */,
 				C29C8DCB277AA8DE00E4A48D /* GradeManager.swift */,
-				C29C8DCD277AA99E00E4A48D /* MenuInputValidationResult.swift */,
 				C29C8DD2277AC9A400E4A48D /* Student.swift */,
+				C29C8E02277C422000E4A48D /* GradeManagingMenu.swift */,
 				C29C8E00277C3E4300E4A48D /* Extension+String.swift */,
 			);
 			path = GradeManager;
@@ -187,10 +188,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C29C8E04277C4E1000E4A48D /* Extension+String.swift in Sources */,
 				C29C8DCA277A996100E4A48D /* main.swift in Sources */,
-				C29C8DD1277AAC7200E4A48D /* MenuInputValidationResult.swift in Sources */,
 				C29C8DC5277A981200E4A48D /* GradeManagerTests.swift in Sources */,
 				C29C8DD4277AC9A900E4A48D /* Student.swift in Sources */,
+				C29C8E05277C4E2200E4A48D /* GradeManagingMenu.swift in Sources */,
 				C29C8DD0277AAC6F00E4A48D /* GradeManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -201,8 +203,8 @@
 			files = (
 				C29C8E01277C3E4300E4A48D /* Extension+String.swift in Sources */,
 				C7912FBE277479C20027600C /* main.swift in Sources */,
-				C29C8DCE277AA99E00E4A48D /* MenuInputValidationResult.swift in Sources */,
 				C29C8DCC277AA8DE00E4A48D /* GradeManager.swift in Sources */,
+				C29C8E03277C422000E4A48D /* GradeManagingMenu.swift in Sources */,
 				C29C8DD3277AC9A400E4A48D /* Student.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
