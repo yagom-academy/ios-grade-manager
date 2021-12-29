@@ -142,38 +142,35 @@ class GradeManagerTests: XCTestCase {
         XCTAssertEqual(result.1, Student(name: mickeyAsInputNameForTestCase))
     }
     
-    func test_deleteStudent호출시_전달된학생이름이유효하지않는경우_invalidName을반환하는지(){
-        let input = "홍길동"
+
+    
+    func test_deleteStudent호출시_전달된학생이름이존재하지않는학생인경우_nil을반환하는지() {
         
-        let result = sut.deleteStudent(input)
+        let input = self.mickeyAsInputNameForTestCase
         
-        XCTAssertEqual(result, .invalidName)
+        let result = self.sut.deleteStudent(input)
+        
+        XCTAssertNil(result)
     }
     
-    func test_deleteStudent호출시_전달된학생이름이존재하지않는학생인경우_notExistence를반환하는지(){
-        let input = "Micky"
+    func test_deleteStudent호출시_전달된학생이름과대소문자만다른같은이름의학생이존재하는경우_삭제된학생을반환하는지() {
         
-        let result = sut.deleteStudent(input)
+        let (_, student) = self.sut.addStudent(mickeyAsInputNameForTestCase)
+        let input = self.mickeyAsInputNameForTestCase.uppercased()
         
-        XCTAssertEqual(result,.notExistence(name: "Micky"))
+        let result = self.sut.deleteStudent(input)
+        
+        XCTAssertEqual(result, student)
     }
     
-    func test_deleteStudent호출시_전달된학생이름이대소문자만다른같은이름의학생인경우_true를반환하는지(){
-        let input = "mICKY"
-        let _ = sut.addStudent("Micky")
+    func test_deleteStudent호출시_전달된학생이름과일치하는학생이존재하는경우_삭제된학생을반환하는지() {
         
-        let result = sut.deleteStudent(input)
+        let (_, student) = self.sut.addStudent(mickeyAsInputNameForTestCase)
+        let input = self.mickeyAsInputNameForTestCase
         
-        XCTAssertEqual(result, .success(name: "Micky"))
-    }
-    
-    func test_deleteStudent호출시_전달된학생이름이존재하는학생인경우_true를반환하는지(){
-        let input = "Micky"
-        let _ = sut.addStudent("Micky")
+        let result = self.sut.deleteStudent(input)
         
-        let result = sut.deleteStudent(input)
-        
-        XCTAssertEqual(result, .success(name: "Micky"))
+        XCTAssertEqual(result, student)
     }
     
 }

@@ -47,17 +47,8 @@ struct GradeManager{
         return students.insert(newStudent)
     }
     
-    mutating func deleteStudent(_ name: String?) -> StudentDeletionResult{
-        
-        guard let name = name, validateStudentName(of: name) else{
-            return .invalidName
-        }
-        
-        guard let removedStudent = students.remove(Student(name: name.prefix(1).uppercased() + name.lowercased().dropFirst())) else {
-            return .notExistence(name: name)
-        }
-        
-        return .success(name: removedStudent.name)
+    mutating func deleteStudent(_ name: String) -> Student? {
+        return self.students.remove(Student(name: name))
     }
 }
 
@@ -104,15 +95,19 @@ extension GradeManager{
         }
     }
     
-    mutating func startStudentDeletion(){
+    mutating func startStudentDeletion() {
         
         print("삭제할 학생의 이름을 입력해주세요")
-        let newName = readLine()
+        let name = readLine()
         
-        switch self.deleteStudent(newName){
-        case .success(let name): print("\(name) 학생을 삭제하였습니다.")
-        case .notExistence(let name): print("\(name) 학생을 찾지 못했습니다.")
-        case .invalidName: print("입력이 잘못되었습니다. 다시 확인해주세요.")
+        guard let name = name, self.validateStudentName(of: name) else {
+            print("입력이 잘못되었습니다. 다시 확인해주세요.")
+            return
+        }
+        
+        switch self.deleteStudent(name){
+        case .some(let removedStudent): print("\(removedStudent.name) 학생을 삭제하였습니다.")
+        case .none: print("\(name) 학생을 찾지 못했습니다.")
         }
         
         
