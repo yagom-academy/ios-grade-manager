@@ -16,13 +16,13 @@ class GradeManagerTests: XCTestCase {
     override func tearDownWithError() throws {
         // Put teardown code here. This method is called after the invocation of each test method in the class.
     }
-
-    func test_isValidInput() throws {
+    
+    func test_isValidName() throws {
         // given
-        let inputs = ["eng num123 space", "한글", "/special char/"]
+        let names = ["2321ieka", "김만덕", "fwfwdodk 3112312"]
         
         // when
-        let result = inputs.map { $0.isValidInput() }
+        let result = names.map { $0.isValidName() }
         
         // then
         XCTAssertEqual(result, [true, false, false])

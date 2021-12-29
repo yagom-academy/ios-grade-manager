@@ -7,21 +7,15 @@
 
 import Foundation
 
-let validInputPattern = "^[\\s\\da-zA-Z]+$"
+let validNamePattern = "^[\\da-zA-Z]+$"
 
 extension String {
-    func isValidInput() -> Bool {
-        if let _ = self.range(of: validInputPattern, options: .regularExpression) {
+    func isValidName() -> Bool {
+        if let _ = self.range(of: validNamePattern, options: .regularExpression) {
             return true
         }
-        return false
+        else {
+            return false
+        }
     }
-}
-
-func readValidLine() -> String? {
-    let input = readLine()
-    guard let validInput = input, validInput.isValidInput(), validInput.isEmpty == false else{
-        return nil
-    }
-    return validInput
 }

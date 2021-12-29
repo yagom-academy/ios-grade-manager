@@ -6,4 +6,4 @@
 
 import Foundation
 
-ProgressController().run()
+Progress().run()

@@ -8,13 +8,12 @@
 import Foundation
 
 struct StudentDictionary {
+    private init() { }
     private var nameForGrades = [String: [String: Int]]()
     
-    mutating func addStudent(name input: String?) {
-        guard let name = input else {
-            print("입력이 잘못되었습니다. 다시 확인해주세요.")
-            return
-        }
+    static var instance = StudentDictionary()
+    
+    mutating func addStudent(name: String) {
         guard nameForGrades[name] == nil else {
             print("\(name)은 이미 존재하는 학생입니다. 추가하지 않습니다.")
             return
@@ -23,11 +22,7 @@ struct StudentDictionary {
         print("\(name) 학생을 추가했습니다.")
     }
     
-    mutating func removeStudent(forName input: String?) {
-        guard let name = input else {
-            print("입력이 잘못되었습니다. 다시 확인해주세요")
-            return
-        }
+    mutating func removeStudent(forName name: String) {
         guard let _ = nameForGrades.removeValue(forKey: name) else {
             print("\(name) 학생을 찾지 못했습니다.")
             return
