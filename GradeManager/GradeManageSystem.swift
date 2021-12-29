@@ -18,53 +18,79 @@ class GradeManageSystem {
     let removeStudentPrompt = "삭제할 학생의 이름을 입력해주세요"
     let invalidInputPrompt = "입력이 잘못되었습니다. 다시 확인해주세요."
     
+    enum MenuType: String {
+        case addStudent = "1"
+        case removeStudent = "2"
+        case addOrModifyGrade = "3"
+        case removeGrade = "4"
+        case lookupGrade = "5"
+        case stopProgram = "X"
+    }
+
     var studentDictionary: [String:Student] = [:]
     
-    
-    func receiveMenuInputFromCmd() {
+    func receiveMenuInput() throws -> String {
         print(menuInputPrompt)
         
         let receivedInput = readLine()
-        
-        switch receivedInput {
-        case "1":
-            let inputName = receiveInputFromCmd(after: addStudentPrompt)
-            addStudent(inputName)
-        case "2":
-            let inputName = receiveInputFromCmd(after: removeStudentPrompt)
-            removeStudent(inputName)
-        case "3":
-            addOrModifyGrade()
-        case "4":
-            removeGrade()
-        case "5":
-            lookupGrade()
-        case "X":
-            stopProgram()
-            
-        default:
-            print(invalidMenuInputPrompt)
+        guard let receivedInput = receivedInput else {
+            throw InputError.invalidMenuInput
         }
-    }
-    
-    func receiveInputFromCmd(after prompt: String) -> String? {
-        print(prompt)
-        let receivedInput = readLine()
-        
-        let regexExpression = "^[a-zA-Z0-9_.-]*$"
-        let regexTest = NSPredicate(format:"SELF MATCHES %@", regexExpression)
-        
-        guard regexTest.evaluate(with: receivedInput) else { return nil }
         
         return receivedInput
     }
     
-    func addStudent(_ studentName: String?) {
-
-        guard let studentName = studentName, studentName != "" else {
-            print(invalidInputPrompt)
-            return
+    
+    func performMenuAction(menuInput: String) {
+        switch MenuType(rawValue: menuInput) {
+        case .addStudent:
+            do {
+                let inputName = try receiveInput(for: InputType.addNameInput)
+                addStudent(inputName)
+            } catch {
+                print(invalidInputPrompt)
+            }
+        case .removeStudent:
+            do {
+                let inputName = try receiveInput(for: InputType.addNameInput)
+                removeStudent(inputName)
+            } catch {
+                print(invalidInputPrompt)
+            }
+        case .addOrModifyGrade:
+            addOrModifyGrade()
+        case .removeGrade:
+            removeGrade()
+        case .lookupGrade:
+            lookupGrade()
+        case .stopProgram:
+            stopProgram()
+            
+        case .none:
+            print(invalidMenuInputPrompt)
         }
+    }
+    
+    func receiveInput(for inputType: InputType) throws -> String {
+        switch inputType {
+        case .addNameInput:
+            print(addStudentPrompt)
+        case .removeNameInput:
+            print(removeStudentPrompt)
+        }
+        let receivedInput = readLine()
+        
+        let regexExpression = "^[a-zA-Z0-9]*$"
+        let regexTest = NSPredicate(format:"SELF MATCHES %@", regexExpression)
+        
+        guard let receivedInput = receivedInput, receivedInput != "", regexTest.evaluate(with: receivedInput) else {
+            throw InputError.invalidInput
+        }
+        
+        return receivedInput
+    }
+    
+    func addStudent(_ studentName: String) {
         
         guard studentDictionary[studentName] == nil else {
             print("\(studentName)은 이미 존재하는 학생입니다. 추가하지 않습니다.")
@@ -77,12 +103,7 @@ class GradeManageSystem {
 
     }
     
-    func removeStudent(_ studentName: String?) {
-        
-        guard let studentName = studentName, studentName != "" else {
-            print(invalidInputPrompt)
-            return
-        }
+    func removeStudent(_ studentName: String) {
         
         guard studentDictionary[studentName] != nil else {
             print("\(studentName) 학생을 찾지 못했습니다.")
@@ -112,7 +133,5 @@ class GradeManageSystem {
         isDone = true
         print(closeProgramPrompt)
     }
-    
-    
-    
+
 }

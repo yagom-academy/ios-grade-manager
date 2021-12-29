@@ -7,7 +7,7 @@
 
 import Foundation
 
-class Student {
+struct Student {
     var name: String
     var scores: [String:String]
     

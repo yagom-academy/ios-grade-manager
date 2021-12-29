@@ -13,7 +13,12 @@ class GradeManager {
     
     func run() {
         while !gradeManageSystem.isDone {
-            gradeManageSystem.receiveMenuInputFromCmd()
+            do {
+                let menuInput = try gradeManageSystem.receiveMenuInput()
+                gradeManageSystem.performMenuAction(menuInput: menuInput)
+            } catch {
+                print(error)
+            }
         }
     }
 }
