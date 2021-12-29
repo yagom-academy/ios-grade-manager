@@ -13,7 +13,7 @@ struct GradeManager {
     
     func validateMenuNumber(of input: String?) -> Bool {
                 
-        guard let input = input, !input.isEmpty else {
+        guard let input = input, input.isNotEmpty else {
             return false
         }
         
@@ -75,15 +75,15 @@ extension GradeManager {
                 break loop
             }
         
-            self.performSelectedMenuAction(of: selected)
+            self.performSelectedMenu(of: selected)
         }
     }
     
-    mutating func performSelectedMenuAction(of menu: GradeManagingMenu) {
+    mutating func performSelectedMenu(of menu: GradeManagingMenu) {
         
         switch menu {
-        case .addStudent: self.performStudentAdditionMenuAction()
-        case .deleteStudent: self.performStudentDeletionAction()
+        case .addStudent: self.performStudentAdditionMenu()
+        case .deleteStudent: self.performStudentDeletion()
         case .addOrUpdateGrade: break
         case .deleteGrade: break
         case .showGradePointAverage: break
@@ -91,7 +91,7 @@ extension GradeManager {
         }
     }
     
-    mutating func performStudentAdditionMenuAction() {
+    mutating func performStudentAdditionMenu() {
 
         print("추가할 학생의 이름을 입력해주세요")
         let newName = readLine()
@@ -107,7 +107,7 @@ extension GradeManager {
         }
     }
     
-    mutating func performStudentDeletionAction() {
+    mutating func performStudentDeletion() {
         
         print("삭제할 학생의 이름을 입력해주세요")
         let name = readLine()
@@ -121,7 +121,5 @@ extension GradeManager {
         case .some(let removedStudent): print("\(removedStudent.name) 학생을 삭제하였습니다.")
         case .none: print("\(name) 학생을 찾지 못했습니다.")
         }
-        
-        
     }
 }

@@ -23,8 +23,6 @@ class GradeManagerTests: XCTestCase {
         sut = nil
     }
     
- 
-    
     func test_validateMenuNumber호출시_빈문자열을전달한경우_false를반환하는지(){
         
         let inputs = ["", " "]
