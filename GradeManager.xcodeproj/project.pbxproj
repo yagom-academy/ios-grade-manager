@@ -7,20 +7,24 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		C2290FC6277C27AF00A1C3B9 /* FirstMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2290FC5277C27AF00A1C3B9 /* FirstMenu.swift */; };
+		C2290FC7277C2D5700A1C3B9 /* FirstMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2290FC5277C27AF00A1C3B9 /* FirstMenu.swift */; };
+		C2290FC8277C2D5800A1C3B9 /* FirstMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2290FC5277C27AF00A1C3B9 /* FirstMenu.swift */; };
+		C2290FC9277C2D5800A1C3B9 /* FirstMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2290FC5277C27AF00A1C3B9 /* FirstMenu.swift */; };
 		C245DE732779AB3000DBBBD2 /* CheckFirstMenuInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = C245DE722779AB3000DBBBD2 /* CheckFirstMenuInput.swift */; };
 		C245DE772779AB3500DBBBD2 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7912FBD277479C20027600C /* main.swift */; };
 		C245DE7F277AA16C00DBBBD2 /* AddStudentTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C245DE7E277AA16C00DBBBD2 /* AddStudentTests.swift */; };
-		C245DE85277AA20F00DBBBD2 /* Storage.swift in Sources */ = {isa = PBXBuildFile; fileRef = C245DE84277AA20F00DBBBD2 /* Storage.swift */; };
-		C245DE86277AA21100DBBBD2 /* Storage.swift in Sources */ = {isa = PBXBuildFile; fileRef = C245DE84277AA20F00DBBBD2 /* Storage.swift */; };
+		C245DE85277AA20F00DBBBD2 /* ScoreStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = C245DE84277AA20F00DBBBD2 /* ScoreStorage.swift */; };
+		C245DE86277AA21100DBBBD2 /* ScoreStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = C245DE84277AA20F00DBBBD2 /* ScoreStorage.swift */; };
 		C245DE88277AA46400DBBBD2 /* ScoreManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C245DE87277AA46400DBBBD2 /* ScoreManager.swift */; };
 		C245DE89277AA49D00DBBBD2 /* ScoreManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C245DE87277AA46400DBBBD2 /* ScoreManager.swift */; };
 		C245DE91277AA55900DBBBD2 /* DeleteStudentTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C245DE90277AA55900DBBBD2 /* DeleteStudentTests.swift */; };
-		C245DE95277AA56100DBBBD2 /* Storage.swift in Sources */ = {isa = PBXBuildFile; fileRef = C245DE84277AA20F00DBBBD2 /* Storage.swift */; };
+		C245DE95277AA56100DBBBD2 /* ScoreStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = C245DE84277AA20F00DBBBD2 /* ScoreStorage.swift */; };
 		C245DE96277AA7CD00DBBBD2 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7912FBD277479C20027600C /* main.swift */; };
 		C245DE97277AA7CD00DBBBD2 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7912FBD277479C20027600C /* main.swift */; };
 		C245DE98277AA7D000DBBBD2 /* ScoreManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C245DE87277AA46400DBBBD2 /* ScoreManager.swift */; };
 		C245DE99277AA7D100DBBBD2 /* ScoreManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C245DE87277AA46400DBBBD2 /* ScoreManager.swift */; };
-		C245DE9A277AA7D400DBBBD2 /* Storage.swift in Sources */ = {isa = PBXBuildFile; fileRef = C245DE84277AA20F00DBBBD2 /* Storage.swift */; };
+		C245DE9A277AA7D400DBBBD2 /* ScoreStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = C245DE84277AA20F00DBBBD2 /* ScoreStorage.swift */; };
 		C7912FBE277479C20027600C /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7912FBD277479C20027600C /* main.swift */; };
 /* End PBXBuildFile section */
 
@@ -37,11 +41,12 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		C2290FC5277C27AF00A1C3B9 /* FirstMenu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstMenu.swift; sourceTree = "<group>"; };
 		C245DE702779AB3000DBBBD2 /* FilterSelectionMenu.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FilterSelectionMenu.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		C245DE722779AB3000DBBBD2 /* CheckFirstMenuInput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckFirstMenuInput.swift; sourceTree = "<group>"; };
 		C245DE7C277AA16C00DBBBD2 /* AddStudentTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = AddStudentTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		C245DE7E277AA16C00DBBBD2 /* AddStudentTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddStudentTests.swift; sourceTree = "<group>"; };
-		C245DE84277AA20F00DBBBD2 /* Storage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Storage.swift; sourceTree = "<group>"; };
+		C245DE84277AA20F00DBBBD2 /* ScoreStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScoreStorage.swift; sourceTree = "<group>"; };
 		C245DE87277AA46400DBBBD2 /* ScoreManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScoreManager.swift; sourceTree = "<group>"; };
 		C245DE8E277AA55900DBBBD2 /* DeleteStudentTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DeleteStudentTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		C245DE90277AA55900DBBBD2 /* DeleteStudentTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeleteStudentTests.swift; sourceTree = "<group>"; };
@@ -131,8 +136,9 @@
 			isa = PBXGroup;
 			children = (
 				C7912FBD277479C20027600C /* main.swift */,
-				C245DE84277AA20F00DBBBD2 /* Storage.swift */,
+				C245DE84277AA20F00DBBBD2 /* ScoreStorage.swift */,
 				C245DE87277AA46400DBBBD2 /* ScoreManager.swift */,
+				C2290FC5277C27AF00A1C3B9 /* FirstMenu.swift */,
 			);
 			path = GradeManager;
 			sourceTree = "<group>";
@@ -283,7 +289,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				C245DE89277AA49D00DBBBD2 /* ScoreManager.swift in Sources */,
-				C245DE9A277AA7D400DBBBD2 /* Storage.swift in Sources */,
+				C2290FC7277C2D5700A1C3B9 /* FirstMenu.swift in Sources */,
+				C245DE9A277AA7D400DBBBD2 /* ScoreStorage.swift in Sources */,
 				C245DE772779AB3500DBBBD2 /* main.swift in Sources */,
 				C245DE732779AB3000DBBBD2 /* CheckFirstMenuInput.swift in Sources */,
 			);
@@ -294,8 +301,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				C245DE98277AA7D000DBBBD2 /* ScoreManager.swift in Sources */,
+				C2290FC8277C2D5800A1C3B9 /* FirstMenu.swift in Sources */,
 				C245DE7F277AA16C00DBBBD2 /* AddStudentTests.swift in Sources */,
-				C245DE86277AA21100DBBBD2 /* Storage.swift in Sources */,
+				C245DE86277AA21100DBBBD2 /* ScoreStorage.swift in Sources */,
 				C245DE96277AA7CD00DBBBD2 /* main.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -305,8 +313,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				C245DE99277AA7D100DBBBD2 /* ScoreManager.swift in Sources */,
+				C2290FC9277C2D5800A1C3B9 /* FirstMenu.swift in Sources */,
 				C245DE91277AA55900DBBBD2 /* DeleteStudentTests.swift in Sources */,
-				C245DE95277AA56100DBBBD2 /* Storage.swift in Sources */,
+				C245DE95277AA56100DBBBD2 /* ScoreStorage.swift in Sources */,
 				C245DE97277AA7CD00DBBBD2 /* main.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -317,7 +326,8 @@
 			files = (
 				C245DE88277AA46400DBBBD2 /* ScoreManager.swift in Sources */,
 				C7912FBE277479C20027600C /* main.swift in Sources */,
-				C245DE85277AA20F00DBBBD2 /* Storage.swift in Sources */,
+				C245DE85277AA20F00DBBBD2 /* ScoreStorage.swift in Sources */,
+				C2290FC6277C27AF00A1C3B9 /* FirstMenu.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
