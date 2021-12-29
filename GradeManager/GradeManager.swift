@@ -30,8 +30,8 @@ struct GradeManager {
             let student = Student(name: name)
             _ = deleteStudent(student)
             return false
-        case .exit:
-            return exit()
+        case .exitProgram:
+            return exitProgram()
         default:
             return isInvaildMenuFormat()
         }
@@ -59,7 +59,7 @@ struct GradeManager {
         return false
     }
     
-    private func exit() -> Bool {
+    private func exitProgram() -> Bool {
         print("프로그램을 종료합니다...")
         return true
     }
