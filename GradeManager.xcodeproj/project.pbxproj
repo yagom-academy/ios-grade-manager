@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		C2FAE268277B0379005BBEF4 /* GradeManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2FAE261277B027F005BBEF4 /* GradeManagerTests.swift */; };
+		C2FAE26A277B04D5005BBEF4 /* Student.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2FAE269277B04D5005BBEF4 /* Student.swift */; };
 		C7912FBE277479C20027600C /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7912FBD277479C20027600C /* main.swift */; };
 /* End PBXBuildFile section */
 
@@ -23,11 +25,29 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		C2FAE254277AC99E005BBEF4 /* GradeManangerTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = GradeManangerTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		C2FAE25F277B027F005BBEF4 /* GradeManagerTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = GradeManagerTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		C2FAE261277B027F005BBEF4 /* GradeManagerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GradeManagerTests.swift; sourceTree = "<group>"; };
+		C2FAE269277B04D5005BBEF4 /* Student.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Student.swift; sourceTree = "<group>"; };
 		C7912FBA277479C20027600C /* GradeManager */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = GradeManager; sourceTree = BUILT_PRODUCTS_DIR; };
 		C7912FBD277479C20027600C /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		C2FAE251277AC99E005BBEF4 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		C2FAE25C277B027F005BBEF4 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		C7912FB7277479C20027600C /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -38,10 +58,19 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		C2FAE260277B027F005BBEF4 /* GradeManagerTests */ = {
+			isa = PBXGroup;
+			children = (
+				C2FAE261277B027F005BBEF4 /* GradeManagerTests.swift */,
+			);
+			path = GradeManagerTests;
+			sourceTree = "<group>";
+		};
 		C7912FB1277479C20027600C = {
 			isa = PBXGroup;
 			children = (
 				C7912FBC277479C20027600C /* GradeManager */,
+				C2FAE260277B027F005BBEF4 /* GradeManagerTests */,
 				C7912FBB277479C20027600C /* Products */,
 			);
 			sourceTree = "<group>";
@@ -50,6 +79,8 @@
 			isa = PBXGroup;
 			children = (
 				C7912FBA277479C20027600C /* GradeManager */,
+				C2FAE254277AC99E005BBEF4 /* GradeManangerTests.xctest */,
+				C2FAE25F277B027F005BBEF4 /* GradeManagerTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -58,6 +89,7 @@
 			isa = PBXGroup;
 			children = (
 				C7912FBD277479C20027600C /* main.swift */,
+				C2FAE269277B04D5005BBEF4 /* Student.swift */,
 			);
 			path = GradeManager;
 			sourceTree = "<group>";
@@ -65,6 +97,40 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		C2FAE253277AC99E005BBEF4 /* GradeManangerTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = C2FAE258277AC99F005BBEF4 /* Build configuration list for PBXNativeTarget "GradeManangerTests" */;
+			buildPhases = (
+				C2FAE250277AC99E005BBEF4 /* Sources */,
+				C2FAE251277AC99E005BBEF4 /* Frameworks */,
+				C2FAE252277AC99E005BBEF4 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = GradeManangerTests;
+			productName = GradeManangerTests;
+			productReference = C2FAE254277AC99E005BBEF4 /* GradeManangerTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		C2FAE25E277B027F005BBEF4 /* GradeManagerTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = C2FAE263277B027F005BBEF4 /* Build configuration list for PBXNativeTarget "GradeManagerTests" */;
+			buildPhases = (
+				C2FAE25B277B027F005BBEF4 /* Sources */,
+				C2FAE25C277B027F005BBEF4 /* Frameworks */,
+				C2FAE25D277B027F005BBEF4 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = GradeManagerTests;
+			productName = GradeManagerTests;
+			productReference = C2FAE25F277B027F005BBEF4 /* GradeManagerTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 		C7912FB9277479C20027600C /* GradeManager */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = C7912FC1277479C20027600C /* Build configuration list for PBXNativeTarget "GradeManager" */;
@@ -89,9 +155,15 @@
 			isa = PBXProject;
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
-				LastSwiftUpdateCheck = 1300;
+				LastSwiftUpdateCheck = 1320;
 				LastUpgradeCheck = 1300;
 				TargetAttributes = {
+					C2FAE253277AC99E005BBEF4 = {
+						CreatedOnToolsVersion = 13.2;
+					};
+					C2FAE25E277B027F005BBEF4 = {
+						CreatedOnToolsVersion = 13.2;
+					};
 					C7912FB9277479C20027600C = {
 						CreatedOnToolsVersion = 13.0;
 					};
@@ -111,22 +183,117 @@
 			projectRoot = "";
 			targets = (
 				C7912FB9277479C20027600C /* GradeManager */,
+				C2FAE253277AC99E005BBEF4 /* GradeManangerTests */,
+				C2FAE25E277B027F005BBEF4 /* GradeManagerTests */,
 			);
 		};
 /* End PBXProject section */
 
+/* Begin PBXResourcesBuildPhase section */
+		C2FAE252277AC99E005BBEF4 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		C2FAE25D277B027F005BBEF4 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
+		C2FAE250277AC99E005BBEF4 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		C2FAE25B277B027F005BBEF4 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C2FAE268277B0379005BBEF4 /* GradeManagerTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		C7912FB6277479C20027600C /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 				C7912FBE277479C20027600C /* main.swift in Sources */,
+				C2FAE26A277B04D5005BBEF4 /* Student.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin XCBuildConfiguration section */
+		C2FAE259277AC99F005BBEF4 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 11.6;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = kwon.cheshire.GradeManangerTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+			};
+			name = Debug;
+		};
+		C2FAE25A277AC99F005BBEF4 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 11.6;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = kwon.cheshire.GradeManangerTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+			};
+			name = Release;
+		};
+		C2FAE264277B027F005BBEF4 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 11.6;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = kwon.cheshire.GradeManagerTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+			};
+			name = Debug;
+		};
+		C2FAE265277B027F005BBEF4 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 11.6;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = kwon.cheshire.GradeManagerTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+			};
+			name = Release;
+		};
 		C7912FBF277479C20027600C /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -263,6 +430,24 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		C2FAE258277AC99F005BBEF4 /* Build configuration list for PBXNativeTarget "GradeManangerTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C2FAE259277AC99F005BBEF4 /* Debug */,
+				C2FAE25A277AC99F005BBEF4 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		C2FAE263277B027F005BBEF4 /* Build configuration list for PBXNativeTarget "GradeManagerTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C2FAE264277B027F005BBEF4 /* Debug */,
+				C2FAE265277B027F005BBEF4 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		C7912FB5277479C20027600C /* Build configuration list for PBXProject "GradeManager" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
