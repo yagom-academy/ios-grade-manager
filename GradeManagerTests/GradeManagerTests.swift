@@ -56,6 +56,23 @@ final class GradeManagerTests: XCTestCase {
         XCTAssertEqual(result, true)
     }
     
+    func test_성적추가_성공() {
+        test_학생추가_성공()
+        let student = Student(name: "joel")
+        
+        let result = gradeManager.addGradeForSubject(student)
+        
+        XCTAssertEqual(result, false)
+    }
+    
+    func test_성적추가_실패() {
+        let student = Student(name: "joel")
+        
+        let result = gradeManager.addGradeForSubject(student)
+        
+        XCTAssertEqual(result, false)
+    }
+    
     override func setUpWithError() throws {
         try super.setUpWithError()
     }
