@@ -12,7 +12,7 @@ struct GradeManager {
         switch Menu(rawValue: menu) {
         case .addStudent:
             print("추가할 학생의 이름을 입력해주세요")
-            guard let name = readLine(), verifyInput(name) else {
+            guard let name = readLine(), verifyStudentName(name) else {
                 print("입력이 잘못되었습니다. 다시 확인해주세요.")
                 return false
             }
@@ -22,13 +22,42 @@ struct GradeManager {
             return false
         case .deleteStudent:
             print("삭제할 학생의 이름을 입력해주세요")
-            guard let name = readLine(), verifyInput(name) else {
+            guard let name = readLine(), verifyStudentName(name) else {
                 print("입력이 잘못되었습니다. 다시 확인해주세요.")
                 return false
             }
             
             let student = Student(name: name)
             _ = deleteStudent(student)
+            return false
+        case .addGradeForSubject:
+            let explanatoryTextForAddGradeForSubject = """
+                성적을 추가할 학생의 이름, 과목 이름, 성적(A+, A0, F 등)을 띄어쓰기로 구분하여 차례로 작성해주세요.
+                입력예) Mickey Swift A+
+                만약 학생의 성적 중 해당 과목이 존재하면 기존 점수가 갱신됩니다.
+                """
+            print(explanatoryTextForAddGradeForSubject)
+            
+            guard let gradeInfo = readLine(), verifyGradeInfo(gradeInfo) else {
+                print("입력이 잘못되었습니다. 다시 확인해주세요.")
+                return false
+            }
+            
+            let gradeInfoArray = gradeInfo
+                .split(separator: " ")
+                .map{ String($0) }
+        
+            let name = gradeInfoArray[0]
+            let subject = gradeInfoArray[1]
+            let grade = gradeInfoArray[2]
+            let gradeForSubject = [subject: grade]
+            
+            let student = Student(name: name)
+            _ = addGradeForSubject(student, gradeForSubject)
+            return false
+        case .deleteGradeForSubject:
+            return false
+        case .calculateGPA:
             return false
         case .exitProgram:
             return exitProgram()
@@ -59,6 +88,12 @@ struct GradeManager {
         return false
     }
     
+    mutating func addGradeForSubject(_ student: Student, _ gradeForSubject: [String: String]) -> Bool {
+        
+            
+        return false
+    }
+    
     private func exitProgram() -> Bool {
         print("프로그램을 종료합니다...")
         return true
@@ -69,10 +104,14 @@ struct GradeManager {
         return false
     }
     
-    private func verifyInput(_ input: String) -> Bool {
+    private func verifyStudentName(_ name: String) -> Bool {
         let pattern = "[^a-zA-Z0-9]"
-        let result = input.isEmpty == false
-            && input.range(of: pattern, options: .regularExpression) == nil
+        let result = name.isEmpty == false
+            && name.range(of: pattern, options: .regularExpression) == nil
         return result
+    }
+    
+    private func verifyGradeInfo(_ gradeInfo: String) -> Bool {
+        return true
     }
 }
