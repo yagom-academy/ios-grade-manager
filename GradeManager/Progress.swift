@@ -15,8 +15,8 @@ class Progress {
                 let currentMenu = try MenuFactory.makeFromInput()
                 try currentMenu.execute()
                 toBeContinued = currentMenu.toBeContinued
-            } catch let inputError as InputError {
-                print(inputError.localizedDescription)
+            } catch let descriptiveError as LocalizedError {
+                print(descriptiveError.localizedDescription)
             } catch {
                 print("ERROR: Unhandled error \(error) occurred. Please blame Hayden")
             }

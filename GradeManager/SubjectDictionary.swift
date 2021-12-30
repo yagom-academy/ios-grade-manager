@@ -18,4 +18,8 @@ class SubjectDictionary {
             subjectForGrade[key] = newValue
         }
     }
+    
+    func removeValue(forKey: String) -> String? {
+        return subjectForGrade.removeValue(forKey: forKey)
+    }
 }

@@ -39,4 +39,16 @@ extension String {
         }
         return (name, subject, grade)
     }
+    
+    func toDeleteGradeForm() throws -> (String, String) {
+        let splitInput = self.components(separatedBy: CharacterSet.whitespaces)
+        guard splitInput.count == 2 else {
+            throw InputError.wrongForm
+        }
+        let (name, subject) = (splitInput[0], splitInput[1])
+        guard name.isValidName(), subject.isValidName() else {
+            throw InputError.wrongName
+        }
+        return (name, subject)
+    }
 }

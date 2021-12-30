@@ -26,7 +26,7 @@ class AddStudentMenu: Menu {
         guard let name = readLine(), name.isValidName() else {
             throw InputError.wrongName
         }
-        StudentDictionary.instance.addStudent(name: name)
+        try StudentDictionary.instance.addStudent(name: name)
     }
 }
 
@@ -40,7 +40,7 @@ class DeleteStudentMenu: Menu {
         guard let name = readLine(), name.isValidName() else {
             throw InputError.wrongName
         }
-        StudentDictionary.instance.removeStudent(forName: name)
+        try StudentDictionary.instance.removeStudent(forName: name)
     }
 }
 
@@ -60,8 +60,29 @@ class AddOrChangeGradeMenu: Menu {
             throw InputError.wrongForm
         }
         let (name, subject, grade) = try input.toGradeInputForm()
-        StudentDictionary.instance.addOrChangeGrade(name: name, subject: subject, grade: grade)
+        try StudentDictionary.instance.addOrChangeGrade(name: name, subject: subject, grade: grade)
     }
+}
+
+class DeleteGradeMenu: Menu {
+    var description: String = "성적삭제"
+    var instruction: String = """
+    성적을 삭제할 학생의 이름, 과목 이름을 띄어쓰기로 구분하여 차례로 작성해주세요.
+    입력예) Mickey Swift
+    """
+    
+    var toBeContinued: Bool = true
+    
+    func execute() throws {
+        print(instruction)
+        guard let input = readLine() else {
+            throw InputError.wrongName
+        }
+        let (name, subject) = try input.toDeleteGradeForm()
+        try StudentDictionary.instance.removeGrade(name: name, subject: subject)
+    }
+    
+    
 }
 
 class TerminateMenu: Menu {

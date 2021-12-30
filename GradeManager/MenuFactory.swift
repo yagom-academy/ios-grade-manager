@@ -25,6 +25,8 @@ class MenuFactory {
             return DeleteStudentMenu()
         case "3":
             return AddOrChangeGradeMenu()
+        case "4":
+            return DeleteGrade()
         case "X":
             return TerminateMenu()
         default:
