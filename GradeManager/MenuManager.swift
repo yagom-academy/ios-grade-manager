@@ -25,9 +25,11 @@ class MenuManager: MenuManagable {
     
     enum Behavior {
         case menu,
-             needAddName, needDeleteName, needScore,
+             needAddName, needDeleteName,
+             needAddScore, needDeleteScore,
              addedStudent(Student), deletedStudent(Student),
              modifiedGrade(String, String, String),
+             deletedGrade(String, String),
              programEnd
         
         var output: String {
@@ -38,10 +40,15 @@ class MenuManager: MenuManagable {
                 return "추가할 학생의 이름을 입력해주세요"
             case .needDeleteName:
                 return "삭제할 학생의 이름을 입력해주세요"
-            case .needScore:
+            case .needAddScore:
                 return """
                 성적을 추가할 학생의 이름, 과목 이름, 성적(A+, A0, F 등)을 띄어쓰기로 구분하여 차례로 작성해주세요.
                 입력예) Mickey Swift A+\n만약에 학생의 성적 중 해당 과목이 존재하면 기존 점수가 갱신됩니다.
+                """
+            case .needDeleteScore:
+               return """
+                성적을 삭제할 학생의 이름, 과목 이름을 띄어쓰기로 구분하여 차례로 작성해주세요.
+                입력예) Mickey Swift\n
                 """
             case .addedStudent(let student):
                 return "\(student.name) 학생을 추가했습니다."
@@ -49,6 +56,8 @@ class MenuManager: MenuManagable {
                 return "\(student.name) 학생을 삭제했습니다."
             case let .modifiedGrade(name, subject, grade):
                 return "\(name) 학생의 \(subject) 과목이 \(grade)로 추가(변경)되었습니다."
+            case let .deletedGrade(name, subject):
+                return "\(name) 학생의 \(subject) 과목의 성적이 삭제되었습니다."
             case .programEnd:
                 return "프로그램을 종료합니다"
             }
@@ -56,7 +65,8 @@ class MenuManager: MenuManagable {
     }
     
     enum Error {
-        case wrongMenu, wrongInput, nameExist(Student), noStudent(Student)
+        case wrongMenu, wrongInput, nameExist(Student),
+             noStudent(Student), noSubject(String, String)
         
         var output: String {
             switch self {
@@ -68,6 +78,8 @@ class MenuManager: MenuManagable {
                 return "\(student.name) 학생은 이미 존재하는 학생입니다. 추가하지 않습니다."
             case .noStudent(let student):
                 return "\(student.name) 학생을 찾지 못했습니다."
+            case let .noSubject(name, subject):
+                return "\(name) 학생의 \(subject) 과목이 없습니다."
             }
         }
     }
@@ -96,8 +108,10 @@ class MenuManager: MenuManagable {
         case Command.end.rawValue:
             print(Behavior.programEnd.output)
         case Command.gradeAdd.rawValue:
-            modify(score: inputManager.toScore(message: Behavior.needScore.output))
-        case Command.gradeDelete.rawValue, Command.show.rawValue:
+            modify(score: inputManager.toScore(message: Behavior.needAddScore.output))
+        case Command.gradeDelete.rawValue:
+            delete(score: inputManager.toScore(message: Behavior.needDeleteScore.output))
+        case Command.show.rawValue:
             print("아직 준비되지 않은 기능입니다.")
         default:
             print(Error.wrongMenu.output)
@@ -125,10 +139,23 @@ class MenuManager: MenuManagable {
         print(Behavior.deletedStudent(student).output)
     }
     
+    func delete(score: [String]?) {
+        guard let score = score, score.count == 2 else { print(Error.wrongInput.output); return }
+        guard let target = students[score[0]] else { print(Error.noStudent(Student(name: score[0])).output); return; }
+        if target.delete(subject: score[1]) {
+            students[score[0]] = target
+            print(Behavior.deletedGrade(score[0], score[1]).output)
+            return
+        }
+        print(Error.noSubject(score[0], score[1]).output)
+        
+    }
+    
     func modify(score information: [String]?) {
         guard let information = information, information.count == 3 else { print(Error.wrongInput.output); return }
         guard let target = students[information[0]] else { print(Error.noStudent(Student(name: information[0])).output); return; }
-        target.add(grade: information[2], subject: information[1])
+        target.add(subject: information[1], grade: information[2])
+        students[information[0]] = target
         print(Behavior.modifiedGrade(information[0], information[1], information[2]).output)
     }
 }
