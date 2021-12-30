@@ -12,47 +12,60 @@ class GradeManager {
     var running = true
     let gradeConsole = GradeConsole()
     
-    func step(){
+    func step() {
         gradeConsole.showMenu()
         
-        guard let menu = gradeConsole.getMenuInput() else { return }
-
-        gradeConsole.showSelected(menu)
-        
-        switch menu {
-        case .addStudent:
-            addStudentProcess()
-        case .deleteStudent:
-            deleteStudentProcess()
-        case .addGrade:
-            break
-        case .deleteGrade:
-            break
-        case .averageGrade:
-            break
-        case .exit:
-            running = false
+        do{
+            let menu = try gradeConsole.getMenuInput()
+            gradeConsole.showSelected(menu)
+            
+            switch menu {
+            case .addStudent:
+                addStudentProcess()
+            case .deleteStudent:
+                deleteStudentProcess()
+            case .addGrade:
+                break
+            case .deleteGrade:
+                break
+            case .averageGrade:
+                break
+            case .exit:
+                running = false
+            }
+        } catch {
+            gradeConsole.printInputError(error)
         }
     }
     
-    private func addStudentProcess(){
-        guard let name = gradeConsole.getInput() else { return }
-        gradeConsole.showAddStudentResult(addStudent(by: name), name: name)
+    private func addStudentProcess() {
+        do{
+            let name = try gradeConsole.getNameInput()
+            let result = addStudent(by: name)
+            gradeConsole.showAddStudentResult(result, name: name)
+        } catch {
+            gradeConsole.printInputError(error)
+        }
     }
     
-    private func deleteStudentProcess(){
-        guard let name = gradeConsole.getInput() else { return }
-        gradeConsole.showDeleteStudentResult(deleteStudent(by: name), name: name)
+    private func deleteStudentProcess() {
+        do{
+            let name = try gradeConsole.getNameInput()
+            let result = deleteStudent(by: name)
+            gradeConsole.showDeleteStudentResult(result, name: name)
+        } catch {
+            gradeConsole.printInputError(error)
+        }
     }
     
     @discardableResult
-    func addStudent(by name: String) -> Bool{
+    func addStudent(by name: String) -> Bool {
         let (success,_) = students.insert(Student(name: name))
         return success
     }
     
     @discardableResult
-    func deleteStudent(by name: String) -> Bool{
+    func deleteStudent(by name: String) -> Bool {
         students.remove(Student(name: name)) != nil
     }
 }
