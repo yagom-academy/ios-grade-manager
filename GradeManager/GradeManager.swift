@@ -66,6 +66,14 @@ struct GradeManager {
             _ = deleteGradeForSubject(name, subject)
             return false
         case .calculateGPA:
+            print(K.explanatoryTextForCalculateGPA)
+            
+            guard let name = readLine(), verifyStudentName(name) else {
+                print(K.explanatoryTextForInvaildInput)
+                return false
+            }
+            
+            _ = calculateGPA(name)
             return false
         case .exitProgram:
             return exitProgram()
@@ -121,6 +129,32 @@ struct GradeManager {
        
         student.gradeForSubject.removeValue(forKey: subject)
         print("\(name) 학생의 \(subject) 과목의 성적이 삭제되었습니다.")
+        return true
+    }
+    
+    func calculateGPA(_ name: String) -> Bool {
+        guard let student = students[name] else {
+            print("\(name) 학생을 찾지 못했습니다.")
+            return false
+        }
+        
+        let gradeForSubject = student.gradeForSubject
+        let subjectCount = gradeForSubject.count
+        print(name)
+        if subjectCount == 0 {
+           print("평점 : 0.0")
+            return true
+        }
+        
+        var GPA = gradeForSubject
+            .filter{
+                print("\($0.key): \($0.value)")
+                return K.grades[$0.value] != nil
+            }
+            .compactMap{ K.grades[$0.value] }
+            .reduce(0.0) { $0 + $1 }
+        GPA /= Double(subjectCount)
+        print("평점 : \(GPA)")
         return true
     }
     
