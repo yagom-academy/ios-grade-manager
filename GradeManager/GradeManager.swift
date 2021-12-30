@@ -38,7 +38,7 @@ class GradeManager {
         return true
     }
     
-    func validateAddOrGradeInput(of input: String?) -> Bool {
+    func validateAddOrUpdateGradeInput(of input: String?) -> Bool {
         
         guard let input = input, input.isNotEmpty, let (name, subject, grade) = self.splitAddOrUpdateGradeInputBySpace(of: input) else {
             return false
@@ -172,7 +172,7 @@ extension GradeManager {
         print(startMessage)
         let input = readLine()
         
-        guard let input = input, self.validateAddOrGradeInput(of: input) else {
+        guard let input = input, self.validateAddOrUpdateGradeInput(of: input) else {
             print("입력이 잘못되었습니다. 다시 확인해주세요.")
             return
         }

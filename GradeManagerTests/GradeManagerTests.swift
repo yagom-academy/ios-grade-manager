@@ -180,45 +180,45 @@ class GradeManagerTests: XCTestCase {
         XCTAssertEqual(result, student)
     }
     
-    func test_validateAddGradeInput호출시_빈문자열또는nil을전달한경우_false를반환하는지() {
+    func test_validateAddOrUpdateGradeInput호출시_빈문자열또는nil을전달한경우_false를반환하는지() {
         
         let inputs = ["", " ", nil]
         
         let result = inputs.map({ input in
-            self.sut.validateAddOrGradeInput(of: input)
+            self.sut.validateAddOrUpdateGradeInput(of: input)
         })
         
         XCTAssertEqual(result, Array(repeating: false, count: inputs.count))
     }
     
-    func test_validateAddGradeInput호출시_이름만전달한경우_false를반환하는지() {
+    func test_validateAddOrUpdateGradeInput호출시_이름만전달한경우_false를반환하는지() {
         
         let input = mickeyAsInputNameForTestCase
         
-        let result = self.sut.validateAddOrGradeInput(of: input)
+        let result = self.sut.validateAddOrUpdateGradeInput(of: input)
         
         XCTAssertFalse(result)
     }
     
-    func test_validateAddGradeInput호출시_이름과과목만전달한경우_false를반환하는지() {
+    func test_validateAddOrUpdateGradeInput호출시_이름과과목만전달한경우_false를반환하는지() {
         
         let input = "\(mickeyAsInputNameForTestCase) \(subjectAsInputForTestCase)"
         
-        let result = self.sut.validateAddOrGradeInput(of: input)
+        let result = self.sut.validateAddOrUpdateGradeInput(of: input)
         
         XCTAssertFalse(result)
     }
     
-    func test_validateAddGradeInput호출시_이름과목성적이외의값을추가로전달한경우_false를반환하는지() {
+    func test_validateAddOrUpdateGradeInput호출시_이름과목성적이외의값을추가로전달한경우_false를반환하는지() {
         
         let input = "\(mickeyAsInputNameForTestCase) \(subjectAsInputForTestCase) \(gradeAsInputForTestCase) good"
         
-        let result = self.sut.validateAddOrGradeInput(of: input)
+        let result = self.sut.validateAddOrUpdateGradeInput(of: input)
         
         XCTAssertFalse(result)
     }
     
-    func test_validateAddGradeInput호출시_이름에영어숫자이외값이전달된경우_false를반환하는지() {
+    func test_validateAddOrUpdateGradeInput호출시_이름에영어숫자이외값이전달된경우_false를반환하는지() {
         
         let inputs = [
             "홍길동 \(subjectAsInputForTestCase) \(gradeAsInputForTestCase)",
@@ -227,13 +227,13 @@ class GradeManagerTests: XCTestCase {
         ]
         
         let result = inputs.map { input in
-            self.sut.validateAddOrGradeInput(of: input)
+            self.sut.validateAddOrUpdateGradeInput(of: input)
         }
         
         XCTAssertEqual(result, Array(repeating: false, count: inputs.count))
     }
     
-    func test_validateAddGradeInput호출시_과목에영어숫자이외값이전달된경우_false를반환하는지() {
+    func test_validateAddOrUpdateGradeInput호출시_과목에영어숫자이외값이전달된경우_false를반환하는지() {
         
         let inputs = [
             "\(mickeyAsInputNameForTestCase) 스위프트 \(gradeAsInputForTestCase)",
@@ -242,13 +242,13 @@ class GradeManagerTests: XCTestCase {
         ]
         
         let result = inputs.map { input in
-            self.sut.validateAddOrGradeInput(of: input)
+            self.sut.validateAddOrUpdateGradeInput(of: input)
         }
         
         XCTAssertEqual(result, Array(repeating: false, count: inputs.count))
     }
     
-    func test_validateAddGradeInput호출시_성적에Grade이외값이전달된경우_false를반환하는지() {
+    func test_validateAddOrUpdateGradeInput호출시_성적에Grade이외값이전달된경우_false를반환하는지() {
         
         let inputs = [
             "\(mickeyAsInputNameForTestCase) \(subjectAsInputForTestCase) Z",
@@ -258,17 +258,17 @@ class GradeManagerTests: XCTestCase {
         ]
         
         let result = inputs.map { input in
-            self.sut.validateAddOrGradeInput(of: input)
+            self.sut.validateAddOrUpdateGradeInput(of: input)
         }
         
         XCTAssertEqual(result, Array(repeating: false, count: inputs.count))
     }
     
-    func test_validateAddGradeInput호출시_올바른이름과목성적이전달된경우_true를반환하는지() {
+    func test_validateAddOrUpdateGradeInput호출시_올바른이름과목성적이전달된경우_true를반환하는지() {
         
         let input = "\(mickeyAsInputNameForTestCase) \(subjectAsInputForTestCase) \(gradeAsInputForTestCase)"
         
-        let result = self.sut.validateAddOrGradeInput(of: input)
+        let result = self.sut.validateAddOrUpdateGradeInput(of: input)
         
         XCTAssertTrue(result)
     }

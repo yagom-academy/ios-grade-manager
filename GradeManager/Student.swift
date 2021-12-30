@@ -18,8 +18,4 @@ struct Student: Hashable {
     static func == (lhs: Student, rhs: Student) -> Bool {
         return lhs.name == rhs.name
     }
-    
-//    func hash(into hasher: inout Hasher) {
-//        hasher.combine(self.name)
-//    }
 }
