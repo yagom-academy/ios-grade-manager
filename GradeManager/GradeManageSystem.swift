@@ -49,48 +49,39 @@ class GradeManageSystem {
     
     func performMenuAction(menuInput: String) {
         
-        switch MenuType(rawValue: menuInput) {
-        case .addStudent:
-            do {
+        do {
+            switch MenuType(rawValue: menuInput) {
+            case .addStudent:
                 let inputName = try receiveNameInput(for: InputType.addNameInput)
                 addStudent(inputName)
-            } catch {
-                print(invalidInputPrompt)
-            }
-        case .removeStudent:
-            do {
+            
+            case .removeStudent:
                 let inputName = try receiveNameInput(for: InputType.removeNameInput)
                 removeStudent(inputName)
-            } catch {
-                print(invalidInputPrompt)
-            }
-        case .addOrModifyGrade:
-            do {
+            
+            case .addOrModifyGrade:
                 let inputGrade = try receiveGradeInput()
                 addOrModifyGrade(withInput: inputGrade)
-            } catch {
-                print(invalidInputPrompt)
-            }
-        case .removeGrade:
-            do {
+            
+            case .removeGrade:
                 let inputGrade = try removeGradeInput()
                 removeGrade(withInput: inputGrade)
-            } catch {
-                print(invalidInputPrompt)
-            }
-        case .lookupGrade:
-            do {
+            
+            case .lookupGrade:
                 let inputName = try lookupGradeInput()
                 lookupGrade(for: inputName)
-            } catch {
-                print(invalidInputPrompt)
+        
+            case .stopProgram:
+                stopProgram()
+        
+            case .none:
+                print(invalidMenuInputPrompt)
             }
-        case .stopProgram:
-            stopProgram()
-            
-        case .none:
+        } catch {
             print(invalidMenuInputPrompt)
         }
+
+        
     }
     
     func receiveNameInput(for inputType: InputType) throws -> String {
