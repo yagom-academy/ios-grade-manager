@@ -1,6 +1,15 @@
 import Foundation
 
-struct Student {
+class Student {
     let name: String
-    var grades: Dictionary<String, String> = [String: String]()
+    private var grades: Dictionary<String, String>
+    
+    init(name: String){
+        self.name = name
+        self.grades = [String: String]()
+    }
+    
+    func add(grade: String, subject: String) {
+        self.grades[subject] = grade
+    }
 }
