@@ -5,3 +5,6 @@
 // 
 
 import Foundation
+
+var manager: ScoreManager = ScoreManager()
+manager.run()
