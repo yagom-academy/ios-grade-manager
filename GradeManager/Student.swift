@@ -20,4 +20,8 @@ struct Student {
         grades[subjuct] = grade
     }
     
+    mutating func removeGrade(for subject: String) {
+        grades[subject] = nil
+    }
+    
 }
