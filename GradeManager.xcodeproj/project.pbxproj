@@ -7,6 +7,18 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		C2083A55277C35EB00C1616F /* GradeManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2083A54277C35EB00C1616F /* GradeManager.swift */; };
+		C2083A57277C35FC00C1616F /* GradeConsole.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2083A56277C35FC00C1616F /* GradeConsole.swift */; };
+		C2083A59277C361100C1616F /* Student.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2083A58277C361100C1616F /* Student.swift */; };
+		C2083A5D277C5B2C00C1616F /* Menu.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2083A5C277C5B2C00C1616F /* Menu.swift */; };
+		C2083A75277C642A00C1616F /* GradeConsole.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2083A56277C35FC00C1616F /* GradeConsole.swift */; };
+		C2083A77277C646100C1616F /* GradeConsoleTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2083A76277C646100C1616F /* GradeConsoleTest.swift */; };
+		C2083A79277C66A600C1616F /* Menu.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2083A5C277C5B2C00C1616F /* Menu.swift */; };
+		C2083A81277C675000C1616F /* GradeManagerTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2083A80277C675000C1616F /* GradeManagerTest.swift */; };
+		C2083A85277C676C00C1616F /* GradeManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2083A54277C35EB00C1616F /* GradeManager.swift */; };
+		C2083A86277C677300C1616F /* GradeConsole.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2083A56277C35FC00C1616F /* GradeConsole.swift */; };
+		C2083A87277C68E800C1616F /* Student.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2083A58277C361100C1616F /* Student.swift */; };
+		C2083A88277C68FB00C1616F /* Menu.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2083A5C277C5B2C00C1616F /* Menu.swift */; };
 		C7912FBE277479C20027600C /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7912FBD277479C20027600C /* main.swift */; };
 /* End PBXBuildFile section */
 
@@ -23,11 +35,33 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		C2083A54277C35EB00C1616F /* GradeManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GradeManager.swift; sourceTree = "<group>"; };
+		C2083A56277C35FC00C1616F /* GradeConsole.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GradeConsole.swift; sourceTree = "<group>"; };
+		C2083A58277C361100C1616F /* Student.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Student.swift; sourceTree = "<group>"; };
+		C2083A5C277C5B2C00C1616F /* Menu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Menu.swift; sourceTree = "<group>"; };
+		C2083A6E277C640300C1616F /* GradeConsoleTest.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = GradeConsoleTest.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		C2083A76277C646100C1616F /* GradeConsoleTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GradeConsoleTest.swift; sourceTree = "<group>"; };
+		C2083A7E277C675000C1616F /* GradeManagerTest.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = GradeManagerTest.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		C2083A80277C675000C1616F /* GradeManagerTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GradeManagerTest.swift; sourceTree = "<group>"; };
 		C7912FBA277479C20027600C /* GradeManager */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = GradeManager; sourceTree = BUILT_PRODUCTS_DIR; };
 		C7912FBD277479C20027600C /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		C2083A6B277C640300C1616F /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		C2083A7B277C675000C1616F /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		C7912FB7277479C20027600C /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -38,10 +72,28 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		C2083A6F277C640300C1616F /* GradeConsoleTest */ = {
+			isa = PBXGroup;
+			children = (
+				C2083A76277C646100C1616F /* GradeConsoleTest.swift */,
+			);
+			path = GradeConsoleTest;
+			sourceTree = "<group>";
+		};
+		C2083A7F277C675000C1616F /* GradeManagerTest */ = {
+			isa = PBXGroup;
+			children = (
+				C2083A80277C675000C1616F /* GradeManagerTest.swift */,
+			);
+			path = GradeManagerTest;
+			sourceTree = "<group>";
+		};
 		C7912FB1277479C20027600C = {
 			isa = PBXGroup;
 			children = (
 				C7912FBC277479C20027600C /* GradeManager */,
+				C2083A6F277C640300C1616F /* GradeConsoleTest */,
+				C2083A7F277C675000C1616F /* GradeManagerTest */,
 				C7912FBB277479C20027600C /* Products */,
 			);
 			sourceTree = "<group>";
@@ -50,6 +102,8 @@
 			isa = PBXGroup;
 			children = (
 				C7912FBA277479C20027600C /* GradeManager */,
+				C2083A6E277C640300C1616F /* GradeConsoleTest.xctest */,
+				C2083A7E277C675000C1616F /* GradeManagerTest.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -58,6 +112,10 @@
 			isa = PBXGroup;
 			children = (
 				C7912FBD277479C20027600C /* main.swift */,
+				C2083A54277C35EB00C1616F /* GradeManager.swift */,
+				C2083A56277C35FC00C1616F /* GradeConsole.swift */,
+				C2083A58277C361100C1616F /* Student.swift */,
+				C2083A5C277C5B2C00C1616F /* Menu.swift */,
 			);
 			path = GradeManager;
 			sourceTree = "<group>";
@@ -65,6 +123,40 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		C2083A6D277C640300C1616F /* GradeConsoleTest */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = C2083A72277C640300C1616F /* Build configuration list for PBXNativeTarget "GradeConsoleTest" */;
+			buildPhases = (
+				C2083A6A277C640300C1616F /* Sources */,
+				C2083A6B277C640300C1616F /* Frameworks */,
+				C2083A6C277C640300C1616F /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = GradeConsoleTest;
+			productName = GradeConsoleTest;
+			productReference = C2083A6E277C640300C1616F /* GradeConsoleTest.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		C2083A7D277C675000C1616F /* GradeManagerTest */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = C2083A82277C675000C1616F /* Build configuration list for PBXNativeTarget "GradeManagerTest" */;
+			buildPhases = (
+				C2083A7A277C675000C1616F /* Sources */,
+				C2083A7B277C675000C1616F /* Frameworks */,
+				C2083A7C277C675000C1616F /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = GradeManagerTest;
+			productName = GradeManagerTest;
+			productReference = C2083A7E277C675000C1616F /* GradeManagerTest.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 		C7912FB9277479C20027600C /* GradeManager */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = C7912FC1277479C20027600C /* Build configuration list for PBXNativeTarget "GradeManager" */;
@@ -89,9 +181,15 @@
 			isa = PBXProject;
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
-				LastSwiftUpdateCheck = 1300;
-				LastUpgradeCheck = 1300;
+				LastSwiftUpdateCheck = 1310;
+				LastUpgradeCheck = 1310;
 				TargetAttributes = {
+					C2083A6D277C640300C1616F = {
+						CreatedOnToolsVersion = 13.1;
+					};
+					C2083A7D277C675000C1616F = {
+						CreatedOnToolsVersion = 13.1;
+					};
 					C7912FB9277479C20027600C = {
 						CreatedOnToolsVersion = 13.0;
 					};
@@ -111,22 +209,155 @@
 			projectRoot = "";
 			targets = (
 				C7912FB9277479C20027600C /* GradeManager */,
+				C2083A6D277C640300C1616F /* GradeConsoleTest */,
+				C2083A7D277C675000C1616F /* GradeManagerTest */,
 			);
 		};
 /* End PBXProject section */
 
+/* Begin PBXResourcesBuildPhase section */
+		C2083A6C277C640300C1616F /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		C2083A7C277C675000C1616F /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
+		C2083A6A277C640300C1616F /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C2083A79277C66A600C1616F /* Menu.swift in Sources */,
+				C2083A75277C642A00C1616F /* GradeConsole.swift in Sources */,
+				C2083A77277C646100C1616F /* GradeConsoleTest.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		C2083A7A277C675000C1616F /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C2083A81277C675000C1616F /* GradeManagerTest.swift in Sources */,
+				C2083A86277C677300C1616F /* GradeConsole.swift in Sources */,
+				C2083A85277C676C00C1616F /* GradeManager.swift in Sources */,
+				C2083A87277C68E800C1616F /* Student.swift in Sources */,
+				C2083A88277C68FB00C1616F /* Menu.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		C7912FB6277479C20027600C /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 				C7912FBE277479C20027600C /* main.swift in Sources */,
+				C2083A57277C35FC00C1616F /* GradeConsole.swift in Sources */,
+				C2083A55277C35EB00C1616F /* GradeManager.swift in Sources */,
+				C2083A59277C361100C1616F /* Student.swift in Sources */,
+				C2083A5D277C5B2C00C1616F /* Menu.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin XCBuildConfiguration section */
+		C2083A73277C640300C1616F /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 6YNXK75768;
+				GENERATE_INFOPLIST_FILE = YES;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@loader_path/../Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 11.6;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = wily.GradeConsoleTest;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+			};
+			name = Debug;
+		};
+		C2083A74277C640300C1616F /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 6YNXK75768;
+				GENERATE_INFOPLIST_FILE = YES;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@loader_path/../Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 11.6;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = wily.GradeConsoleTest;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+			};
+			name = Release;
+		};
+		C2083A83277C675000C1616F /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 6YNXK75768;
+				GENERATE_INFOPLIST_FILE = YES;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@loader_path/../Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 11.6;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = wily.GradeManagerTest;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+			};
+			name = Debug;
+		};
+		C2083A84277C675000C1616F /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 6YNXK75768;
+				GENERATE_INFOPLIST_FILE = YES;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@loader_path/../Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 11.6;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = wily.GradeManagerTest;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+			};
+			name = Release;
+		};
 		C7912FBF277479C20027600C /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -245,6 +476,7 @@
 		C7912FC2277479C20027600C /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CODE_SIGN_IDENTITY = "-";
 				CODE_SIGN_STYLE = Automatic;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
@@ -254,6 +486,7 @@
 		C7912FC3277479C20027600C /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CODE_SIGN_IDENTITY = "-";
 				CODE_SIGN_STYLE = Automatic;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
@@ -263,6 +496,24 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		C2083A72277C640300C1616F /* Build configuration list for PBXNativeTarget "GradeConsoleTest" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C2083A73277C640300C1616F /* Debug */,
+				C2083A74277C640300C1616F /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		C2083A82277C675000C1616F /* Build configuration list for PBXNativeTarget "GradeManagerTest" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C2083A83277C675000C1616F /* Debug */,
+				C2083A84277C675000C1616F /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		C7912FB5277479C20027600C /* Build configuration list for PBXProject "GradeManager" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
