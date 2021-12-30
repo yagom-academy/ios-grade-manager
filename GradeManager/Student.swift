@@ -32,6 +32,9 @@ class Student {
     }
     
     func calcScore() -> Double {
+        if grades.count == 0 {
+            return 0.0
+        }
         var result = 0.0
         for (_, grade) in grades {
             guard let score = GRADE.firstIndex(of: grade) else { continue }
