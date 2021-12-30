@@ -9,7 +9,13 @@ class Student {
         self.grades = [String: String]()
     }
     
-    func add(grade: String, subject: String) {
+    func add(subject: String, grade: String) {
         self.grades[subject] = grade
+    }
+    
+    func delete(subject: String) -> Bool {
+        guard self.grades[subject] != nil else { return false }
+        self.grades[subject] = nil
+        return true
     }
 }
