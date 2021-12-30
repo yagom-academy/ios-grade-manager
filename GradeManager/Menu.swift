@@ -59,7 +59,7 @@ class AddOrChangeGradeMenu: Menu {
         guard let input = readLine() else {
             throw InputError.wrongForm
         }
-        let (name, subject, grade) = try input.toGradeInputForm()
+        let (name, subject, grade) = try input.toAddGradeForm()
         try StudentDictionary.instance.addOrChangeGrade(name: name, subject: subject, grade: grade)
     }
 }
@@ -80,6 +80,20 @@ class DeleteGradeMenu: Menu {
         }
         let (name, subject) = try input.toDeleteGradeForm()
         try StudentDictionary.instance.removeGrade(name: name, subject: subject)
+    }
+}
+
+class CheckGradesMenu: Menu {
+    var description: String = "평점보기"
+    var instruction: String = "평점을 알고싶은 학생의 이름을 입력해주세요"
+    var toBeContinued: Bool = true
+    
+    func execute() throws {
+        print(instruction)
+        guard let name = readLine(), name.isValidName() else {
+            throw InputError.wrongName
+        }
+        try StudentDictionary.instance.displayGrades(name: name)
     }
     
     

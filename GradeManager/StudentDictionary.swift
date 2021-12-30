@@ -28,12 +28,12 @@ struct StudentDictionary {
         print("\(name) 학생을 삭제하였습니다.")
     }
     
-    mutating func addOrChangeGrade(name: String, subject: String, grade: String) throws {
+    mutating func addOrChangeGrade(name: String, subject: String, grade: Grade) throws {
         guard let subjectForGrade = nameForSubjectInformation[name] else {
             throw StudentDictionaryError.noMatchedStudent(name: name)
         }
         subjectForGrade[subject] = grade
-        print("\(name) 학생의 \(subject) 과목이 \(grade)로 추가(변경)되었습니다.")
+        print("\(name) 학생의 \(subject) 과목이 \(grade.stringValue)로 추가(변경)되었습니다.")
     }
     
     mutating func removeGrade(name: String, subject: String) throws {
@@ -44,6 +44,13 @@ struct StudentDictionary {
             throw StudentDictionaryError.noMatchedSubject(subject: subject)
         }
         print("\(name) 학생의 \(subject) 과목의 성적이 삭제되었습니다.")
+    }
+    
+    func displayGrades(name: String) throws {
+        guard let subjectForGrade = nameForSubjectInformation[name] else {
+            throw StudentDictionaryError.noMatchedStudent(name: name)
+        }
+        subjectForGrade.displayAll()
     }
 }
 
