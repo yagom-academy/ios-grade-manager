@@ -80,6 +80,14 @@ struct GradeConsole {
         print(ResultMessage.deleteGradeFail.message)
     }
     
+    func showGrade(_ grade: Grade, subject: String) {
+        print("\(subject): \(grade.rawValue)")
+    }
+    
+    func showAverageGrade(_ average: Double) {
+        print("평점: \(average)")
+    }
+    
     func validate(_ input: String) -> Bool {
         let input = input.replacingOccurrences(of: " ", with: "")
         let isNumberic = (Double(input) != nil)
@@ -120,6 +128,7 @@ enum InputError: Error, LocalizedError {
     case invalidInput
     case invalidName(String)
     case invalidSubject(String, String)
+    case noGrades
     
     var errorDescription: String {
         switch self {
@@ -131,6 +140,8 @@ enum InputError: Error, LocalizedError {
             return "\(name) 학생을 찾지 못했습니다."
         case .invalidSubject(let name, let subject):
             return "\(name) 학생의 \(subject) 과목 성적이 존재하지 않습니다."
+        case .noGrades:
+            return "과목의 성적이 하나도 존재하지 않습니다."
         }
     }
 }

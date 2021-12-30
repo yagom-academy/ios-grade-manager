@@ -29,7 +29,7 @@ class GradeManager {
             case .deleteGrade:
                 deleteGradeProcess()
             case .averageGrade:
-                break
+                averageGradeProcess()
             case .exit:
                 running = false
             }
@@ -78,6 +78,30 @@ class GradeManager {
         }
     }
     
+    private func averageGradeProcess() {
+        do{
+            let name = try gradeConsole.getNameInput()
+            guard let student = getStudentElement(by: name) else {
+                throw InputError.invalidName(name)
+            }
+            let subjects = student.subjects
+            subjects.forEach { subject, grade in
+                self.gradeConsole.showGrade(grade,subject: subject)
+            }
+            let averageGrade = try getAverageGrade(grades: Array(subjects.values))
+            gradeConsole.showAverageGrade(averageGrade)
+        } catch {
+            gradeConsole.printInputError(error)
+        }
+    }
+    
+    func getAverageGrade(grades: [Grade]) throws -> Double {
+        guard !grades.isEmpty else { throw InputError.noGrades }
+        let gradeCount = Double(grades.count)
+        let total = grades.reduce(0) {$0 + $1.asScore}
+        return total / gradeCount
+    }
+    
     @discardableResult
     func addStudent(by name: String) -> Bool {
         let (success,_) = students.insert(Student(name: name))
@@ -92,7 +116,7 @@ class GradeManager {
     @discardableResult
     func addGrade(subject: String, grade:Grade ,to name: String) -> Bool {
         guard var student = getStudentElement(by: name) else { return false }
-        student.score[subject] = grade
+        student.subjects[subject] = grade
         students.update(with: student)
         return true
     }
@@ -101,10 +125,10 @@ class GradeManager {
         guard var student = getStudentElement(by: name) else {
             throw InputError.invalidName(name)
         }
-        guard student.score[subject] != nil else {
+        guard student.subjects[subject] != nil else {
             throw InputError.invalidSubject(name, subject)
         }
-        student.score[subject] = nil
+        student.subjects[subject] = nil
         students.update(with: student)
         return true
     }

@@ -9,7 +9,7 @@ import Foundation
 
 struct Student: Hashable {
     let name: String
-    var score: [String: Grade] = [:]
+    var subjects: [String: Grade] = [:]
     
     func hash(into hasher: inout Hasher) {
         hasher.combine(name)
