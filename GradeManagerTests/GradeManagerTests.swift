@@ -12,6 +12,8 @@ class GradeManagerTests: XCTestCase {
     
     var sut: GradeManager!
     var mickeyAsInputNameForTestCase: String = "Micky"
+    var subjectAsInputForTestCase: String = "Swift"
+    var gradeAsInputForTestCase: String = "A+"
     
     override func setUpWithError() throws {
         try super.setUpWithError()
@@ -178,4 +180,96 @@ class GradeManagerTests: XCTestCase {
         XCTAssertEqual(result, student)
     }
     
+    func test_validateGradeInput호출시_빈문자열또는nil을전달한경우_false를반환하는지() {
+        
+        let inputs = ["", " ", nil]
+        
+        let result = inputs.map({ input in
+            self.sut.validateGradeInput(of: input)
+        })
+        
+        XCTAssertEqual(result, Array(repeating: false, count: inputs.count))
+    }
+    
+    func test_validateGradeInput호출시_이름만전달한경우_false를반환하는지() {
+        
+        let input = mickeyAsInputNameForTestCase
+        
+        let result = self.sut.validateGradeInput(of: input)
+        
+        XCTAssertFalse(result)
+    }
+    
+    func test_validateGradeInput호출시_이름과과목만전달한경우_false를반환하는지() {
+        
+        let input = "\(mickeyAsInputNameForTestCase) \(subjectAsInputForTestCase)"
+        
+        let result = self.sut.validateGradeInput(of: input)
+        
+        XCTAssertFalse(result)
+    }
+    
+    func test_validateGradeInput호출시_이름과목성적이외의값을추가로전달한경우_false를반환하는지() {
+        
+        let input = "\(mickeyAsInputNameForTestCase) \(subjectAsInputForTestCase) \(gradeAsInputForTestCase) good"
+        
+        let result = self.sut.validateGradeInput(of: input)
+        
+        XCTAssertFalse(result)
+    }
+    
+    func test_validateGradeInput호출시_이름에영어숫자이외값이전달된경우_false를반환하는지() {
+        
+        let inputs = [
+            "홍길동 \(subjectAsInputForTestCase) \(gradeAsInputForTestCase)",
+            "Tom#1 \(subjectAsInputForTestCase) \(gradeAsInputForTestCase)",
+            "@!# \(subjectAsInputForTestCase) \(gradeAsInputForTestCase)"
+        ]
+        
+        let result = inputs.map { input in
+            self.sut.validateGradeInput(of: input)
+        }
+        
+        XCTAssertEqual(result, Array(repeating: false, count: inputs.count))
+    }
+    
+    func test_validateGradeInput호출시_과목에영어숫자이외값이전달된경우_false를반환하는지() {
+        
+        let inputs = [
+            "\(mickeyAsInputNameForTestCase) 스위프트 \(gradeAsInputForTestCase)",
+            "\(mickeyAsInputNameForTestCase) Swift!1 \(gradeAsInputForTestCase)",
+            "\(mickeyAsInputNameForTestCase) @!@!# \(gradeAsInputForTestCase)"
+        ]
+        
+        let result = inputs.map { input in
+            self.sut.validateGradeInput(of: input)
+        }
+        
+        XCTAssertEqual(result, Array(repeating: false, count: inputs.count))
+    }
+    
+    func test_validateGradeInput호출시_성적에Grade이외값이전달된경우_false를반환하는지() {
+        
+        let inputs = [
+            "\(mickeyAsInputNameForTestCase) \(subjectAsInputForTestCase) Z",
+            "\(mickeyAsInputNameForTestCase) \(subjectAsInputForTestCase) 수",
+            "\(mickeyAsInputNameForTestCase) \(subjectAsInputForTestCase) @#@",
+            "\(mickeyAsInputNameForTestCase) \(subjectAsInputForTestCase) A+0"
+        ]
+        
+        let result = inputs.map { input in
+            self.sut.validateGradeInput(of: input)
+        }
+        
+        XCTAssertEqual(result, Array(repeating: false, count: inputs.count))
+    }
+    
+    func test_validateGradeInput호출시_올바른이름과목성적이전달된경우_true를반환하는지() {
+        
+        let input = "\(mickeyAsInputNameForTestCase) \(subjectAsInputForTestCase) \(gradeAsInputForTestCase)"
+        
+        let result = self.sut.validateGradeInput(of: input)
+        
+        XCTAssertTrue(result)
+    }
 }

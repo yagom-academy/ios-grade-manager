@@ -32,13 +32,33 @@ class GradeManager {
     
     func validateStudentName(of name: String?) -> Bool {
         
-        let pattern = "^[A-Za-z0-9]*$"
+        guard let name = name, name.isNotEmpty, name.consistsOfEnglishAndNumbers  else {
+            return false
+        }
+        return true
+    }
+    
+    func validateGradeInput(of input: String?) -> Bool {
         
-        guard let name = name, name.isNotEmpty, let _ = name.range(of: pattern, options: .regularExpression)  else {
+        guard let input = input, input.isNotEmpty, let (name, subject, grade) = self.splitGradeInputBySpace(of: input) else {
+            return false
+        }
+        
+        guard name.consistsOfEnglishAndNumbers, subject.consistsOfEnglishAndNumbers, let _ = Grade(rawValue: grade) else {
             return false
         }
         
         return true
+    }
+    
+    func splitGradeInputBySpace(of input: String) -> (name: String, subject: String, grade: String)? {
+
+        let nameSubjectGradeArray = input.trimmingCharacters(in: [" "]).components(separatedBy: " ").filter { $0.isNotEmpty }
+        
+        if nameSubjectGradeArray.count != 3 {
+            return nil
+        }
+        return (nameSubjectGradeArray[0], nameSubjectGradeArray[1], nameSubjectGradeArray[2])
     }
     
     func addStudent(_ name: String) -> (inserted: Bool, memberAfterInsert: Student) {
