@@ -7,7 +7,7 @@
 
 import Foundation
 
-class Student: Hashable {
+struct Student: Hashable {
     let name: String
     var grade: Dictionary<String, Grade> = [:]
     
@@ -19,7 +19,7 @@ class Student: Hashable {
         return lhs.name == rhs.name
     }
     
-    func hash(into hasher: inout Hasher) {
-        hasher.combine(self.name)
-    }
+//    func hash(into hasher: inout Hasher) {
+//        hasher.combine(self.name)
+//    }
 }

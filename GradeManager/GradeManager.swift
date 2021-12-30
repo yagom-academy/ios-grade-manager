@@ -74,12 +74,12 @@ class GradeManager {
     
     func addGradeOf(name: String, subject: String, grade: Grade) -> Bool {
         
-        guard let student = self.students.filter({ $0.name == name.uppercasingFirstAndLowercasingRest() }).first else {
+        guard var student = self.students.filter({ $0.name == name.uppercasingFirstAndLowercasingRest() }).first else {
             return false
         }
         
         student.grade.updateValue(grade, forKey: subject)
-        
+        self.students.update(with: student)
         return true
     }
 }
