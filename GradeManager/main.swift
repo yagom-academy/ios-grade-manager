@@ -8,19 +8,26 @@ import Foundation
 
 class GradeManager {
     var students = Set<Student>()
+    let gradeChecker = GradeChecker()
     
-    private func userInput() -> String? {
+    private func userInput(_ num: Int) -> [String]? {
         guard let input = readLine(), input.isEmpty == false else {
             print("입력이 잘못되었습니다. 다시 확인해주세요")
             return nil
         }
-        return input
+        let comp = input.components(separatedBy: [" "])
+        if comp.count != num {
+            print("입력이 잘못되었습니다. 다시 확인해주세요.")
+            return nil
+        }
+        
+        return comp
     }
     
     private func addStudent() {
         print("추가할 학생의 이름을 입력해주세요")
         
-        guard let input = userInput() else {
+        guard let input = userInput(1)?[0] else {
             return
         }
         
@@ -38,7 +45,7 @@ class GradeManager {
     private func deleteStudent() {
         print("삭제할 학생의 이름을 입력해주세요")
         
-        guard let input = userInput() else {
+        guard let input = userInput(1)?[0] else {
             return
         }
         
@@ -51,6 +58,69 @@ class GradeManager {
         print("\(input) 학생을 찾지 못했습니다.")
     }
     
+    private func addGrade() {
+        print("성적을 추가할 학생의 이름, 과목 이름, 성적(A+, A0, F 등)을 띄어쓰기로 구분하여 차례로 작성해주세요.")
+        print("입력예) Mickey Swift A+")
+        print("만약에 학생의 성적 중 해당 과목이 존재하면 기존 점수가 갱신됩니다.")
+        
+        guard let input = userInput(3) else {
+            return
+        }
+        
+        let foundStudent = students.filter({$0.name == input[0]})
+        if foundStudent.isEmpty == true {
+            print("\(input[0]) 학생을 찾지 못했습니다.")
+            return
+        }
+        students.subtract(foundStudent)
+        
+        var target = foundStudent[foundStudent.startIndex]
+        target.grades[input[1]] = input[2]
+        students.insert(target)
+        print("\(input[0]) 학생의 \(input[1]) 과목이 \(input[2])로 추가(변경)되었습니다.")
+    }
+    
+    private func deleteGrade() {
+        print("성적을 삭제할 학생의 이름, 과목 이름을 띄어쓰기로 구분하여 차례로 작성해주세요.")
+        print("입력예) Mickey Swift")
+        
+        guard let input = userInput(2) else {
+            return
+        }
+        
+        let foundStudent = students.filter({$0.name == input[0]})
+        if foundStudent.isEmpty == true {
+            print("\(input[0]) 학생을 찾지 못했습니다.")
+            return
+        }
+        students.subtract(foundStudent)
+
+        var target = foundStudent[foundStudent.startIndex]
+        target.grades[input[1]] = nil
+        students.insert(target)
+        print("\(input[0]) 학생의 \(input[1]) 과목의 성적이 삭제되었습니다.")
+    }
+    
+    private func printScore() {
+        print("평점을 알고싶은 학생의 이름을 입력해주세요")
+        
+        guard let input = userInput(1)?[0] else {
+            return
+        }
+        let foundStudent = students.filter({$0.name == input})
+        if foundStudent.isEmpty == true {
+            print("\(input) 학생을 찾지 못했습니다.")
+            return
+        }
+        let grades = foundStudent[foundStudent.startIndex].grades
+        if grades.isEmpty == true {
+            print("\(input) 학생의 성적이 없습니다.")
+            return
+        }
+        gradeChecker.gradeCaculator(grades)
+        
+    }
+    
     private func selectMenu(_ menu: String) -> Bool {
         switch menu {
         case "1":
@@ -58,11 +128,11 @@ class GradeManager {
         case "2":
             deleteStudent()
         case "3":
-            print("add grade")
+            addGrade()
         case "4":
-            print("delete grade")
+            deleteGrade()
         case "5":
-            print("print score")
+            printScore()
         case "X":
             print("프로그램을 종료합니다...")
             return false
