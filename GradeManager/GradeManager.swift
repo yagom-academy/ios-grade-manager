@@ -64,6 +64,15 @@ class GradeManager {
         return true
     }
     
+    func validateShowGradePointAverageInput(of input: String?) -> Bool {
+        
+        guard let input = input, input.isNotEmpty, input.consistsOfEnglishAndNumbers else {
+            return false
+        }
+        
+        return true
+    }
+    
     func splitAddOrUpdateGradeInputBySpace(of input: String) -> (name: String, subject: String, grade: String)? {
 
         let nameSubjectGradeArray = input.trimmingCharacters(in: [" "]).components(separatedBy: " ").filter { $0.isNotEmpty }.map { $0.uppercasingFirstAndLowercasingRest() }
@@ -165,7 +174,7 @@ extension GradeManager {
         case .deleteStudent: self.performStudentDeletion()
         case .addOrUpdateGrade: self.performAddOrGrade()
         case .deleteGrade: self.performDeleteGrade()
-        case .showGradePointAverage: break
+        case .showGradePointAverage: self.perfromShowGradePointAverage()
         }
     }
     
@@ -253,4 +262,23 @@ extension GradeManager {
         case (false, .some(_)): print("\(subject) 과목을 찾지 못했습니다.")
         }
     }
+    
+    func perfromShowGradePointAverage() {
+        
+        let startMessage = "평점을 알고싶은 학생의 이름을 입력해주세요"
+        print(startMessage)
+        let input = readLine()
+        
+        guard let name = input, self.validateShowGradePointAverageInput(of: input) else {
+            print("입력이 잘못되었습니다. 다시 확인해주세요.")
+            return
+        }
+        
+        guard let student = self.students.filter({ $0.name == name.uppercasingFirstAndLowercasingRest() }).first else {
+            print("\(name) 학생을 찾지 못했습니다.")
+            return
+        }
+        print(student.gradePointDescription)
+    }
+        
 }
