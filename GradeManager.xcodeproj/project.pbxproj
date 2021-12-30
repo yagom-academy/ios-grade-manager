@@ -11,6 +11,7 @@
 		C2290FC7277C2D5700A1C3B9 /* FirstMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2290FC5277C27AF00A1C3B9 /* FirstMenu.swift */; };
 		C2290FC8277C2D5800A1C3B9 /* FirstMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2290FC5277C27AF00A1C3B9 /* FirstMenu.swift */; };
 		C2290FC9277C2D5800A1C3B9 /* FirstMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2290FC5277C27AF00A1C3B9 /* FirstMenu.swift */; };
+		C23A9D97277D551C0002D39E /* AddScoreTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C23A9D96277D551C0002D39E /* AddScoreTests.swift */; };
 		C245DE732779AB3000DBBBD2 /* CheckFirstMenuInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = C245DE722779AB3000DBBBD2 /* CheckFirstMenuInput.swift */; };
 		C245DE772779AB3500DBBBD2 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7912FBD277479C20027600C /* main.swift */; };
 		C245DE7F277AA16C00DBBBD2 /* AddStudentTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C245DE7E277AA16C00DBBBD2 /* AddStudentTests.swift */; };
@@ -42,6 +43,7 @@
 
 /* Begin PBXFileReference section */
 		C2290FC5277C27AF00A1C3B9 /* FirstMenu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstMenu.swift; sourceTree = "<group>"; };
+		C23A9D96277D551C0002D39E /* AddScoreTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddScoreTests.swift; sourceTree = "<group>"; };
 		C245DE702779AB3000DBBBD2 /* FilterSelectionMenu.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FilterSelectionMenu.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		C245DE722779AB3000DBBBD2 /* CheckFirstMenuInput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckFirstMenuInput.swift; sourceTree = "<group>"; };
 		C245DE7C277AA16C00DBBBD2 /* AddStudentTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = AddStudentTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -98,6 +100,7 @@
 			isa = PBXGroup;
 			children = (
 				C245DE7E277AA16C00DBBBD2 /* AddStudentTests.swift */,
+				C23A9D96277D551C0002D39E /* AddScoreTests.swift */,
 			);
 			path = AddStudentTests;
 			sourceTree = "<group>";
@@ -302,6 +305,7 @@
 			files = (
 				C245DE98277AA7D000DBBBD2 /* ScoreManager.swift in Sources */,
 				C2290FC8277C2D5800A1C3B9 /* FirstMenu.swift in Sources */,
+				C23A9D97277D551C0002D39E /* AddScoreTests.swift in Sources */,
 				C245DE7F277AA16C00DBBBD2 /* AddStudentTests.swift in Sources */,
 				C245DE86277AA21100DBBBD2 /* ScoreStorage.swift in Sources */,
 				C245DE96277AA7CD00DBBBD2 /* main.swift in Sources */,
