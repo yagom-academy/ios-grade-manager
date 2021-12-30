@@ -1,10 +1,10 @@
 import Foundation
 
 protocol MenuManagable {
-    var students: Set<Student> { get set }
+    var students: Dictionary<String, Student> { get set }
     func run() -> Bool
-    func add(student: Student?)
-    func delete(student: Student?)
+    func add(student: Student?) throws
+    func delete(student: Student?) throws
 }
 
 class MenuManager: MenuManagable {
@@ -25,8 +25,11 @@ class MenuManager: MenuManagable {
     
     enum Behavior {
         case menu,
-             needAddName, needDeleteName,
+             needAddName, needDeleteName, needScoreName,
+             needAddScore, needDeleteScore,
              addedStudent(Student), deletedStudent(Student),
+             modifiedGrade(String, String, String),
+             deletedGrade(String, String),
              programEnd
         
         var output: String {
@@ -37,18 +40,35 @@ class MenuManager: MenuManagable {
                 return "추가할 학생의 이름을 입력해주세요"
             case .needDeleteName:
                 return "삭제할 학생의 이름을 입력해주세요"
+            case .needScoreName:
+                return "평점을 알고싶은 학생의 이름을 입력해주세요"
+            case .needAddScore:
+                return """
+                성적을 추가할 학생의 이름, 과목 이름, 성적(A+, A0, F 등)을 띄어쓰기로 구분하여 차례로 작성해주세요.
+                입력예) Mickey Swift A+\n만약에 학생의 성적 중 해당 과목이 존재하면 기존 점수가 갱신됩니다.
+                """
+            case .needDeleteScore:
+               return """
+                성적을 삭제할 학생의 이름, 과목 이름을 띄어쓰기로 구분하여 차례로 작성해주세요.
+                입력예) Mickey Swift\n
+                """
             case .addedStudent(let student):
                 return "\(student.name) 학생을 추가했습니다."
             case .deletedStudent(let student):
                 return "\(student.name) 학생을 삭제했습니다."
+            case let .modifiedGrade(name, subject, grade):
+                return "\(name) 학생의 \(subject) 과목이 \(grade)로 추가(변경)되었습니다."
+            case let .deletedGrade(name, subject):
+                return "\(name) 학생의 \(subject) 과목의 성적이 삭제되었습니다."
             case .programEnd:
                 return "프로그램을 종료합니다"
             }
         }
     }
     
-    enum Error {
-        case wrongMenu, wrongInput, nameExist(Student), noStudent(Student)
+    enum MenuError: Error {
+        case wrongMenu, wrongInput, wrongGrade,
+             nameExist(Student), noStudent(Student), noSubject(String, String)
         
         var output: String {
             switch self {
@@ -56,61 +76,109 @@ class MenuManager: MenuManagable {
                 return "뭔가 입력이 잘못되었습니다. 1~5 사이의 숫자 혹은 X를 입력해주세요"
             case .wrongInput:
                 return "입력이 잘못되었습니다. 다시 확인해주세요"
+            case .wrongGrade:
+                return "잘못된 성적입니다. 다시 확인해주세요."
             case .nameExist(let student):
                 return "\(student.name) 학생은 이미 존재하는 학생입니다. 추가하지 않습니다."
             case .noStudent(let student):
                 return "\(student.name) 학생을 찾지 못했습니다."
+            case let .noSubject(name, subject):
+                return "\(name) 학생의 \(subject) 과목이 없습니다."
             }
         }
     }
     
-    var students: Set<Student>
+    var students: Dictionary<String, Student>
     var inputManager: InputManagable
     
     init(inputManager: InputManagable) {
         self.inputManager = inputManager
-        self.students = Set<Student>()
+        self.students = [String: Student]()
     }
 
     func run() -> Bool {
         print(Behavior.menu.output)
-        guard let userInput = inputManager.toMenu() else { print(Error.wrongMenu.output); return true }
-        inputToMenu(input: userInput)
-        return userInput != Command.end.rawValue
+        guard let userInput = inputManager.toMenu() else { print(MenuError.wrongMenu.output); return true }
+        do {
+            try inputToMenu(input: userInput)
+        } catch let error {
+            if let message = (error as? MenuError)?.output {
+                print(message)
+            }
+        }
+        let result = userInput != Command.end.rawValue
+        if result == false {
+            print(Behavior.programEnd.output)
+        }
+        return result
     }
     
-    func inputToMenu(input: String) {
+    func inputToMenu(input: String) throws {
         switch input {
         case Command.studentAdd.rawValue:
-            add(student: inputManager.toStudent(message: Behavior.needAddName.output))
+            try add(student: inputManager.toStudent(message: Behavior.needAddName.output))
         case Command.studentDelete.rawValue:
-            delete(student: inputManager.toStudent(message: Behavior.needDeleteName.output))
+            try delete(student: inputManager.toStudent(message: Behavior.needDeleteName.output))
         case Command.end.rawValue:
-            print(Behavior.programEnd.output)
-        case Command.gradeAdd.rawValue, Command.gradeDelete.rawValue, Command.show.rawValue:
-            print("아직 준비되지 않은 기능입니다.")
+            return
+        case Command.gradeAdd.rawValue:
+            try modify(score: inputManager.toScore(message: Behavior.needAddScore.output))
+        case Command.gradeDelete.rawValue:
+            try delete(score: inputManager.toScore(message: Behavior.needDeleteScore.output))
+        case Command.show.rawValue:
+            try show(student: inputManager.toStudent(message: Behavior.needScoreName.output))
         default:
-            print(Error.wrongMenu.output)
+            throw MenuError.wrongMenu
         }
     }
     
-    func add(student: Student?) {
-        guard let student: Student = student else { print(Error.wrongInput.output); return }
-        if students.contains(student) {
-            print(Error.nameExist(student).output)
-            return
+    func add(student: Student?) throws {
+        guard let student: Student = student else { throw MenuError.wrongInput}
+        guard students[student.name] == nil else {
+            throw MenuError.nameExist(student)
         }
-        students.insert(student)
+        students[student.name] = student
         print(Behavior.addedStudent(student).output)
+        return
     }
     
-    func delete(student: Student?) {
-        guard let student: Student = student else { print(Error.wrongInput.output); return }
-        if students.contains(student){
-            students.remove(student)
-            print(Behavior.deletedStudent(student).output)
+    func delete(student: Student?) throws {
+        guard let student: Student = student else { throw MenuError.wrongInput }
+        guard students[student.name] != nil else {
+            throw MenuError.noStudent(student)
+        }
+        students[student.name] = nil
+        print(Behavior.deletedStudent(student).output)
+    }
+    
+    func delete(score: [String]?) throws {
+        guard let score = score, score.count == 2 else { throw MenuError.wrongInput }
+        guard let student = students[score[0]] else { throw MenuError.noStudent(Student(name: score[0]))}
+        let studentGrade = student.grades
+        let subject = Subject(name: score[1])
+        if studentGrade.delete(subject: subject) {
+            print(Behavior.deletedGrade(student.name, subject.grade).output)
             return
         }
-        print(Error.noStudent(student).output)
+        throw MenuError.noSubject(student.name, subject.grade)
+    }
+    
+    func modify(score information: [String]?) throws {
+        guard let information = information, information.count == 3 else { throw MenuError.wrongInput }
+        guard let student = students[information[0]] else { throw MenuError.noStudent(Student(name: information[0]))}
+        let subject = Subject(name: information[1], grade: information[2])
+        let studentGrade = student.grades
+        if studentGrade.add(subject: subject) {
+            print(Behavior.modifiedGrade(student.name, subject.name, subject.grade).output)
+            return
+        }
+        throw MenuError.wrongGrade
+    }
+    
+    func show(student: Student?) throws {
+        guard let student: Student = student else { throw MenuError.wrongInput }
+        guard let target = students[student.name] else { throw MenuError.noStudent(student)}
+        target.grades.printGrade()
+
     }
 }
