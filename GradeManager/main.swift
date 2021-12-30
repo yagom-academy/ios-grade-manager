@@ -12,11 +12,6 @@ enum InputError: Error {
     case emptyGrades
 }
 
-enum InputType {
-    case addNameInput
-    case removeNameInput
-}
-
 enum Grade: Double {
     case APlus = 4.5
     case AZero = 4.0
