@@ -1,26 +1,36 @@
 import Foundation
 
-class Student {
-    let GRADE = ["F", nil, "D0", "D+", "C0", "C+", "B0", "B+", "A0", "A+"]
-    let name: String
-    private var grades: Dictionary<String, String>
+class Grade {
+    private var grades: [String: String]
+    private var gradeCase = ["F", nil, "D0", "D+", "C0", "C+", "B0", "B+", "A0", "A+"]
     
-    init(name: String){
-        self.name = name
-        self.grades = [String: String]()
+    init(grades: [String: String]){
+        self.grades = grades
     }
     
-    func add(subject: String, grade: String) -> Bool {
-        if GRADE.contains(grade) {
-            self.grades[subject] = grade
+    var score: Double {
+        var result = 0.0
+        if grades.count == 0 {
+            return 0.0
+        }
+        for (_, grade) in grades {
+            guard let score = gradeCase.firstIndex(of: grade) else { continue }
+            result += Double.init(score) * 0.5
+        }
+        return result/Double(grades.count)
+    }
+    
+    func add(subject: Subject) -> Bool {
+        if gradeCase.contains(subject.grade) {
+            self.grades[subject.name] = subject.grade
             return true
         }
         return false
     }
     
-    func delete(subject: String) -> Bool {
-        guard self.grades[subject] != nil else { return false }
-        self.grades[subject] = nil
+    func delete(subject: Subject) -> Bool {
+        guard self.grades[subject.name] != nil else { return false }
+        self.grades[subject.name] = nil
         return true
     }
     
@@ -28,18 +38,27 @@ class Student {
         for (subject, grade) in grades {
             print("\(subject): \(grade)")
         }
-        print("평점: \(calcScore())")
+        print("평점: \(score)")
     }
     
-    func calcScore() -> Double {
-        if grades.count == 0 {
-            return 0.0
-        }
-        var result = 0.0
-        for (_, grade) in grades {
-            guard let score = GRADE.firstIndex(of: grade) else { continue }
-            result += Double.init(score) * 0.5
-        }
-        return result/Double.init(grades.count)
+}
+
+class Student {
+    let name: String
+    var grades: Grade
+    
+    init(name: String){
+        self.name = name
+        self.grades = Grade(grades: [String: String]())
+    }
+}
+
+struct Subject {
+    var name: String
+    var grade: String
+    
+    init(name: String, grade: String = "") {
+        self.name = name
+        self.grade = grade
     }
 }
