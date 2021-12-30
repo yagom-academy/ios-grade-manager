@@ -8,6 +8,7 @@
 import Foundation
 
 struct Student {
+    
     var name: String
     var grades: [String: Grade]
     
@@ -84,5 +85,4 @@ struct Student {
         
         return averageGrade
     }
-    
 }

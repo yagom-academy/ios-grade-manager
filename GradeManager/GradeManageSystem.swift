@@ -22,15 +22,13 @@ class GradeManageSystem {
         case stopProgram = "X"
     }
     
-    var studentDictionary: [String:Student] = [:]
+    var studentDictionary: [String: Student] = [:]
     
     func receiveMenuInput() throws -> String {
         try ioManager.menuInput()
     }
     
-    
     func performMenuAction(menuInput: String) {
-        
         do {
             switch MenuType(rawValue: menuInput) {
             case .addStudent:
@@ -62,11 +60,9 @@ class GradeManageSystem {
         } catch {
             ioManager.printInvalidMenuInput()
         }
-        
     }
     
     func addStudent(_ studentName: String) {
-        
         guard studentDictionary[studentName] == nil else {
             print("\(studentName)은 이미 존재하는 학생입니다. 추가하지 않습니다.")
             return
@@ -75,11 +71,9 @@ class GradeManageSystem {
         let newStudentEntity = Student(name: studentName)
         studentDictionary[studentName] = newStudentEntity
         print("\(studentName) 학생을 추가했습니다.")
-
     }
     
     func removeStudent(_ studentName: String) {
-        
         guard studentDictionary[studentName] != nil else {
             print("\(studentName) 학생을 찾지 못했습니다.")
             return
@@ -90,7 +84,6 @@ class GradeManageSystem {
     }
     
     func addOrModifyGrade(for studentName: String, withSubject subject: String, as grade: String ) {
-        
         guard var student = studentDictionary[studentName] else {
             print("\(studentName) 학생을 찾지 못했습니다.")
             return
@@ -103,7 +96,6 @@ class GradeManageSystem {
     }
     
     func removeGrade(for studentName: String, withSubject subject: String) {
-        
         guard var student = studentDictionary[studentName] else {
             print("\(studentName) 학생을 찾지 못했습니다.")
             return
@@ -113,8 +105,6 @@ class GradeManageSystem {
         studentDictionary[studentName] = student
         
         print("\(studentName) 학생의 \(subject) 과목 성적이 삭제되었습니다.")
-        
-
     }
     
     func lookupGrade(for studentName: String) {
@@ -134,10 +124,8 @@ class GradeManageSystem {
 
     }
     
-    
     func stopProgram() {
         isDone = true
         ioManager.printCloseProgram()
     }
-
 }
