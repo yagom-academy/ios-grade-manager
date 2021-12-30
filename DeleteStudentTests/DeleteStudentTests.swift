@@ -14,7 +14,7 @@ class DeleteStudentTests: XCTestCase {
         let storage = ScoreStorage()
         storage.addStudent(student)
         storage.deleteStudent(student)
-        let students = storage.list()
+        let students = storage.studentlist()
         XCTAssert(students.isEmpty)
     }
 }
