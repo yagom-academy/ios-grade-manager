@@ -9,10 +9,15 @@ import Foundation
 
 struct Student {
     var name: String
-    var scores: [String: String]
+    var grades: [String: String]
     
     init(name: String) {
         self.name = name
-        self.scores = [:]
+        self.grades = [:]
     }
+    
+    mutating func updateGrade(for subjuct: String, as grade: String) {
+        grades[subjuct] = grade
+    }
+    
 }

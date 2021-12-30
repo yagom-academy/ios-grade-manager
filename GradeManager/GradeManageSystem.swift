@@ -17,6 +17,7 @@ class GradeManageSystem {
     let addStudentPrompt = "추가할 학생의 이름을 입력해주세요"
     let removeStudentPrompt = "삭제할 학생의 이름을 입력해주세요"
     let invalidInputPrompt = "입력이 잘못되었습니다. 다시 확인해주세요."
+    let addGradePrompt = "성적을 추가할 학생의 이름, 과목 이름, 성적(A+, A0, F 등)을 띄어쓰기로 구분하여 차례로 작성해주세요."
     
     enum MenuType: String {
         case addStudent = "1"
@@ -45,20 +46,25 @@ class GradeManageSystem {
         switch MenuType(rawValue: menuInput) {
         case .addStudent:
             do {
-                let inputName = try receiveInput(for: InputType.addNameInput)
+                let inputName = try receiveNameInput(for: InputType.addNameInput)
                 addStudent(inputName)
             } catch {
                 print(invalidInputPrompt)
             }
         case .removeStudent:
             do {
-                let inputName = try receiveInput(for: InputType.addNameInput)
+                let inputName = try receiveNameInput(for: InputType.removeNameInput)
                 removeStudent(inputName)
             } catch {
                 print(invalidInputPrompt)
             }
         case .addOrModifyGrade:
-            addOrModifyGrade()
+            do {
+                let inputGrade = try receiveGradeInput()
+                addOrModifyGrade(withInput: inputGrade)
+            } catch {
+                print(invalidInputPrompt)
+            }
         case .removeGrade:
             removeGrade()
         case .lookupGrade:
@@ -71,7 +77,7 @@ class GradeManageSystem {
         }
     }
     
-    func receiveInput(for inputType: InputType) throws -> String {
+    func receiveNameInput(for inputType: InputType) throws -> String {
         switch inputType {
         case .addNameInput:
             print(addStudentPrompt)
@@ -81,6 +87,21 @@ class GradeManageSystem {
         let receivedInput = readLine()
         
         let regexExpression = "^[a-zA-Z0-9]*$"
+        let regexTest = NSPredicate(format:"SELF MATCHES %@", regexExpression)
+        
+        guard let receivedInput = receivedInput, receivedInput != "", regexTest.evaluate(with: receivedInput) else {
+            throw InputError.invalidInput
+        }
+        
+        return receivedInput
+    }
+    
+    func receiveGradeInput() throws -> String {
+        print(addGradePrompt)
+        
+        let receivedInput = readLine()
+        
+        let regexExpression = "[a-zA-Z0-9]+\\s[a-zA-Z0-9]+\\s[A, B, C, D, F]+[0, +]"
         let regexTest = NSPredicate(format:"SELF MATCHES %@", regexExpression)
         
         guard let receivedInput = receivedInput, receivedInput != "", regexTest.evaluate(with: receivedInput) else {
@@ -114,8 +135,24 @@ class GradeManageSystem {
         print("\(studentName) 학생을 삭제하였습니다.")
     }
     
-    func addOrModifyGrade() {
-        print(#function)
+    func addOrModifyGrade(withInput inputGrade: String) {
+        
+        
+        let gradeComponents = inputGrade.split(separator: " ")
+        let studentName = String(gradeComponents[0])
+        let subject = String(gradeComponents[1])
+        let grade = String(gradeComponents[2])
+        
+        guard var student = studentDictionary[studentName] else {
+            print("\(studentName) 학생을 찾지 못했습니다.")
+            return
+        }
+        
+        
+        student.updateGrade(for: subject, as: grade)
+        studentDictionary[studentName] = student
+        
+        
 
     }
     
