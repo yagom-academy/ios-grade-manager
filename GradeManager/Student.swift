@@ -7,8 +7,9 @@
 
 import Foundation
 
-struct Student: Hashable {
+class Student: Hashable {
     let name: String
+    var grade: Dictionary<String, Grade> = [:]
     
     init(name: String) {
         self.name = name.uppercasingFirstAndLowercasingRest()
@@ -16,5 +17,9 @@ struct Student: Hashable {
     
     static func == (lhs: Student, rhs: Student) -> Bool {
         return lhs.name == rhs.name
+    }
+    
+    func hash(into hasher: inout Hasher) {
+        hasher.combine(self.name)
     }
 }
