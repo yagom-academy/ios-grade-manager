@@ -29,8 +29,9 @@ enum InputError: Error, LocalizedError {
     case firstInputError
     case inputError
     case addStudentError
-    case deleteStudentError
-    case addSubjectScoreError
+    case cantFindStudentError
+    case nonStudentError
+    case nonSubjectListError
     
     var errorDescription: String {
         switch self {
@@ -40,10 +41,12 @@ enum InputError: Error, LocalizedError {
             return "입력이 잘못되었습니다. 다시 확인해주세요."
         case .addStudentError:
             return "은 이미 존재하는 학생입니다. 추가하지 않습니다."
-        case .deleteStudentError:
+        case .cantFindStudentError:
             return " 학생을 찾지 못했습니다."
-        case .addSubjectScoreError:
+        case .nonStudentError:
             return " 학생이 존재하지 않습니다"
+        case .nonSubjectListError:
+            return "성적이 존재하지 않습니다"
         }
     }
 }

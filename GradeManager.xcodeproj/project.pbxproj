@@ -33,6 +33,16 @@
 		C23A9DB8277D6EE80002D39E /* DeleteSubjectScoreMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = C23A9DB6277D6EE80002D39E /* DeleteSubjectScoreMenu.swift */; };
 		C23A9DB9277D6EE80002D39E /* DeleteSubjectScoreMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = C23A9DB6277D6EE80002D39E /* DeleteSubjectScoreMenu.swift */; };
 		C23A9DBA277D6EE80002D39E /* DeleteSubjectScoreMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = C23A9DB6277D6EE80002D39E /* DeleteSubjectScoreMenu.swift */; };
+		C23A9DC2277D78430002D39E /* ShowScoreTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C23A9DC1277D78430002D39E /* ShowScoreTests.swift */; };
+		C23A9DC8277D790B0002D39E /* String+.swift in Sources */ = {isa = PBXBuildFile; fileRef = C23A9DC7277D790B0002D39E /* String+.swift */; };
+		C23A9DC9277D7A400002D39E /* String+.swift in Sources */ = {isa = PBXBuildFile; fileRef = C23A9DC7277D790B0002D39E /* String+.swift */; };
+		C23A9DCA277D7A400002D39E /* String+.swift in Sources */ = {isa = PBXBuildFile; fileRef = C23A9DC7277D790B0002D39E /* String+.swift */; };
+		C23A9DCB277D7A410002D39E /* String+.swift in Sources */ = {isa = PBXBuildFile; fileRef = C23A9DC7277D790B0002D39E /* String+.swift */; };
+		C23A9DCC277D7A410002D39E /* String+.swift in Sources */ = {isa = PBXBuildFile; fileRef = C23A9DC7277D790B0002D39E /* String+.swift */; };
+		C23A9DCE277D7C1C0002D39E /* ShowScoreMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = C23A9DCD277D7C1C0002D39E /* ShowScoreMenu.swift */; };
+		C23A9DCF277D98D10002D39E /* ShowScoreMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = C23A9DCD277D7C1C0002D39E /* ShowScoreMenu.swift */; };
+		C23A9DD0277D98D10002D39E /* ShowScoreMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = C23A9DCD277D7C1C0002D39E /* ShowScoreMenu.swift */; };
+		C23A9DD2277D98D20002D39E /* ShowScoreMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = C23A9DCD277D7C1C0002D39E /* ShowScoreMenu.swift */; };
 		C245DE732779AB3000DBBBD2 /* CheckFirstMenuInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = C245DE722779AB3000DBBBD2 /* CheckFirstMenuInput.swift */; };
 		C245DE772779AB3500DBBBD2 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7912FBD277479C20027600C /* main.swift */; };
 		C245DE7F277AA16C00DBBBD2 /* AddStudentTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C245DE7E277AA16C00DBBBD2 /* AddStudentTests.swift */; };
@@ -71,6 +81,10 @@
 		C23A9DA5277D5FAC0002D39E /* DeleteStudentMenu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeleteStudentMenu.swift; sourceTree = "<group>"; };
 		C23A9DB4277D6ECF0002D39E /* DeleteScoreTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeleteScoreTests.swift; sourceTree = "<group>"; };
 		C23A9DB6277D6EE80002D39E /* DeleteSubjectScoreMenu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeleteSubjectScoreMenu.swift; sourceTree = "<group>"; };
+		C23A9DBF277D78430002D39E /* ShowScoreTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ShowScoreTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		C23A9DC1277D78430002D39E /* ShowScoreTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowScoreTests.swift; sourceTree = "<group>"; };
+		C23A9DC7277D790B0002D39E /* String+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+.swift"; sourceTree = "<group>"; };
+		C23A9DCD277D7C1C0002D39E /* ShowScoreMenu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowScoreMenu.swift; sourceTree = "<group>"; };
 		C245DE702779AB3000DBBBD2 /* FilterSelectionMenu.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FilterSelectionMenu.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		C245DE722779AB3000DBBBD2 /* CheckFirstMenuInput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckFirstMenuInput.swift; sourceTree = "<group>"; };
 		C245DE7C277AA16C00DBBBD2 /* AddStudentTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = AddStudentTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -84,6 +98,13 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		C23A9DBC277D78430002D39E /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		C245DE6D2779AB3000DBBBD2 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -124,8 +145,25 @@
 				C23A9DB6277D6EE80002D39E /* DeleteSubjectScoreMenu.swift */,
 				C23A9DA0277D5F9E0002D39E /* ExitMenu.swift */,
 				C2290FC5277C27AF00A1C3B9 /* FirstMenu.swift */,
+				C23A9DCD277D7C1C0002D39E /* ShowScoreMenu.swift */,
 			);
 			path = FirstMenu;
+			sourceTree = "<group>";
+		};
+		C23A9DC0277D78430002D39E /* ShowScoreTests */ = {
+			isa = PBXGroup;
+			children = (
+				C23A9DC1277D78430002D39E /* ShowScoreTests.swift */,
+			);
+			path = ShowScoreTests;
+			sourceTree = "<group>";
+		};
+		C23A9DC6277D79020002D39E /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+				C23A9DC7277D790B0002D39E /* String+.swift */,
+			);
+			path = Extension;
 			sourceTree = "<group>";
 		};
 		C245DE712779AB3000DBBBD2 /* FilterSelectionMenu */ = {
@@ -161,6 +199,7 @@
 				C245DE712779AB3000DBBBD2 /* FilterSelectionMenu */,
 				C245DE7D277AA16C00DBBBD2 /* AddStudentTests */,
 				C245DE8F277AA55900DBBBD2 /* DeleteStudentTests */,
+				C23A9DC0277D78430002D39E /* ShowScoreTests */,
 				C7912FBB277479C20027600C /* Products */,
 			);
 			sourceTree = "<group>";
@@ -172,6 +211,7 @@
 				C245DE702779AB3000DBBBD2 /* FilterSelectionMenu.xctest */,
 				C245DE7C277AA16C00DBBBD2 /* AddStudentTests.xctest */,
 				C245DE8E277AA55900DBBBD2 /* DeleteStudentTests.xctest */,
+				C23A9DBF277D78430002D39E /* ShowScoreTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -179,6 +219,7 @@
 		C7912FBC277479C20027600C /* GradeManager */ = {
 			isa = PBXGroup;
 			children = (
+				C23A9DC6277D79020002D39E /* Extension */,
 				C23A9D98277D5F710002D39E /* FirstMenu */,
 				C7912FBD277479C20027600C /* main.swift */,
 				C245DE84277AA20F00DBBBD2 /* ScoreStorage.swift */,
@@ -190,6 +231,23 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		C23A9DBE277D78430002D39E /* ShowScoreTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = C23A9DC5277D78430002D39E /* Build configuration list for PBXNativeTarget "ShowScoreTests" */;
+			buildPhases = (
+				C23A9DBB277D78430002D39E /* Sources */,
+				C23A9DBC277D78430002D39E /* Frameworks */,
+				C23A9DBD277D78430002D39E /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = ShowScoreTests;
+			productName = ShowScoreTests;
+			productReference = C23A9DBF277D78430002D39E /* ShowScoreTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 		C245DE6F2779AB3000DBBBD2 /* FilterSelectionMenu */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = C245DE762779AB3000DBBBD2 /* Build configuration list for PBXNativeTarget "FilterSelectionMenu" */;
@@ -268,6 +326,9 @@
 				LastSwiftUpdateCheck = 1310;
 				LastUpgradeCheck = 1300;
 				TargetAttributes = {
+					C23A9DBE277D78430002D39E = {
+						CreatedOnToolsVersion = 13.1;
+					};
 					C245DE6F2779AB3000DBBBD2 = {
 						CreatedOnToolsVersion = 13.1;
 					};
@@ -299,11 +360,19 @@
 				C245DE6F2779AB3000DBBBD2 /* FilterSelectionMenu */,
 				C245DE7B277AA16C00DBBBD2 /* AddStudentTests */,
 				C245DE8D277AA55900DBBBD2 /* DeleteStudentTests */,
+				C23A9DBE277D78430002D39E /* ShowScoreTests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		C23A9DBD277D78430002D39E /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		C245DE6E2779AB3000DBBBD2 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -328,6 +397,15 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		C23A9DBB277D78430002D39E /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C23A9DCC277D7A410002D39E /* String+.swift in Sources */,
+				C23A9DC2277D78430002D39E /* ShowScoreTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		C245DE6C2779AB3000DBBBD2 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -339,6 +417,8 @@
 				C2290FC7277C2D5700A1C3B9 /* FirstMenu.swift in Sources */,
 				C245DE9A277AA7D400DBBBD2 /* ScoreStorage.swift in Sources */,
 				C245DE772779AB3500DBBBD2 /* main.swift in Sources */,
+				C23A9DC9277D7A400002D39E /* String+.swift in Sources */,
+				C23A9DCF277D98D10002D39E /* ShowScoreMenu.swift in Sources */,
 				C23A9D9D277D5F940002D39E /* AddSubjectScoreMenu.swift in Sources */,
 				C245DE732779AB3000DBBBD2 /* CheckFirstMenuInput.swift in Sources */,
 				C23A9DA2277D5F9E0002D39E /* ExitMenu.swift in Sources */,
@@ -349,6 +429,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C23A9DD0277D98D10002D39E /* ShowScoreMenu.swift in Sources */,
 				C23A9DA3277D5F9E0002D39E /* ExitMenu.swift in Sources */,
 				C245DE98277AA7D000DBBBD2 /* ScoreManager.swift in Sources */,
 				C2290FC8277C2D5800A1C3B9 /* FirstMenu.swift in Sources */,
@@ -359,6 +440,7 @@
 				C245DE96277AA7CD00DBBBD2 /* main.swift in Sources */,
 				C23A9DA8277D5FAC0002D39E /* DeleteStudentMenu.swift in Sources */,
 				C23A9DAB277D5FC40002D39E /* AddStudentMenu.swift in Sources */,
+				C23A9DCA277D7A400002D39E /* String+.swift in Sources */,
 				C23A9D9E277D5F940002D39E /* AddSubjectScoreMenu.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -367,6 +449,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C23A9DD2277D98D20002D39E /* ShowScoreMenu.swift in Sources */,
 				C245DE99277AA7D100DBBBD2 /* ScoreManager.swift in Sources */,
 				C23A9DAC277D5FC40002D39E /* AddStudentMenu.swift in Sources */,
 				C23A9DA9277D5FAC0002D39E /* DeleteStudentMenu.swift in Sources */,
@@ -377,6 +460,7 @@
 				C245DE95277AA56100DBBBD2 /* ScoreStorage.swift in Sources */,
 				C23A9D9F277D5F940002D39E /* AddSubjectScoreMenu.swift in Sources */,
 				C245DE97277AA7CD00DBBBD2 /* main.swift in Sources */,
+				C23A9DCB277D7A410002D39E /* String+.swift in Sources */,
 				C23A9DA4277D5F9E0002D39E /* ExitMenu.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -387,12 +471,14 @@
 			files = (
 				C245DE88277AA46400DBBBD2 /* ScoreManager.swift in Sources */,
 				C23A9DA6277D5FAC0002D39E /* DeleteStudentMenu.swift in Sources */,
+				C23A9DC8277D790B0002D39E /* String+.swift in Sources */,
 				C7912FBE277479C20027600C /* main.swift in Sources */,
 				C245DE85277AA20F00DBBBD2 /* ScoreStorage.swift in Sources */,
 				C23A9DB7277D6EE80002D39E /* DeleteSubjectScoreMenu.swift in Sources */,
 				C23A9D9A277D5F870002D39E /* AddStudentMenu.swift in Sources */,
 				C23A9D9C277D5F940002D39E /* AddSubjectScoreMenu.swift in Sources */,
 				C2290FC6277C27AF00A1C3B9 /* FirstMenu.swift in Sources */,
+				C23A9DCE277D7C1C0002D39E /* ShowScoreMenu.swift in Sources */,
 				C23A9DA1277D5F9E0002D39E /* ExitMenu.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -400,6 +486,48 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin XCBuildConfiguration section */
+		C23A9DC3277D78430002D39E /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@loader_path/../Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 11.6;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.hyunSu.ShowScoreTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+			};
+			name = Debug;
+		};
+		C23A9DC4277D78430002D39E /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@loader_path/../Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 11.6;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.hyunSu.ShowScoreTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+			};
+			name = Release;
+		};
 		C245DE742779AB3000DBBBD2 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -662,6 +790,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		C23A9DC5277D78430002D39E /* Build configuration list for PBXNativeTarget "ShowScoreTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C23A9DC3277D78430002D39E /* Debug */,
+				C23A9DC4277D78430002D39E /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		C245DE762779AB3000DBBBD2 /* Build configuration list for PBXNativeTarget "FilterSelectionMenu" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (

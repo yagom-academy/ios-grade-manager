@@ -35,7 +35,7 @@ final class ScoreStorage {
         return true
     }
     
-    func list() -> [String] {
+    func studentlist() -> [String] {
         let students = studentsDict.keys.sorted(by: <)
         return students
     }
@@ -76,7 +76,8 @@ final class ScoreStorage {
         return .success(true)
     }
     
-    func isStudent(by student: String) -> Bool {
-        return studentsDict[student] != nil 
+    func subjectScoreList(by student: String) -> [SubjectScore]? {
+        return studentsDict[student]
     }
 }
+

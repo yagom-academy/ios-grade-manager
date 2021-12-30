@@ -34,7 +34,7 @@ struct DeleteStudentMenu: FirstMenu {
             return
         }
         
-        errorMessage = input + InputError.deleteStudentError.errorDescription
+        errorMessage = input + InputError.cantFindStudentError.errorDescription
         print(errorMessage)
     }
 }

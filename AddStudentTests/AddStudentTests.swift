@@ -13,7 +13,7 @@ class AddStudentTests: XCTestCase {
         let student = "vapor.park"
         let storage = ScoreStorage()
         storage.addStudent(student)
-        let students = storage.list()
+        let students = storage.studentlist()
         
         XCTAssertEqual(students.first, student)
     }
@@ -23,7 +23,7 @@ class AddStudentTests: XCTestCase {
         let storage = ScoreStorage()
         storage.addStudent(student)
         storage.addStudent(student)
-        let students = storage.list()
+        let students = storage.studentlist()
         
         XCTAssertEqual(students.count, 1)
     }

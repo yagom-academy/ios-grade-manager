@@ -34,7 +34,7 @@ struct AddSubjectScoreMenu: FirstMenu {
             printSuccessMessage(by: subjectScore)
             return
         }
-        errorMessage = subjectScore.student + InputError.addSubjectScoreError.errorDescription
+        errorMessage = subjectScore.student + InputError.nonStudentError.errorDescription
         print(errorMessage)
     }
     
