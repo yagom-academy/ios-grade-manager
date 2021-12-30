@@ -7,9 +7,9 @@
 import Foundation
 
 class GradeManager {
-    var students = Array<Student>()
+    var students = Set<Student>()
     
-    private func getUserInput() -> String? {
+    private func userInput() -> String? {
         guard let input = readLine(), input.isEmpty == false else {
             print("입력이 잘못되었습니다. 다시 확인해주세요")
             return nil
@@ -20,33 +20,34 @@ class GradeManager {
     private func addStudent() {
         print("추가할 학생의 이름을 입력해주세요")
         
-        guard let input = getUserInput() else {
+        guard let input = userInput() else {
             return
         }
         
-        if let _ = Student.isContain(input, in: students) {
+        let foundStudent = students.filter({$0.name == input})
+        if foundStudent.isEmpty == false {
             print("\(input)은 이미 존재하는 학생입니다. 추가하지 않습니다.")
             return
         }
 
         let tmpStudent = Student(name: input)
-        students.append(tmpStudent)
+        students.insert(tmpStudent)
         print("\(input) 학생을 추가했습니다.")
     }
     
     private func deleteStudent() {
         print("삭제할 학생의 이름을 입력해주세요")
         
-        guard let input = getUserInput() else {
+        guard let input = userInput() else {
             return
         }
         
-        if let index = Student.isContain(input, in: students) {
-            students.remove(at: index)
+        let foundStudent = students.filter({$0.name == input})
+        if foundStudent.isEmpty == false {
+            students.subtract(foundStudent)
             print("\(input) 학생을 삭제하였습니다.")
             return
         }
-
         print("\(input) 학생을 찾지 못했습니다.")
     }
     
