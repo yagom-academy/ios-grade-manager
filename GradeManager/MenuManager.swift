@@ -3,8 +3,8 @@ import Foundation
 protocol MenuManagable {
     var students: Dictionary<String, Student> { get set }
     func run() -> Bool
-    func add(student: Student?)
-    func delete(student: Student?)
+    func add(student: Student?) throws
+    func delete(student: Student?) throws
 }
 
 class MenuManager: MenuManagable {
@@ -66,7 +66,7 @@ class MenuManager: MenuManagable {
         }
     }
     
-    enum Error {
+    enum MenuError: Error {
         case wrongMenu, wrongInput, wrongGrade,
              nameExist(Student), noStudent(Student), noSubject(String, String)
         
@@ -98,79 +98,87 @@ class MenuManager: MenuManagable {
 
     func run() -> Bool {
         print(Behavior.menu.output)
-        guard let userInput = inputManager.toMenu() else { print(Error.wrongMenu.output); return true }
-        inputToMenu(input: userInput)
-        return userInput != Command.end.rawValue
+        guard let userInput = inputManager.toMenu() else { print(MenuError.wrongMenu.output); return true }
+        do {
+            try inputToMenu(input: userInput)
+        } catch let error {
+            if let message = (error as? MenuError)?.output {
+                print(message)
+            }
+        }
+        let result = userInput != Command.end.rawValue
+        if result == false {
+            print(Behavior.programEnd.output)
+        }
+        return result
     }
     
-    func inputToMenu(input: String) {
+    func inputToMenu(input: String) throws {
         switch input {
         case Command.studentAdd.rawValue:
-            add(student: inputManager.toStudent(message: Behavior.needAddName.output))
+            try add(student: inputManager.toStudent(message: Behavior.needAddName.output))
         case Command.studentDelete.rawValue:
-            delete(student: inputManager.toStudent(message: Behavior.needDeleteName.output))
+            try delete(student: inputManager.toStudent(message: Behavior.needDeleteName.output))
         case Command.end.rawValue:
-            print(Behavior.programEnd.output)
+            return
         case Command.gradeAdd.rawValue:
-            modify(score: inputManager.toScore(message: Behavior.needAddScore.output))
+            try modify(score: inputManager.toScore(message: Behavior.needAddScore.output))
         case Command.gradeDelete.rawValue:
-            delete(score: inputManager.toScore(message: Behavior.needDeleteScore.output))
+            try delete(score: inputManager.toScore(message: Behavior.needDeleteScore.output))
         case Command.show.rawValue:
-            show(student: inputManager.toStudent(message: Behavior.needScoreName.output))
+            try show(student: inputManager.toStudent(message: Behavior.needScoreName.output))
         default:
-            print(Error.wrongMenu.output)
+            throw MenuError.wrongMenu
         }
     }
     
-    func add(student: Student?) {
-        guard let student: Student = student else { print(Error.wrongInput.output); return }
+    func add(student: Student?) throws {
+        guard let student: Student = student else { throw MenuError.wrongInput}
         guard students[student.name] == nil else {
-            print(Error.nameExist(student).output)
-            return
+            throw MenuError.nameExist(student)
         }
         students[student.name] = student
         print(Behavior.addedStudent(student).output)
         return
     }
     
-    func delete(student: Student?) {
-        guard let student: Student = student else { print(Error.wrongInput.output); return }
+    func delete(student: Student?) throws {
+        guard let student: Student = student else { throw MenuError.wrongInput }
         guard students[student.name] != nil else {
-            print(Error.noStudent(student).output)
-            return
+            throw MenuError.noStudent(student)
         }
         students[student.name] = nil
         print(Behavior.deletedStudent(student).output)
     }
     
-    func delete(score: [String]?) {
-        guard let score = score, score.count == 2 else { print(Error.wrongInput.output); return }
-        guard let target = students[score[0]] else { print(Error.noStudent(Student(name: score[0])).output); return; }
-        if target.delete(subject: score[1]) {
-            students[score[0]] = target
-            print(Behavior.deletedGrade(score[0], score[1]).output)
+    func delete(score: [String]?) throws {
+        guard let score = score, score.count == 2 else { throw MenuError.wrongInput }
+        guard let student = students[score[0]] else { throw MenuError.noStudent(Student(name: score[0]))}
+        let studentGrade = student.grades
+        let subject = Subject(name: score[1])
+        if studentGrade.delete(subject: subject) {
+            print(Behavior.deletedGrade(student.name, subject.grade).output)
             return
         }
-        print(Error.noSubject(score[0], score[1]).output)
-        
+        throw MenuError.noSubject(student.name, subject.grade)
     }
     
-    func modify(score information: [String]?) {
-        guard let information = information, information.count == 3 else { print(Error.wrongInput.output); return }
-        guard let target = students[information[0]] else { print(Error.noStudent(Student(name: information[0])).output); return; }
-        if target.add(subject: information[1], grade: information[2]) {
-            students[information[0]] = target
-            print(Behavior.modifiedGrade(information[0], information[1], information[2]).output)
+    func modify(score information: [String]?) throws {
+        guard let information = information, information.count == 3 else { throw MenuError.wrongInput }
+        guard let student = students[information[0]] else { throw MenuError.noStudent(Student(name: information[0]))}
+        let subject = Subject(name: information[1], grade: information[2])
+        let studentGrade = student.grades
+        if studentGrade.add(subject: subject) {
+            print(Behavior.modifiedGrade(student.name, subject.name, subject.grade).output)
             return
         }
-        print(Error.wrongGrade.output)
-        
+        throw MenuError.wrongGrade
     }
     
-    func show(student: Student?) {
-        guard let student: Student = student else { print(Error.wrongInput.output); return }
-        guard let target = students[student.name] else { print(Error.noStudent(student).output); return; }
-        target.printGrade()
+    func show(student: Student?) throws {
+        guard let student: Student = student else { throw MenuError.wrongInput }
+        guard let target = students[student.name] else { throw MenuError.noStudent(student)}
+        target.grades.printGrade()
 
     }
 }
