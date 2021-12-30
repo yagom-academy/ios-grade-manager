@@ -12,6 +12,8 @@ class GradeManagerTests: XCTestCase {
     
     var sut: GradeManager!
     var mickeyAsInputNameForTestCase: String = "Micky"
+    var subjectAsInputForTestCase: String = "Swift"
+    var gradeAsInputForTestCase: String = "A+"
     
     override func setUpWithError() throws {
         try super.setUpWithError()
@@ -178,4 +180,223 @@ class GradeManagerTests: XCTestCase {
         XCTAssertEqual(result, student)
     }
     
+    func test_validateAddOrUpdateGradeInput호출시_빈문자열또는nil을전달한경우_false를반환하는지() {
+        
+        let inputs = ["", " ", nil]
+        
+        let result = inputs.map({ input in
+            self.sut.validateAddOrUpdateGradeInput(of: input)
+        })
+        
+        XCTAssertEqual(result, Array(repeating: false, count: inputs.count))
+    }
+    
+    func test_validateAddOrUpdateGradeInput호출시_이름만전달한경우_false를반환하는지() {
+        
+        let input = mickeyAsInputNameForTestCase
+        
+        let result = self.sut.validateAddOrUpdateGradeInput(of: input)
+        
+        XCTAssertFalse(result)
+    }
+    
+    func test_validateAddOrUpdateGradeInput호출시_이름과과목만전달한경우_false를반환하는지() {
+        
+        let input = "\(mickeyAsInputNameForTestCase) \(subjectAsInputForTestCase)"
+        
+        let result = self.sut.validateAddOrUpdateGradeInput(of: input)
+        
+        XCTAssertFalse(result)
+    }
+    
+    func test_validateAddOrUpdateGradeInput호출시_이름과목성적이외의값을추가로전달한경우_false를반환하는지() {
+        
+        let input = "\(mickeyAsInputNameForTestCase) \(subjectAsInputForTestCase) \(gradeAsInputForTestCase) good"
+        
+        let result = self.sut.validateAddOrUpdateGradeInput(of: input)
+        
+        XCTAssertFalse(result)
+    }
+    
+    func test_validateAddOrUpdateGradeInput호출시_이름에영어숫자이외값이전달된경우_false를반환하는지() {
+        
+        let inputs = [
+            "홍길동 \(subjectAsInputForTestCase) \(gradeAsInputForTestCase)",
+            "Tom#1 \(subjectAsInputForTestCase) \(gradeAsInputForTestCase)",
+            "@!# \(subjectAsInputForTestCase) \(gradeAsInputForTestCase)"
+        ]
+        
+        let result = inputs.map { input in
+            self.sut.validateAddOrUpdateGradeInput(of: input)
+        }
+        
+        XCTAssertEqual(result, Array(repeating: false, count: inputs.count))
+    }
+    
+    func test_validateAddOrUpdateGradeInput호출시_과목에영어숫자이외값이전달된경우_false를반환하는지() {
+        
+        let inputs = [
+            "\(mickeyAsInputNameForTestCase) 스위프트 \(gradeAsInputForTestCase)",
+            "\(mickeyAsInputNameForTestCase) Swift!1 \(gradeAsInputForTestCase)",
+            "\(mickeyAsInputNameForTestCase) @!@!# \(gradeAsInputForTestCase)"
+        ]
+        
+        let result = inputs.map { input in
+            self.sut.validateAddOrUpdateGradeInput(of: input)
+        }
+        
+        XCTAssertEqual(result, Array(repeating: false, count: inputs.count))
+    }
+    
+    func test_validateAddOrUpdateGradeInput호출시_성적에Grade이외값이전달된경우_false를반환하는지() {
+        
+        let inputs = [
+            "\(mickeyAsInputNameForTestCase) \(subjectAsInputForTestCase) Z",
+            "\(mickeyAsInputNameForTestCase) \(subjectAsInputForTestCase) 수",
+            "\(mickeyAsInputNameForTestCase) \(subjectAsInputForTestCase) @#@",
+            "\(mickeyAsInputNameForTestCase) \(subjectAsInputForTestCase) A+0"
+        ]
+        
+        let result = inputs.map { input in
+            self.sut.validateAddOrUpdateGradeInput(of: input)
+        }
+        
+        XCTAssertEqual(result, Array(repeating: false, count: inputs.count))
+    }
+    
+    func test_validateAddOrUpdateGradeInput호출시_올바른이름과목성적이전달된경우_true를반환하는지() {
+        
+        let input = "\(mickeyAsInputNameForTestCase) \(subjectAsInputForTestCase) \(gradeAsInputForTestCase)"
+        
+        let result = self.sut.validateAddOrUpdateGradeInput(of: input)
+        
+        XCTAssertTrue(result)
+    }
+    
+    func test_addGradeOf호출시_존재하지않는학생을전달한경우_false를반환하는지() {
+        
+        let name = mickeyAsInputNameForTestCase
+        let subject = subjectAsInputForTestCase
+        let grade = Grade.aPlus
+        
+        let result = self.sut.addGradeOf(name: name, subject: subject, grade: grade)
+        
+        XCTAssertFalse(result)
+    }
+    
+    func test_addGradeOf호출시_존재하는학생을전달한경우_true를반환하는지() {
+        
+        let name = mickeyAsInputNameForTestCase
+        let subject = subjectAsInputForTestCase
+        let grade = Grade.aPlus
+        let _ = self.sut.addStudent(mickeyAsInputNameForTestCase)
+        
+        let result = self.sut.addGradeOf(name: name, subject: subject, grade: grade)
+    
+        XCTAssertTrue(result)
+    }
+    
+    func test_validateDeleteGradeInput호출시_빈문자열또는nil을전달한경우_false를반환하는지() {
+        
+        let inputs = ["", " ", nil]
+        
+        let result = inputs.map({ input in
+            self.sut.validateDeleteGradeInput(of: input)
+        })
+        
+        XCTAssertEqual(result, Array(repeating: false, count: inputs.count))
+    }
+    
+    func test_validateDeleteGradeInput호출시_이름만전달한경우_false를반환하는지() {
+
+        let input = mickeyAsInputNameForTestCase
+
+        let result = self.sut.validateDeleteGradeInput(of: input)
+
+        XCTAssertFalse(result)
+    }
+
+    func test_validateDeleteGradeInput호출시_이름과목이외의값을추가로전달한경우_false를반환하는지() {
+
+        let input = "\(mickeyAsInputNameForTestCase) \(subjectAsInputForTestCase) \(gradeAsInputForTestCase)"
+
+        let result = self.sut.validateDeleteGradeInput(of: input)
+
+        XCTAssertFalse(result)
+    }
+
+    func test_validateDeleteGradeInput호출시_이름에영어숫자이외값이전달된경우_false를반환하는지() {
+
+        let inputs = [
+            "홍길동 \(subjectAsInputForTestCase)",
+            "Tom#1 \(subjectAsInputForTestCase)",
+            "@!# \(subjectAsInputForTestCase)"
+        ]
+
+        let result = inputs.map { input in
+            self.sut.validateDeleteGradeInput(of: input)
+        }
+
+        XCTAssertEqual(result, Array(repeating: false, count: inputs.count))
+    }
+
+    func test_validateDeleteGradeInput호출시_과목에영어숫자이외값이전달된경우_false를반환하는지() {
+
+        let inputs = [
+            "\(mickeyAsInputNameForTestCase) 스위프트",
+            "\(mickeyAsInputNameForTestCase) Swift!1",
+            "\(mickeyAsInputNameForTestCase) @!@!#"
+        ]
+
+        let result = inputs.map { input in
+            self.sut.validateDeleteGradeInput(of: input)
+        }
+
+        XCTAssertEqual(result, Array(repeating: false, count: inputs.count))
+    }
+
+    func test_validateAddOrUpdateGradeInput호출시_이름과과목을영문또는숫자로만구성하여전달한경우_true를반환하는지() {
+
+        let input = "\(mickeyAsInputNameForTestCase) \(subjectAsInputForTestCase)"
+
+        let result = self.sut.validateDeleteGradeInput(of: input)
+
+        XCTAssertTrue(result)
+    }
+
+    func test_deleteGradeOf호출시_존재하지않는학생을전달한경우_튜플_false_nil을반환하는지() {
+
+        let name = mickeyAsInputNameForTestCase
+        let subject = subjectAsInputForTestCase
+
+        let result = self.sut.deleteGradeOf(name: name, subject: subject)
+
+        XCTAssertFalse(result.0)
+        XCTAssertNil(result.1)
+    }
+    
+    func test_deleteGradeOf호출시_존재하지않는과목을전달한경우_튜플_false_student를반환하는지() {
+
+        let name = mickeyAsInputNameForTestCase
+        let subject = subjectAsInputForTestCase
+        let _ = self.sut.addStudent(name)
+
+        let result = self.sut.deleteGradeOf(name: name, subject: subject)
+
+        XCTAssertFalse(result.0)
+        XCTAssertEqual(result.1, self.sut.students.filter{ $0.name == name }.first)
+    }
+
+    func test_deleteGradeOf호출시_존재하는학생과과목을전달한경우_튜플_true_student를반환하는지() {
+
+        let name = mickeyAsInputNameForTestCase
+        let subject = subjectAsInputForTestCase
+        let _ = self.sut.addStudent(mickeyAsInputNameForTestCase)
+        let _ = self.sut.addGradeOf(name: name, subject: subject, grade: Grade.aPlus)
+
+        let result = self.sut.deleteGradeOf(name: name, subject: subject)
+
+        XCTAssertTrue(result.0)
+        XCTAssertEqual(result.1, self.sut.students.filter{ $0.name == name }.first)
+    }
 }
