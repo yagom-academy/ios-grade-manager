@@ -31,4 +31,28 @@ enum Menu: String, CaseIterable {
             return "종료"
         }
     }
+    
+    var menuText: String {
+        switch self {
+        case .addStudent:
+            return "추가할 학생의 이름을 입력해주세요"
+        case .deleteStudent:
+            return "삭제할 학생의 이름을 입력해주세요"
+        case .addGrade:
+            return """
+성적을 추가할 학생의 이름, 과목 이름, 성적(A+, A0, F 등)을 띄어쓰기로 구분하여 차례로 작성해주세요.
+입력예) Mickey Swift A+
+만약에 학생의 성적 중 해당 과목이 존재하면 기존 점수가 갱신됩니다.
+"""
+        case .deleteGrade:
+            return """
+성적을 삭제할 학생의 이름, 과목 이름을 띄어쓰기로 구분하여 차례로 작성해주세요.
+입력예) Mickey Swift
+"""
+        case .averageGrade:
+            return "평점을 알고싶은 학생의 이름을 입력해주세요"
+        case .exit:
+            return "프로그램을 종료합니다..."
+        }
+    }
 }

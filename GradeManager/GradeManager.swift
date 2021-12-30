@@ -25,7 +25,7 @@ class GradeManager {
             case .deleteStudent:
                 deleteStudentProcess()
             case .addGrade:
-                break
+                addGradeProcess()
             case .deleteGrade:
                 break
             case .averageGrade:
@@ -58,6 +58,17 @@ class GradeManager {
         }
     }
     
+    private func addGradeProcess() {
+        do{
+            let (name, subject, grade) = try gradeConsole.getAddGradeInput()
+            let result = addGrade(subject: subject, grade: grade, to: name)
+            gradeConsole.showAddGradeResult(result, name: name, subject: subject, grade: grade)
+        } catch {
+            gradeConsole.printInputError(error)
+        }
+        
+    }
+    
     @discardableResult
     func addStudent(by name: String) -> Bool {
         let (success,_) = students.insert(Student(name: name))
@@ -67,5 +78,18 @@ class GradeManager {
     @discardableResult
     func deleteStudent(by name: String) -> Bool {
         students.remove(Student(name: name)) != nil
+    }
+    
+    @discardableResult
+    func addGrade(subject: String, grade:Grade ,to name: String) -> Bool {
+        guard var student = getStudentElement(by: name) else { return false }
+        student.score[subject] = grade
+        students.update(with: student)
+        return true
+    }
+    
+    func getStudentElement(by name: String) -> Student? {
+        guard let index = students.firstIndex(where: {$0.name == name}) else { return nil }
+       return students[index]
     }
 }

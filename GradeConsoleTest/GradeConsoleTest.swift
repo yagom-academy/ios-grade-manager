@@ -49,4 +49,37 @@ class GradeConsoleTest: XCTestCase {
         
         XCTAssertTrue(result)
     }
+    
+    func test_validateStudentGradeInput_호출시_빈칸_입력시(){
+        let input = ""
+        let result = console.validateStudentGradeInputForAddition(input)
+        
+        XCTAssertFalse(result)
+    }
+    func test_validateStudentGradeInput_호출시_성적_미입력시(){
+        let input = "Mickey Swift"
+        let result = console.validateStudentGradeInputForAddition(input)
+        
+        XCTAssertFalse(result)
+    }
+    
+    func test_validateStudentGradeInput_호출시_정상_입력시(){
+        let input = "Mickey Swift A+"
+        let result = console.validateStudentGradeInputForAddition(input)
+        
+        XCTAssertTrue(result)
+    }
+    
+    func test_validateStudentGradeInput_호출시_성적_오타시(){
+        let input = "Mickey Swift K"
+        let result = console.validateStudentGradeInputForAddition(input)
+        XCTAssertFalse(result)
+    }
+    
+    func test_validateStudentGradeInput_호출시_순서_다를때(){
+        let input = "A+ Swift Mickey"
+        let result = console.validateStudentGradeInputForAddition(input)
+        
+        XCTAssertFalse(result)
+    }
 }

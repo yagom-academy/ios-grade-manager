@@ -54,5 +54,43 @@ class GradeManagerTest: XCTestCase {
         
         XCTAssertFalse(result)
     }
+    
+    func test_addGrade_호출시_학생이_존재하지않을때(){
+        let subject = "Swift"
+        let grade = Grade.Aplus
+        let name = "Mike"
+        
+        let result = gradeManager.addGrade(subject: subject, grade: grade, to: name)
+        
+        XCTAssertFalse(result)
+    }
+    
+    func test_addGrade_호출시_학생이_존재할때(){
+        let subject = "Swift"
+        let grade = Grade.Aplus
+        let name = "Mike"
+        
+        gradeManager.addStudent(by: name)
+        
+        let result = gradeManager.addGrade(subject: subject, grade: grade, to: name)
+        
+        XCTAssertTrue(result)
+    }
+    
+    func test_addGrade_호출시_과목아_존재할때(){
+        let subject = "Swift"
+        let grade = Grade.Aplus
+        let grade2 = Grade.Cplus
+        let name = "Mike"
+        
+        gradeManager.addGrade(subject: subject, grade: grade, to: name)
+        let result = gradeManager.addGrade(subject: subject, grade: grade2, to: name)
+        
+        guard let currentGrade = gradeManager.getStudentElement(by: name)?
+                .score[subject] else { return }
+        
+        XCTAssertTrue(result)
+        XCTAssertEqual(currentGrade, grade2)
+    }
 
 }
