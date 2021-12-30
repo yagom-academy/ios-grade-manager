@@ -9,24 +9,33 @@ import Foundation
 
 struct StudentDictionary {
     private init() { }
-    private var nameForGrades = [String: [String: Int]]()
+    private var nameForSubjects = [String: [String: String]]()
     
     static var instance = StudentDictionary()
     
     mutating func addStudent(name: String) {
-        guard nameForGrades[name] == nil else {
+        guard nameForSubjects[name] == nil else {
             print("\(name)은 이미 존재하는 학생입니다. 추가하지 않습니다.")
             return
         }
-        nameForGrades[name] = [String: Int]()
+        nameForSubjects[name] = [String: String]()
         print("\(name) 학생을 추가했습니다.")
     }
     
     mutating func removeStudent(forName name: String) {
-        guard let _ = nameForGrades.removeValue(forKey: name) else {
+        guard let _ = nameForSubjects.removeValue(forKey: name) else {
             print("\(name) 학생을 찾지 못했습니다.")
             return
         }
         print("\(name) 학생을 삭제하였습니다.")
+    }
+    
+    mutating func addOrChangeGrade(name: String, subject: String, grade: String) {
+        guard nameForSubjects[name] != nil else {
+            print("\(name) 학생을 찾지 못했습니다")
+            return
+        }
+        nameForSubjects[name]?[subject] = grade
+        print("\(name) 학생의 \(subject) 과목이 \(grade)로 추가(변경)되었습니다.")
     }
 }
