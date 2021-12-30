@@ -7,13 +7,14 @@
 
 struct GradeManager {
     private var students = [String: Student]()
+    private let verificationManager = VerificationManager()
     
     mutating func selectMenu(_ menu: String) -> Bool {
         switch Menu(rawValue: menu) {
         case .addStudent:
             print(K.explanatoryTextForAddStudent)
             
-            guard let name = readLine(), verifyStudentName(name) else {
+            guard let name = readLine(), verificationManager.verifyStudentName(name) else {
                 print(K.explanatoryTextForInvaildInput)
                 return false
             }
@@ -23,7 +24,7 @@ struct GradeManager {
         case .deleteStudent:
             print(K.explanatoryTextForDeleteStudent)
             
-            guard let name = readLine(), verifyStudentName(name) else {
+            guard let name = readLine(), verificationManager.verifyStudentName(name) else {
                 print(K.explanatoryTextForInvaildInput)
                 return false
             }
@@ -33,7 +34,7 @@ struct GradeManager {
         case .addGradeForSubject:
             print(K.explanatoryTextForAddGradeForSubject)
             
-            guard let gradeInfo = readLine(), verifyAdditinalGradeInfo(gradeInfo) else {
+            guard let gradeInfo = readLine(), verificationManager.verifyAdditinalGradeInfo(gradeInfo) else {
                 print(K.explanatoryTextForInvaildInput)
                 return false
             }
@@ -51,7 +52,7 @@ struct GradeManager {
         case .deleteGradeForSubject:
             print(K.explanatoryTextForDeleteGradeForSubject)
             
-            guard let gradeInfo = readLine(), verifyDeletionGradeInfo(gradeInfo) else {
+            guard let gradeInfo = readLine(), verificationManager.verifyDeletionGradeInfo(gradeInfo) else {
                 print(K.explanatoryTextForInvaildInput)
                 return false
             }
@@ -68,7 +69,7 @@ struct GradeManager {
         case .calculateGPA:
             print(K.explanatoryTextForCalculateGPA)
             
-            guard let name = readLine(), verifyStudentName(name) else {
+            guard let name = readLine(), verificationManager.verifyStudentName(name) else {
                 print(K.explanatoryTextForInvaildInput)
                 return false
             }
@@ -166,74 +167,5 @@ struct GradeManager {
     private func isInvaildMenuFormat() -> Bool {
         print(K.explanatoryTextForIsInvaildMenuFormat)
         return false
-    }
-    
-    private func verifyStudentName(_ name: String) -> Bool {
-        if name.isEmpty == true {
-            return false
-        }
-        
-        let pattern = "^[0-9a-zA-Z]*$"
-        if name.range(of: pattern, options: .regularExpression) == nil {
-            return false
-        }
-        return true
-    }
-    
-    private func verifyAdditinalGradeInfo(_ gradeInfo: String) -> Bool {
-        if gradeInfo.isEmpty == true {
-            return false
-        }
-        
-        var gradeInfoAfterDeleteSpace = gradeInfo
-            .replacingOccurrences(of: " ", with: "")
-            .map{ Array(String($0)) }
-        gradeInfoAfterDeleteSpace.removeLast()
-        
-        let gradeInfoAfterDeleteSpaceAndLastWord = gradeInfoAfterDeleteSpace
-            .map{ String($0) }
-            .joined()
-        
-        let pattern = "^[0-9a-zA-Z]*$"
-        if gradeInfoAfterDeleteSpaceAndLastWord.range(of: pattern, options: .regularExpression) == nil {
-            return false
-        }
-        
-        let gradeArray = gradeInfo
-            .split(separator: " ")
-            .map{ String($0) }
-        guard gradeArray.count == 3 else {
-            return false
-        }
-        
-        let grade = gradeArray[2]
-        if K.grades[grade] == nil {
-            return false
-        }
-        
-        return true
-    }
-    
-    private func verifyDeletionGradeInfo(_ gradeInfo: String) -> Bool {
-        if gradeInfo.isEmpty == true {
-            return false
-        }
-        
-        let gradeInfoAfterDeleteSpace = gradeInfo
-            .replacingOccurrences(of: " ", with: "")
-        
-        let pattern = "^[0-9a-zA-Z]*$"
-        if gradeInfoAfterDeleteSpace.range(of: pattern, options: .regularExpression) == nil {
-            return false
-        }
-        
-        let gradeArray = gradeInfo
-            .split(separator: " ")
-            .map{ String($0) }
-        guard gradeArray.count == 2 else {
-            return false
-        }
-        
-        return true
     }
 }
