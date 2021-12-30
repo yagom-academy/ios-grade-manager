@@ -5,3 +5,17 @@
 // 
 
 import Foundation
+
+enum InputError: Error {
+    case invalidMenuInput
+    case invalidInput
+}
+
+enum InputType {
+    case addNameInput
+    case removeNameInput
+}
+
+
+let gradeManager = GradeManager()
+gradeManager.run()
