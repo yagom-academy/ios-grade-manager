@@ -148,11 +148,10 @@ struct GradeManager {
         }
         
         var GPA = gradeForSubject
-            .filter{
+            .compactMap{
                 print("\($0.key): \($0.value)")
-                return K.grades[$0.value] != nil
+                return K.grades[$0.value]
             }
-            .compactMap{ K.grades[$0.value] }
             .reduce(0.0) { $0 + $1 }
         GPA /= Double(subjectCount)
         print("평점 : \(GPA)")
