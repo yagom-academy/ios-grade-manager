@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		C21CAC19277D4A8A00C550D7 /* SubjectDictionary.swift in Sources */ = {isa = PBXBuildFile; fileRef = C21CAC18277D4A8A00C550D7 /* SubjectDictionary.swift */; };
+		C21CAC1A277D4D8700C550D7 /* SubjectDictionary.swift in Sources */ = {isa = PBXBuildFile; fileRef = C21CAC18277D4A8A00C550D7 /* SubjectDictionary.swift */; };
 		C2275410277B032D003A154B /* GradeManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2BDBDEE277B024A008E2FCA /* GradeManagerTests.swift */; };
 		C2275411277B03CB003A154B /* Util.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2BDBDC9277AE2BF008E2FCA /* Util.swift */; };
 		C2275412277B03D0003A154B /* Progress.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2BDBDCB277AF099008E2FCA /* Progress.swift */; };
@@ -33,6 +35,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		C21CAC18277D4A8A00C550D7 /* SubjectDictionary.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubjectDictionary.swift; sourceTree = "<group>"; };
 		C29C8829277BE3080049D6C1 /* Menu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Menu.swift; sourceTree = "<group>"; };
 		C29C882B277C45C40049D6C1 /* InputError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputError.swift; sourceTree = "<group>"; };
 		C29C882D277C55330049D6C1 /* MenuFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuFactory.swift; sourceTree = "<group>"; };
@@ -99,6 +102,7 @@
 				C29C8829277BE3080049D6C1 /* Menu.swift */,
 				C29C882B277C45C40049D6C1 /* InputError.swift */,
 				C29C882D277C55330049D6C1 /* MenuFactory.swift */,
+				C21CAC18277D4A8A00C550D7 /* SubjectDictionary.swift */,
 			);
 			path = GradeManager;
 			sourceTree = "<group>";
@@ -193,6 +197,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				C2275412277B03D0003A154B /* Progress.swift in Sources */,
+				C21CAC1A277D4D8700C550D7 /* SubjectDictionary.swift in Sources */,
 				C2275410277B032D003A154B /* GradeManagerTests.swift in Sources */,
 				C2275411277B03CB003A154B /* Util.swift in Sources */,
 				C2275413277B03D2003A154B /* StudentDictionary.swift in Sources */,
@@ -203,6 +208,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C21CAC19277D4A8A00C550D7 /* SubjectDictionary.swift in Sources */,
 				C2BDBDCC277AF099008E2FCA /* Progress.swift in Sources */,
 				C29C882C277C45C40049D6C1 /* InputError.swift in Sources */,
 				C29C882E277C55330049D6C1 /* MenuFactory.swift in Sources */,
