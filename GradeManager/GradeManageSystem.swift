@@ -19,6 +19,7 @@ class GradeManageSystem {
     let invalidInputPrompt = "입력이 잘못되었습니다. 다시 확인해주세요."
     let addGradePrompt = "성적을 추가할 학생의 이름, 과목 이름, 성적(A+, A0, F 등)을 띄어쓰기로 구분하여 차례로 작성해주세요.\n입력예) Mickey Swift A+\n만약에 학생의 성적 중 해당 과목이 존재하면 기존 점수가 갱신됩니다."
     let removeGradePromt = "성적을 삭제할 학생의 이름, 과목 이름을 띄어쓰기로 구분하여 차례로 작성해주세요."
+    let lookupGradePrompt = "평점을 알고싶은 학생의 이름을 입력해주세요."
     
     enum MenuType: String {
         case addStudent = "1"
@@ -28,6 +29,9 @@ class GradeManageSystem {
         case lookupGrade = "5"
         case stopProgram = "X"
     }
+    
+
+
 
     var studentDictionary: [String:Student] = [:]
     
@@ -44,6 +48,7 @@ class GradeManageSystem {
     
     
     func performMenuAction(menuInput: String) {
+        
         switch MenuType(rawValue: menuInput) {
         case .addStudent:
             do {
@@ -74,7 +79,12 @@ class GradeManageSystem {
                 print(invalidInputPrompt)
             }
         case .lookupGrade:
-            lookupGrade()
+            do {
+                let inputName = try lookupGradeInput()
+                lookupGrade(for: inputName)
+            } catch {
+                print(invalidInputPrompt)
+            }
         case .stopProgram:
             stopProgram()
             
@@ -132,6 +142,19 @@ class GradeManageSystem {
         return receivedInput
     }
     
+    func lookupGradeInput() throws -> String {
+        print(lookupGradePrompt)
+        let receivedInput = readLine()
+        
+        let regexExpression = "^[a-zA-Z0-9]*$"
+        let regexTest = NSPredicate(format:"SELF MATCHES %@", regexExpression)
+        
+        guard let receivedInput = receivedInput, receivedInput != "", regexTest.evaluate(with: receivedInput) else {
+            throw InputError.invalidInput
+        }
+        
+        return receivedInput
+    }
     func addStudent(_ studentName: String) {
         
         guard studentDictionary[studentName] == nil else {
@@ -196,9 +219,58 @@ class GradeManageSystem {
 
     }
     
-    func lookupGrade() {
-        print(#function)
+    func lookupGrade(for inputName: String) {
+        guard let student = studentDictionary[inputName] else {
+            print("\(inputName) 학생을 찾지 못했습니다.")
+            return
+        }
+        
+        let grades = student.grades
+        
+        for grade in grades {
+            print(grade.key, terminator: ": ")
+            switch grade.value {
+            case .APlus:
+                print("A+")
+            case .AZero:
+                print("A0")
+            case .BPlus:
+                print("B+")
+            case .BZero:
+                print("B0")
+            case .CPlus:
+                print("C+")
+            case .CZero:
+                print("C0")
+            case .DPlus:
+                print("D+")
+            case .DZero:
+                print("D0")
+            case .F:
+                print("F")
+            }
+        }
+        
+        do {
+            let averageGrade = try calculateGrade(grades: student.grades)
+            print("평점 : \(averageGrade)")
+        } catch {
+            print("\(inputName) 학생은 입력된 성적이 없습니다.")
+        }
 
+    }
+    
+    func calculateGrade(grades: [String: Grade]) throws -> Double {
+        
+        guard grades.count != 0 else {
+            throw InputError.emptyGrades
+        }
+        
+        let averageGrade = grades.values
+            .map{ $0.rawValue }
+            .reduce(0.0, +) / Double(grades.count)
+        
+        return averageGrade
     }
     
     func stopProgram() {
