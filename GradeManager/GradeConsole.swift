@@ -35,6 +35,17 @@ struct GradeConsole {
         }
         return (name, subject, grade)
     }
+    
+    func getDeleteGradeInput() throws -> (String, String) {
+        guard let input = readLine(), validateStudentGradeInputForDeletion(input) else {
+            throw InputError.invalidInput
+        }
+        let seperatedInput = input.components(separatedBy: " ")
+        let name = seperatedInput[0]
+        let subject = seperatedInput[1]
+        
+        return (name,subject)
+    }
         
     func showMenu() {
         print("원하는 기능을 입력해주세요")
@@ -56,12 +67,17 @@ struct GradeConsole {
     
     func showDeleteStudentResult(_ success: Bool, name: String) {
         success ? print(ResultMessage.deleteStudentSuccess(name).message) :
-        print(ResultMessage.deleteStudentFail(name).message)
+        print(ResultMessage.noStudentFound(name).message)
     }
     
     func showAddGradeResult(_ success:Bool, name: String, subject: String, grade: Grade) {
         success ? print(ResultMessage.addGradeSuccess(name, subject, grade).message) :
         print(ResultMessage.addGradeFail.message)
+    }
+    
+    func showDeleteGradeResult(_ success:Bool, name: String, subject: String) {
+        success ? print(ResultMessage.deleteGradeSuccess(name, subject)) :
+        print(ResultMessage.deleteGradeFail.message)
     }
     
     func validate(_ input: String) -> Bool {
@@ -81,6 +97,14 @@ struct GradeConsole {
         return true
     }
     
+    func validateStudentGradeInputForDeletion(_ input: String) -> Bool{
+        guard validate(input) else { return false }
+        let inputs = input.components(separatedBy: " ")
+        guard inputs.count == 2 else { return false }
+        
+        return true
+    }
+    
     func validateGrade(_ input: String) -> Bool {
         return Grade(rawValue: input) != nil
     }
@@ -94,6 +118,8 @@ struct GradeConsole {
 enum InputError: Error, LocalizedError {
     case invalidMenuInput
     case invalidInput
+    case invalidName(String)
+    case invalidSubject(String, String)
     
     var errorDescription: String {
         switch self {
@@ -101,6 +127,10 @@ enum InputError: Error, LocalizedError {
             return "뭔가 입력이 잘못되었습니다. 1~5 사이의 숫자 혹은 X를 입력해주세요"
         case .invalidInput:
             return "입력이 잘못되었습니다. 다시 확인해주세요."
+        case .invalidName(let name):
+            return "\(name) 학생을 찾지 못했습니다."
+        case .invalidSubject(let name, let subject):
+            return "\(name) 학생의 \(subject) 과목 성적이 존재하지 않습니다."
         }
     }
 }
