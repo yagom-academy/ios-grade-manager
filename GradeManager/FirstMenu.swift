@@ -8,11 +8,11 @@
 import Foundation
 
 protocol FirstMenu {
-    var isExit: Bool { get set }
+    var isExit: Bool { get }
     
     init(storage: ScoreStorage)
     
-    mutating func firstAction()
+    mutating func action()
 }
 
 enum FirstMenuFactory {
@@ -40,18 +40,18 @@ enum FirstMenuFactory {
 
 struct AddStudentMenu: FirstMenu {
     
-    var storage: ScoreStorage
+    private var storage: ScoreStorage
     var isExit: Bool = false
     
     init(storage: ScoreStorage) {
         self.storage = storage
     }
     
-    mutating func firstAction() {
+    mutating func action() {
         addStudent()
     }
     
-    mutating func addStudent() {
+    private mutating func addStudent() {
         var errorMessage: String
         print("추가할 학생의 이름을 입력해주세요")
         guard let input = readLine(),
@@ -71,18 +71,18 @@ struct AddStudentMenu: FirstMenu {
 }
 
 struct DeleteStudentMenu: FirstMenu {
-    var storage: ScoreStorage
+    private var storage: ScoreStorage
     var isExit: Bool = false
     
     init(storage: ScoreStorage) {
         self.storage = storage
     }
     
-    mutating func firstAction() {
+    mutating func action() {
         deleteStudent()
     }
     
-    mutating func deleteStudent() {
+    private mutating func deleteStudent() {
         var errorMessage: String
         print("삭제할 학생의 이름을 입력해주세요")
         guard let input = readLine(),
@@ -103,18 +103,18 @@ struct DeleteStudentMenu: FirstMenu {
 }
 
 struct ExitMenu: FirstMenu {
-    var storage: ScoreStorage
+    private var storage: ScoreStorage
     var isExit: Bool = false
     
     init(storage: ScoreStorage) {
         self.storage = storage
     }
     
-    mutating func firstAction() {
+    mutating func action() {
         exit()
     }
     
-    mutating func exit() {
+    private mutating func exit() {
         print("프로그램을 종료합니다...")
         self.isExit = true
     }

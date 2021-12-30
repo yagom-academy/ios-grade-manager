@@ -57,21 +57,24 @@ struct ScoreManager {
             showMenuList()
             let userInput = readLine()
             guard let input = userInput else {
-                print(InputError.firstInputError.localizedDescription)
+                print(InputError.firstInputError.errorDescription)
                 return
             }
             checkUserInput(input, with: self.storage)
         }
     }
     
-    func showMenuList() {
+    private func showMenuList() {
         print(FirstMenuList.allMenuList())
     }
     
-    mutating func checkUserInput(_ input: String, with storage: ScoreStorage) {
-        var menu = FirstMenuFactory.makeFirstMenu(by: input, with: storage)
-        menu?.firstAction()
-        if menu?.isExit == true {
+    private mutating func checkUserInput(_ input: String, with storage: ScoreStorage) {
+        guard var menu = FirstMenuFactory.makeFirstMenu(by: input, with: storage) else {
+            print(InputError.firstInputError.errorDescription)
+            return
+        }
+        menu.action()
+        if menu.isExit {
             isExit = true
         }
     }

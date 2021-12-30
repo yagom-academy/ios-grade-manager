@@ -7,7 +7,7 @@
 
 import Foundation
 
-class ScoreStorage {
+final class ScoreStorage {
     private var studentsDict: [String: Int] = [:]
     
     @discardableResult func addStudent(_ student: String) -> Bool {
