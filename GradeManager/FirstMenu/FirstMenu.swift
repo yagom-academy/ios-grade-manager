@@ -26,7 +26,7 @@ enum FirstMenuFactory {
         case "3":
             return AddSubjectScoreMenu(storage: storage)
         case "4":
-            return AddStudentMenu(storage: storage)
+            return DeleteSubjectScoreMenu(storage: storage)
         case "5":
             return AddStudentMenu(storage: storage)
         case "X":

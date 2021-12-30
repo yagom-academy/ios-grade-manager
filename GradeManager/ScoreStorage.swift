@@ -7,6 +7,11 @@
 
 import Foundation
 
+enum DeleteSubjectScoreError: Error, LocalizedError {
+    case nonStudent
+    case nonSubjectScore
+}
+
 final class SubjectScore {
     var student: String
     var subject: String
@@ -44,9 +49,9 @@ final class ScoreStorage {
         return true
     }
     
-    func addSubjectScore(_ subjectScore: SubjectScore) -> Bool {
+    @discardableResult func addSubjectScore(_ subjectScore: SubjectScore) -> Bool {
         let student = subjectScore.student
-        guard var subjects = studentsDict[student] else {
+        guard let subjects = studentsDict[student] else {
             return false
         }
         guard let index = subjects.firstIndex(where: {$0.subject == subjectScore.subject}) else {
@@ -54,8 +59,24 @@ final class ScoreStorage {
             return true
         }
         studentsDict[student]?[index] = subjectScore
-        
-        studentsDict[student]!.forEach{ print($0.subject, $0.score)}
         return true
+    }
+    
+    func deleteSubject(_ subjectScore: SubjectScore)
+    -> Result<Bool, DeleteSubjectScoreError> {
+        let student = subjectScore.student
+        guard let subjects = studentsDict[student] else {
+            return .failure(.nonStudent)
+        }
+        guard let index = subjects.firstIndex(where: {$0.subject == subjectScore.subject}) else {
+            return .failure(.nonSubjectScore)
+        }
+        studentsDict[student]?.remove(at: index)
+        studentsDict[student]!.forEach{ print($0.subject, $0.score)}
+        return .success(true)
+    }
+    
+    func isStudent(by student: String) -> Bool {
+        return studentsDict[student] != nil 
     }
 }

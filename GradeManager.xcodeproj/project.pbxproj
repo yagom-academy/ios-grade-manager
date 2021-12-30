@@ -28,6 +28,11 @@
 		C23A9DAA277D5FC40002D39E /* AddStudentMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = C23A9D99277D5F870002D39E /* AddStudentMenu.swift */; };
 		C23A9DAB277D5FC40002D39E /* AddStudentMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = C23A9D99277D5F870002D39E /* AddStudentMenu.swift */; };
 		C23A9DAC277D5FC40002D39E /* AddStudentMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = C23A9D99277D5F870002D39E /* AddStudentMenu.swift */; };
+		C23A9DB5277D6ECF0002D39E /* DeleteScoreTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C23A9DB4277D6ECF0002D39E /* DeleteScoreTests.swift */; };
+		C23A9DB7277D6EE80002D39E /* DeleteSubjectScoreMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = C23A9DB6277D6EE80002D39E /* DeleteSubjectScoreMenu.swift */; };
+		C23A9DB8277D6EE80002D39E /* DeleteSubjectScoreMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = C23A9DB6277D6EE80002D39E /* DeleteSubjectScoreMenu.swift */; };
+		C23A9DB9277D6EE80002D39E /* DeleteSubjectScoreMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = C23A9DB6277D6EE80002D39E /* DeleteSubjectScoreMenu.swift */; };
+		C23A9DBA277D6EE80002D39E /* DeleteSubjectScoreMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = C23A9DB6277D6EE80002D39E /* DeleteSubjectScoreMenu.swift */; };
 		C245DE732779AB3000DBBBD2 /* CheckFirstMenuInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = C245DE722779AB3000DBBBD2 /* CheckFirstMenuInput.swift */; };
 		C245DE772779AB3500DBBBD2 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7912FBD277479C20027600C /* main.swift */; };
 		C245DE7F277AA16C00DBBBD2 /* AddStudentTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C245DE7E277AA16C00DBBBD2 /* AddStudentTests.swift */; };
@@ -64,6 +69,8 @@
 		C23A9D9B277D5F940002D39E /* AddSubjectScoreMenu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddSubjectScoreMenu.swift; sourceTree = "<group>"; };
 		C23A9DA0277D5F9E0002D39E /* ExitMenu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExitMenu.swift; sourceTree = "<group>"; };
 		C23A9DA5277D5FAC0002D39E /* DeleteStudentMenu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeleteStudentMenu.swift; sourceTree = "<group>"; };
+		C23A9DB4277D6ECF0002D39E /* DeleteScoreTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeleteScoreTests.swift; sourceTree = "<group>"; };
+		C23A9DB6277D6EE80002D39E /* DeleteSubjectScoreMenu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeleteSubjectScoreMenu.swift; sourceTree = "<group>"; };
 		C245DE702779AB3000DBBBD2 /* FilterSelectionMenu.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FilterSelectionMenu.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		C245DE722779AB3000DBBBD2 /* CheckFirstMenuInput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckFirstMenuInput.swift; sourceTree = "<group>"; };
 		C245DE7C277AA16C00DBBBD2 /* AddStudentTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = AddStudentTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -114,6 +121,7 @@
 				C23A9D99277D5F870002D39E /* AddStudentMenu.swift */,
 				C23A9D9B277D5F940002D39E /* AddSubjectScoreMenu.swift */,
 				C23A9DA5277D5FAC0002D39E /* DeleteStudentMenu.swift */,
+				C23A9DB6277D6EE80002D39E /* DeleteSubjectScoreMenu.swift */,
 				C23A9DA0277D5F9E0002D39E /* ExitMenu.swift */,
 				C2290FC5277C27AF00A1C3B9 /* FirstMenu.swift */,
 			);
@@ -141,6 +149,7 @@
 			isa = PBXGroup;
 			children = (
 				C245DE90277AA55900DBBBD2 /* DeleteStudentTests.swift */,
+				C23A9DB4277D6ECF0002D39E /* DeleteScoreTests.swift */,
 			);
 			path = DeleteStudentTests;
 			sourceTree = "<group>";
@@ -325,6 +334,7 @@
 			files = (
 				C245DE89277AA49D00DBBBD2 /* ScoreManager.swift in Sources */,
 				C23A9DAA277D5FC40002D39E /* AddStudentMenu.swift in Sources */,
+				C23A9DB8277D6EE80002D39E /* DeleteSubjectScoreMenu.swift in Sources */,
 				C23A9DA7277D5FAC0002D39E /* DeleteStudentMenu.swift in Sources */,
 				C2290FC7277C2D5700A1C3B9 /* FirstMenu.swift in Sources */,
 				C245DE9A277AA7D400DBBBD2 /* ScoreStorage.swift in Sources */,
@@ -344,6 +354,7 @@
 				C2290FC8277C2D5800A1C3B9 /* FirstMenu.swift in Sources */,
 				C23A9D97277D551C0002D39E /* AddScoreTests.swift in Sources */,
 				C245DE7F277AA16C00DBBBD2 /* AddStudentTests.swift in Sources */,
+				C23A9DB9277D6EE80002D39E /* DeleteSubjectScoreMenu.swift in Sources */,
 				C245DE86277AA21100DBBBD2 /* ScoreStorage.swift in Sources */,
 				C245DE96277AA7CD00DBBBD2 /* main.swift in Sources */,
 				C23A9DA8277D5FAC0002D39E /* DeleteStudentMenu.swift in Sources */,
@@ -361,6 +372,8 @@
 				C23A9DA9277D5FAC0002D39E /* DeleteStudentMenu.swift in Sources */,
 				C2290FC9277C2D5800A1C3B9 /* FirstMenu.swift in Sources */,
 				C245DE91277AA55900DBBBD2 /* DeleteStudentTests.swift in Sources */,
+				C23A9DBA277D6EE80002D39E /* DeleteSubjectScoreMenu.swift in Sources */,
+				C23A9DB5277D6ECF0002D39E /* DeleteScoreTests.swift in Sources */,
 				C245DE95277AA56100DBBBD2 /* ScoreStorage.swift in Sources */,
 				C23A9D9F277D5F940002D39E /* AddSubjectScoreMenu.swift in Sources */,
 				C245DE97277AA7CD00DBBBD2 /* main.swift in Sources */,
@@ -376,6 +389,7 @@
 				C23A9DA6277D5FAC0002D39E /* DeleteStudentMenu.swift in Sources */,
 				C7912FBE277479C20027600C /* main.swift in Sources */,
 				C245DE85277AA20F00DBBBD2 /* ScoreStorage.swift in Sources */,
+				C23A9DB7277D6EE80002D39E /* DeleteSubjectScoreMenu.swift in Sources */,
 				C23A9D9A277D5F870002D39E /* AddStudentMenu.swift in Sources */,
 				C23A9D9C277D5F940002D39E /* AddSubjectScoreMenu.swift in Sources */,
 				C2290FC6277C27AF00A1C3B9 /* FirstMenu.swift in Sources */,
