@@ -25,7 +25,7 @@ class MenuManager: MenuManagable {
     
     enum Behavior {
         case menu,
-             needAddName, needDeleteName,
+             needAddName, needDeleteName, needScoreName,
              needAddScore, needDeleteScore,
              addedStudent(Student), deletedStudent(Student),
              modifiedGrade(String, String, String),
@@ -40,6 +40,8 @@ class MenuManager: MenuManagable {
                 return "추가할 학생의 이름을 입력해주세요"
             case .needDeleteName:
                 return "삭제할 학생의 이름을 입력해주세요"
+            case .needScoreName:
+                return "평점을 알고싶은 학생의 이름을 입력해주세요"
             case .needAddScore:
                 return """
                 성적을 추가할 학생의 이름, 과목 이름, 성적(A+, A0, F 등)을 띄어쓰기로 구분하여 차례로 작성해주세요.
@@ -65,8 +67,8 @@ class MenuManager: MenuManagable {
     }
     
     enum Error {
-        case wrongMenu, wrongInput, nameExist(Student),
-             noStudent(Student), noSubject(String, String)
+        case wrongMenu, wrongInput, wrongGrade,
+             nameExist(Student), noStudent(Student), noSubject(String, String)
         
         var output: String {
             switch self {
@@ -74,6 +76,8 @@ class MenuManager: MenuManagable {
                 return "뭔가 입력이 잘못되었습니다. 1~5 사이의 숫자 혹은 X를 입력해주세요"
             case .wrongInput:
                 return "입력이 잘못되었습니다. 다시 확인해주세요"
+            case .wrongGrade:
+                return "잘못된 성적입니다. 다시 확인해주세요."
             case .nameExist(let student):
                 return "\(student.name) 학생은 이미 존재하는 학생입니다. 추가하지 않습니다."
             case .noStudent(let student):
@@ -112,7 +116,7 @@ class MenuManager: MenuManagable {
         case Command.gradeDelete.rawValue:
             delete(score: inputManager.toScore(message: Behavior.needDeleteScore.output))
         case Command.show.rawValue:
-            print("아직 준비되지 않은 기능입니다.")
+            show(student: inputManager.toStudent(message: Behavior.needScoreName.output))
         default:
             print(Error.wrongMenu.output)
         }
@@ -154,8 +158,19 @@ class MenuManager: MenuManagable {
     func modify(score information: [String]?) {
         guard let information = information, information.count == 3 else { print(Error.wrongInput.output); return }
         guard let target = students[information[0]] else { print(Error.noStudent(Student(name: information[0])).output); return; }
-        target.add(subject: information[1], grade: information[2])
-        students[information[0]] = target
-        print(Behavior.modifiedGrade(information[0], information[1], information[2]).output)
+        if target.add(subject: information[1], grade: information[2]) {
+            students[information[0]] = target
+            print(Behavior.modifiedGrade(information[0], information[1], information[2]).output)
+            return
+        }
+        print(Error.wrongGrade.output)
+        
+    }
+    
+    func show(student: Student?) {
+        guard let student: Student = student else { print(Error.wrongInput.output); return }
+        guard let target = students[student.name] else { print(Error.noStudent(student).output); return; }
+        target.printGrade()
+
     }
 }
