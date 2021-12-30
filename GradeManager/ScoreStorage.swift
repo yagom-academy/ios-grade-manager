@@ -46,15 +46,16 @@ final class ScoreStorage {
     
     func addSubjectScore(_ subjectScore: SubjectScore) -> Bool {
         let student = subjectScore.student
-        guard let subjects = studentsDict[student] else {
+        guard var subjects = studentsDict[student] else {
             return false
         }
-        var subject = subjects.filter{ $0.subject == subjectScore.subject }
-        if subject.isEmpty {
+        guard let index = subjects.firstIndex(where: {$0.subject == subjectScore.subject}) else {
             studentsDict[student]?.append(subjectScore)
-        } else {
-            subject[0] = subjectScore
+            return true
         }
-        return true 
+        studentsDict[student]?[index] = subjectScore
+        
+        studentsDict[student]!.forEach{ print($0.subject, $0.score)}
+        return true
     }
 }
