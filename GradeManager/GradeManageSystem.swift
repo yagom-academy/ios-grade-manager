@@ -17,8 +17,8 @@ class GradeManageSystem {
     let addStudentPrompt = "추가할 학생의 이름을 입력해주세요"
     let removeStudentPrompt = "삭제할 학생의 이름을 입력해주세요"
     let invalidInputPrompt = "입력이 잘못되었습니다. 다시 확인해주세요."
-    let addGradePrompt = "성적을 추가할 학생의 이름, 과목 이름, 성적(A+, A0, F 등)을 띄어쓰기로 구분하여 차례로 작성해주세요."
-    
+    let addGradePrompt = "성적을 추가할 학생의 이름, 과목 이름, 성적(A+, A0, F 등)을 띄어쓰기로 구분하여 차례로 작성해주세요.\n입력예) Mickey Swift A+\n만약에 학생의 성적 중 해당 과목이 존재하면 기존 점수가 갱신됩니다."
+
     enum MenuType: String {
         case addStudent = "1"
         case removeStudent = "2"
@@ -101,7 +101,7 @@ class GradeManageSystem {
         
         let receivedInput = readLine()
         
-        let regexExpression = "[a-zA-Z0-9]+\\s[a-zA-Z0-9]+\\s[A, B, C, D, F]+[0, +]"
+        let regexExpression = "[a-zA-Z0-9]+\\s[a-zA-Z0-9]+\\s([A, B, C, D]+[0, +]|[F])"
         let regexTest = NSPredicate(format:"SELF MATCHES %@", regexExpression)
         
         guard let receivedInput = receivedInput, receivedInput != "", regexTest.evaluate(with: receivedInput) else {
