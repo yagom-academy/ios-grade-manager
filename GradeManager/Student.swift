@@ -47,4 +47,42 @@ struct Student {
         grades[subject] = nil
     }
     
+    func printAllGrades() {
+        for grade in grades {
+            print(grade.key, terminator: ": ")
+            switch grade.value {
+            case .APlus:
+                print("A+")
+            case .AZero:
+                print("A0")
+            case .BPlus:
+                print("B+")
+            case .BZero:
+                print("B0")
+            case .CPlus:
+                print("C+")
+            case .CZero:
+                print("C0")
+            case .DPlus:
+                print("D+")
+            case .DZero:
+                print("D0")
+            case .F:
+                print("F")
+            }
+        }
+    }
+    
+    func calculateAverageScore() throws -> Double {
+        guard grades.count != 0 else {
+            throw InputError.emptyGrades
+        }
+        
+        let averageGrade = grades.values
+            .map{ $0.rawValue }
+            .reduce(0.0, +) / Double(grades.count)
+        
+        return averageGrade
+    }
+    
 }

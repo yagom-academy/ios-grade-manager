@@ -220,58 +220,22 @@ class GradeManageSystem {
     }
     
     func lookupGrade(for inputName: String) {
+        
         guard let student = studentDictionary[inputName] else {
             print("\(inputName) 학생을 찾지 못했습니다.")
             return
         }
         
-        let grades = student.grades
-        
-        for grade in grades {
-            print(grade.key, terminator: ": ")
-            switch grade.value {
-            case .APlus:
-                print("A+")
-            case .AZero:
-                print("A0")
-            case .BPlus:
-                print("B+")
-            case .BZero:
-                print("B0")
-            case .CPlus:
-                print("C+")
-            case .CZero:
-                print("C0")
-            case .DPlus:
-                print("D+")
-            case .DZero:
-                print("D0")
-            case .F:
-                print("F")
-            }
-        }
-        
+        student.printAllGrades()
         do {
-            let averageGrade = try calculateGrade(grades: student.grades)
-            print("평점 : \(averageGrade)")
+            let averageScore = try student.calculateAverageScore()
+            print("평점 : \(averageScore)")
         } catch {
             print("\(inputName) 학생은 입력된 성적이 없습니다.")
         }
 
     }
     
-    func calculateGrade(grades: [String: Grade]) throws -> Double {
-        
-        guard grades.count != 0 else {
-            throw InputError.emptyGrades
-        }
-        
-        let averageGrade = grades.values
-            .map{ $0.rawValue }
-            .reduce(0.0, +) / Double(grades.count)
-        
-        return averageGrade
-    }
     
     func stopProgram() {
         isDone = true
