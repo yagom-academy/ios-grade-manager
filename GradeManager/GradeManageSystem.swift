@@ -111,6 +111,10 @@ class GradeManageSystem {
         return receivedInput
     }
     
+//    func removeGradeInput() throws -> String {
+//
+//    }
+    
     func addStudent(_ studentName: String) {
         
         guard studentDictionary[studentName] == nil else {
@@ -152,6 +156,7 @@ class GradeManageSystem {
         student.updateGrade(for: subject, as: grade)
         studentDictionary[studentName] = student
         
+        print("\(studentName) 학생의 \(subject) 과목이 \(grade)로 추가(변경)되었습니다.")
         
 
     }
