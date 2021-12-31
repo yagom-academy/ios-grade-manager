@@ -130,6 +130,7 @@ struct GradeManager {
         }
        
         student.gradeForSubject.removeValue(forKey: subject)
+        students[name] = student
         printMessages.printSuccessDeleteGrade(name, subject)
         return true
     }
