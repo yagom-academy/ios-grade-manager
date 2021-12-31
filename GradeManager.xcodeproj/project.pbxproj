@@ -16,12 +16,12 @@
 		6EFAA8A1277C10BE00348FB2 /* Student.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EFAA89F277C10BE00348FB2 /* Student.swift */; };
 		6EFAA8A3277C10CB00348FB2 /* GradeManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EFAA8A2277C10CB00348FB2 /* GradeManager.swift */; };
 		6EFAA8A4277C10CB00348FB2 /* GradeManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EFAA8A2277C10CB00348FB2 /* GradeManager.swift */; };
-		6EFAA8A6277C7BE100348FB2 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EFAA8A5277C7BE100348FB2 /* Constants.swift */; };
-		6EFAA8A7277C7BE100348FB2 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EFAA8A5277C7BE100348FB2 /* Constants.swift */; };
 		6EFAA8A9277D479200348FB2 /* VerificationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EFAA8A8277D479200348FB2 /* VerificationManager.swift */; };
 		6EFAA8AA277D479200348FB2 /* VerificationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EFAA8A8277D479200348FB2 /* VerificationManager.swift */; };
-		6EFAA8AC277D707A00348FB2 /* PrintManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EFAA8AB277D707A00348FB2 /* PrintManager.swift */; };
-		6EFAA8AD277D707A00348FB2 /* PrintManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EFAA8AB277D707A00348FB2 /* PrintManager.swift */; };
+		6EFAA8AF277E01E100348FB2 /* PrintMessages.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EFAA8AE277E01E100348FB2 /* PrintMessages.swift */; };
+		6EFAA8B0277E01E100348FB2 /* PrintMessages.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EFAA8AE277E01E100348FB2 /* PrintMessages.swift */; };
+		6EFAA8B2277E95EB00348FB2 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EFAA8B1277E95EB00348FB2 /* Constants.swift */; };
+		6EFAA8B3277E95EB00348FB2 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EFAA8B1277E95EB00348FB2 /* Constants.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -43,9 +43,9 @@
 		6EFAA89C277C10B400348FB2 /* Menu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Menu.swift; sourceTree = "<group>"; };
 		6EFAA89F277C10BE00348FB2 /* Student.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Student.swift; sourceTree = "<group>"; };
 		6EFAA8A2277C10CB00348FB2 /* GradeManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GradeManager.swift; sourceTree = "<group>"; };
-		6EFAA8A5277C7BE100348FB2 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		6EFAA8A8277D479200348FB2 /* VerificationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerificationManager.swift; sourceTree = "<group>"; };
-		6EFAA8AB277D707A00348FB2 /* PrintManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrintManager.swift; sourceTree = "<group>"; };
+		6EFAA8AE277E01E100348FB2 /* PrintMessages.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrintMessages.swift; sourceTree = "<group>"; };
+		6EFAA8B1277E95EB00348FB2 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		C7912FBA277479C20027600C /* GradeManager */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = GradeManager; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -100,9 +100,9 @@
 				6EFAA89C277C10B400348FB2 /* Menu.swift */,
 				6EFAA89F277C10BE00348FB2 /* Student.swift */,
 				6EFAA8A2277C10CB00348FB2 /* GradeManager.swift */,
-				6EFAA8A5277C7BE100348FB2 /* Constants.swift */,
 				6EFAA8A8277D479200348FB2 /* VerificationManager.swift */,
-				6EFAA8AB277D707A00348FB2 /* PrintManager.swift */,
+				6EFAA8AE277E01E100348FB2 /* PrintMessages.swift */,
+				6EFAA8B1277E95EB00348FB2 /* Constants.swift */,
 			);
 			path = GradeManager;
 			sourceTree = "<group>";
@@ -201,9 +201,9 @@
 				6EFAA8AA277D479200348FB2 /* VerificationManager.swift in Sources */,
 				6E126E90277A141D00B051B2 /* GradeManagerTests.swift in Sources */,
 				6EFAA8A1277C10BE00348FB2 /* Student.swift in Sources */,
-				6EFAA8AD277D707A00348FB2 /* PrintManager.swift in Sources */,
 				6EFAA8A4277C10CB00348FB2 /* GradeManager.swift in Sources */,
-				6EFAA8A7277C7BE100348FB2 /* Constants.swift in Sources */,
+				6EFAA8B0277E01E100348FB2 /* PrintMessages.swift in Sources */,
+				6EFAA8B3277E95EB00348FB2 /* Constants.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -211,11 +211,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				6EFAA8A6277C7BE100348FB2 /* Constants.swift in Sources */,
 				6EFAA89D277C10B400348FB2 /* Menu.swift in Sources */,
 				6EFAA8A0277C10BE00348FB2 /* Student.swift in Sources */,
+				6EFAA8AF277E01E100348FB2 /* PrintMessages.swift in Sources */,
 				6EFAA88F277C0BA700348FB2 /* main.swift in Sources */,
-				6EFAA8AC277D707A00348FB2 /* PrintManager.swift in Sources */,
+				6EFAA8B2277E95EB00348FB2 /* Constants.swift in Sources */,
 				6EFAA8A9277D479200348FB2 /* VerificationManager.swift in Sources */,
 				6EFAA8A3277C10CB00348FB2 /* GradeManager.swift in Sources */,
 			);

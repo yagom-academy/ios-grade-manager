@@ -2,33 +2,12 @@
 //  Constants.swift
 //  GradeManager
 //
-//  Created by 이승주 on 2021/12/29.
+//  Created by 이승주 on 2021/12/31.
 //
 
+import Foundation
+
 struct K {
-    static let explanatoryTextForPlayConsole
-    = """
-    원하는 기능을 입력해주세요
-    1: 학생추가, 2: 학생삭제, 3: 성적추가(변경), 4: 성적삭제, 5: 평점보기, X: 종료
-    """
-    static let explanatoryTextForAddGradeForSubject
-    = """
-    성적을 추가할 학생의 이름, 과목 이름, 성적(A+, A0, F 등)을 띄어쓰기로 구분하여 차례로 작성해주세요.
-    입력예) Mickey Swift A+
-    만약 학생의 성적 중 해당 과목이 존재하면 기존 점수가 갱신됩니다.
-    """
-    static let explanatoryTextForAddStudent = "추가할 학생의 이름을 입력해주세요"
-    static let explanatoryTextForDeleteStudent = "삭제할 학생의 이름을 입력해주세요"
-    static let explanatoryTextForDeleteGradeForSubject = "성적을 삭제할 학생의 이름, 과목 이름을 띄어쓰기로 구분하여 차례로 작성해주세요."
-    static let printSuccessAddStudent = " 학생을 추가했습니다."
-    static let printSuccessDeleteStudent = " 학생을 삭제하였습니다."
-    static let printAlreadyExistStudent = " 학생은 이미 존재하는 학생입니다. 추가하지 않습니다."
-    static let printDoNotExistStudent = " 학생을 찾지 못했습니다."
-    static let printDoNotExistGradeForSubject = "  과목의 성적을 찾지 못했습니다."
-    static let explanatoryTextForCalculateGPA = "평점을 알고 싶은 학생의 이름을 입력해주세요"
-    static let explanatoryTextForInvaildInput = "입력이 잘못되었습니다. 다시 확인해주세요."
-    static let explanatoryTextForExitProgram = "프로그램을 종료합니다..."
-    static let explanatoryTextForIsInvaildMenuFormat = "뭔가 입력이 잘못되었습니다. 1~5 사이의 숫자 혹은 X를 입력해주세요"
     static let grades: [String: Double] = [
         "A+": 4.5,
         "A0": 4.0,
