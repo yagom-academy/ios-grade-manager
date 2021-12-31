@@ -60,7 +60,7 @@ struct PrintMessages {
                 let message = "\(name) 학생을 찾지 못했습니다."
                 return message
             case .DoNotExistGradeForSubject(let subject):
-                let message = "\(subject)  과목의 성적을 찾지 못했습니다."
+                let message = "\(subject) 과목의 성적을 찾지 못했습니다."
                 return message
             case .SuccsessInsertOrUpdateGrade(let name, let subject, let grade):
                 let message = "\(name) 학생의 \(subject) 과목이 \(grade)로 추가(변경) 되었습니다."
