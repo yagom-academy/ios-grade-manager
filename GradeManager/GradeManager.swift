@@ -8,35 +8,34 @@
 struct GradeManager {
     private var students = [String: Student]()
     private let verificationManager = VerificationManager()
-    private let printMessages = PrintMessages()
     
     mutating func selectMenu(_ menu: String) -> Bool {
         switch Menu(rawValue: menu) {
         case .addStudent:
-            printMessages.explanatoryTextForAddStudent()
+            PrintMessages.Explanation.addStudent.printSelf()
             
             guard let name = readLine(), verificationManager.verifyStudentName(name) else {
-                printMessages.printInvaildInput()
+                PrintMessages.OperationResult.InvaildInput.printSelf()
                 return false
             }
             
             _ = addStudent(name)
             return false
         case .deleteStudent:
-            printMessages.explanatoryTextForDeleteStudent()
+            PrintMessages.Explanation.deleteStudent.printSelf()
             
             guard let name = readLine(), verificationManager.verifyStudentName(name) else {
-                printMessages.printInvaildInput()
+                PrintMessages.OperationResult.InvaildInput.printSelf()
                 return false
             }
             
             _ = deleteStudent(name)
             return false
         case .addGradeForSubject:
-            printMessages.explanatoryTextForAddGradeForSubject()
+            PrintMessages.Explanation.deleteStudent.printSelf()
             
             guard let gradeInfo = readLine(), verificationManager.verifyAdditinalGradeInfo(gradeInfo) else {
-                printMessages.printInvaildInput()
+                PrintMessages.OperationResult.InvaildInput.printSelf()
                 return false
             }
             
@@ -51,10 +50,10 @@ struct GradeManager {
             _ = addGradeForSubject(name, subject, grade)
             return false
         case .deleteGradeForSubject:
-            printMessages.explanatoryTextForDeleteGradeForSubject()
+            PrintMessages.Explanation.deleteGradeForSubject.printSelf()
             
             guard let gradeInfo = readLine(), verificationManager.verifyDeletionGradeInfo(gradeInfo) else {
-                printMessages.printInvaildInput()
+                PrintMessages.OperationResult.InvaildInput.printSelf()
                 return false
             }
             
@@ -68,10 +67,10 @@ struct GradeManager {
             _ = deleteGradeForSubject(name, subject)
             return false
         case .calculateGPA:
-            printMessages.explanatoryTextForCalculateGPA()
+            PrintMessages.Explanation.calculateGPA.printSelf()
             
             guard let name = readLine(), verificationManager.verifyStudentName(name) else {
-                printMessages.printInvaildInput()
+                PrintMessages.OperationResult.InvaildInput.printSelf()
                 return false
             }
             
@@ -87,57 +86,57 @@ struct GradeManager {
     mutating func addStudent(_ name: String) -> Bool {
         if students[name] == nil {
             students.updateValue(Student(name: name), forKey: name)
-            printMessages.printSuccessAddStudent(name)
+            PrintMessages.OperationResult.SuccessAddStudent(name: name).printSelf()
             return true
         }
         
-        printMessages.printAlreadyExistStudent(name)
+        PrintMessages.OperationResult.AlreadyExistStudent(name: name).printSelf()
         return false
     }
     
     mutating func deleteStudent(_ name: String) -> Bool {
         if students[name] == nil {
-            printMessages.printDoNotExistStudent(name)
+            PrintMessages.OperationResult.DoNotExistStudent(name: name).printSelf()
             return false
         }
         
         students[name] = nil
-        printMessages.printSuccessDeleteStudent(name)
+        PrintMessages.OperationResult.SuccessDeleteStudent(name: name).printSelf()
         return true
     }
     
     mutating func addGradeForSubject(_ name: String, _ subject: String, _ grade: String) -> Bool {
         guard var student = students[name] else {
-            printMessages.printDoNotExistStudent(name)
+            PrintMessages.OperationResult.DoNotExistStudent(name: name).printSelf()
             return false
         }
         
         student.gradeForSubject.updateValue(grade, forKey: subject)
         students[name] = student
-        printMessages.printInsertOrUpdateGrade(name, subject, grade)
+        PrintMessages.OperationResult.SuccsessInsertOrUpdateGrade(name: name, subject: subject, grade: grade).printSelf()
         return true
     }
     
     mutating func deleteGradeForSubject(_ name: String, _ subject: String) -> Bool {
         guard var student = students[name] else {
-            printMessages.printDoNotExistStudent(name)
+            PrintMessages.OperationResult.DoNotExistStudent(name: name).printSelf()
             return false
         }
         
         if student.gradeForSubject[subject] == nil {
-            printMessages.printDoNotExistGradeForSubject(subject)
+            PrintMessages.OperationResult.DoNotExistGradeForSubject(subject: name).printSelf()
             return false
         }
        
         student.gradeForSubject.removeValue(forKey: subject)
         students[name] = student
-        printMessages.printSuccessDeleteGrade(name, subject)
+        PrintMessages.OperationResult.SuccessDeleteGrade(name: name, subject: subject).printSelf()
         return true
     }
     
     func calculateGPA(_ name: String) -> Bool {
         guard let student = students[name] else {
-            printMessages.printDoNotExistStudent(name)
+            PrintMessages.OperationResult.DoNotExistStudent(name: name).printSelf()
             return false
         }
         
@@ -145,29 +144,29 @@ struct GradeManager {
         let subjectCount = gradeForSubject.count
         
         if subjectCount == 0 {
-            printMessages.printGPA(name, 0.0)
+            PrintMessages.OperationResult.GPA(name: name, GPA: 0.0).printSelf()
             return true
         }
         
         let gradesSum = gradeForSubject
             .compactMap{
                 print("\($0.key): \($0.value)")
-                return K.grades[$0.value]
+                return Constant.grades[$0.value]
             }
             .reduce(0.0, +)
         
         let GPA = gradesSum / Double(subjectCount)
-        printMessages.printGPA(name, GPA)
+        PrintMessages.OperationResult.GPA(name: name, GPA: GPA).printSelf()
         return true
     }
     
     private func exitProgram() -> Bool {
-        printMessages.explanatoryTextForExitProgram()
+        PrintMessages.Explanation.exitProgram.printSelf()
         return true
     }
 
     private func isInvaildMenuFormat() -> Bool {
-        printMessages.printInvaildMenuFormat()
+        PrintMessages.OperationResult.InvaildMenuFormat.printSelf()
         return false
     }
 }

@@ -5,9 +5,7 @@
 //  Created by 이승주 on 2021/12/31.
 //
 
-import Foundation
-
-struct K {
+struct Constant {
     static let grades: [String: Double] = [
         "A+": 4.5,
         "A0": 4.0,

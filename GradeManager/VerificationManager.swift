@@ -47,7 +47,7 @@ struct VerificationManager {
         }
         
         let grade = gradeArray[2]
-        if K.grades[grade] == nil {
+        if Constant.grades[grade] == nil {
             return false
         }
         

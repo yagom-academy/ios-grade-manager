@@ -8,11 +8,10 @@ import Foundation
 
 func playConsole() {
     var gradeManager = GradeManager()
-    let printMessages = PrintMessages()
     var isExit = false
 
     repeat {
-        printMessages.explanatoryTextForPlayConsole()
+        PrintMessages.Explanation.playConsole.printSelf()
         if let menu = readLine() {
             isExit = gradeManager.selectMenu(menu)
         }

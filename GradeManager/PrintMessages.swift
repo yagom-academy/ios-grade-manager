@@ -6,48 +6,24 @@
 //
 
 struct PrintMessages {
-    enum Explanation {
-        case playConsole
-        case addGradeForSubject
-        case addStudent
-        case deleteStudent
-        case deleteGradeForSubject
-        case calculateGPA
-        case exitProgram
+    enum Explanation: String {
+        case playConsole = """
+        원하는 기능을 입력해주세요
+        1: 학생추가, 2: 학생삭제, 3: 성적추가(변경), 4: 성적삭제, 5: 평점보기, X: 종료
+        """
+        case addGradeForSubject = """
+        성적을 추가할 학생의 이름, 과목 이름, 성적(A+, A0, F 등)을 띄어쓰기로 구분하여 차례로 작성해주세요.
+        입력예) Mickey Swift A+
+        만약 학생의 성적 중 해당 과목이 존재하면 기존 점수가 갱신됩니다.
+        """
+        case addStudent = "추가할 학생의 이름을 입력해주세요"
+        case deleteStudent = "삭제할 학생의 이름을 입력해주세요"
+        case deleteGradeForSubject = "성적을 삭제할 학생의 이름, 과목 이름을 띄어쓰기로 구분하여 차례로 작성해주세요."
+        case calculateGPA = "평점을 알고 싶은 학생의 이름을 입력해주세요"
+        case exitProgram = "프로그램을 종료합니다..."
         
-        var description: String {
-            switch self {
-            case .playConsole:
-                let message
-                = """
-                원하는 기능을 입력해주세요
-                1: 학생추가, 2: 학생삭제, 3: 성적추가(변경), 4: 성적삭제, 5: 평점보기, X: 종료
-                """
-                return message
-            case .addGradeForSubject:
-                let message
-                = """
-                성적을 추가할 학생의 이름, 과목 이름, 성적(A+, A0, F 등)을 띄어쓰기로 구분하여 차례로 작성해주세요.
-                입력예) Mickey Swift A+
-                만약 학생의 성적 중 해당 과목이 존재하면 기존 점수가 갱신됩니다.
-                """
-                return message
-            case .addStudent:
-                let message = "추가할 학생의 이름을 입력해주세요"
-                return message
-            case .deleteStudent:
-                let message = "삭제할 학생의 이름을 입력해주세요"
-                return message
-            case .deleteGradeForSubject:
-                let message = "성적을 삭제할 학생의 이름, 과목 이름을 띄어쓰기로 구분하여 차례로 작성해주세요."
-                return message
-            case .calculateGPA:
-                let message = "평점을 알고 싶은 학생의 이름을 입력해주세요"
-                return message
-            case .exitProgram:
-                let message = "프로그램을 종료합니다..."
-                return message
-            }
+        func printSelf() {
+            print(self.rawValue)
         }
     }
     
@@ -97,73 +73,9 @@ struct PrintMessages {
                 return message
             }
         }
-    }
-    
-    func explanatoryTextForPlayConsole() {
-        print(Explanation.playConsole.description)
-    }
-    
-    func explanatoryTextForAddGradeForSubject() {
-        print(Explanation.addGradeForSubject.description)
-    }
-    
-    func explanatoryTextForAddStudent() {
-        print(Explanation.addStudent.description)
-    }
-    
-    func explanatoryTextForDeleteStudent() {
-        print(Explanation.deleteStudent.description)
-    }
-    
-    func explanatoryTextForDeleteGradeForSubject() {
-        print(Explanation.deleteGradeForSubject.description)
-    }
-    
-    func explanatoryTextForCalculateGPA() {
-        print(Explanation.calculateGPA.description)
-    }
-    
-    func explanatoryTextForExitProgram() {
-        print(Explanation.exitProgram.description)
-    }
-    
-    func printInvaildInput() {
-        print(OperationResult.InvaildInput.description)
-    }
-    
-    func printInvaildMenuFormat() {
-        print(OperationResult.InvaildMenuFormat.description)
-    }
-    
-    func printSuccessAddStudent(_ name: String) {
-        print(OperationResult.SuccessAddStudent(name: name).description)
-    }
-    
-    func printSuccessDeleteStudent(_ name: String) {
-        print(OperationResult.SuccessDeleteStudent(name: name).description)
-    }
-    
-    func printAlreadyExistStudent(_ name: String) {
-        print(OperationResult.AlreadyExistStudent(name: name).description)
-    }
-    
-    func printDoNotExistStudent(_ name: String) {
-        print(OperationResult.DoNotExistStudent(name: name).description)
-    }
-    
-    func printDoNotExistGradeForSubject(_ subject: String) {
-        print(OperationResult.DoNotExistGradeForSubject(subject: subject).description)
-    }
-    
-    func printInsertOrUpdateGrade(_ name: String, _ subject: String, _ grade: String) {
-        print(OperationResult.SuccsessInsertOrUpdateGrade(name: name, subject: subject, grade: grade).description)
-    }
-    
-    func printSuccessDeleteGrade(_ name: String, _ subject: String) {
-        print(OperationResult.SuccessDeleteGrade(name: name, subject: subject).description)
-    }
-    
-    func printGPA(_ name: String , _ GPA: Double) {
-        print(OperationResult.GPA(name: name, GPA: GPA).description)
+        
+        func printSelf() {
+            print(self.description)
+        }
     }
 }
