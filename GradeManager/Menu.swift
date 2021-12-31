@@ -8,5 +8,8 @@
 enum Menu: String {
     case addStudent = "1"
     case deleteStudent = "2"
+    case addGradeForSubject = "3"
+    case deleteGradeForSubject = "4"
+    case calculateGPA = "5"
     case exitProgram = "X"
 }
