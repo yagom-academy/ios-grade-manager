@@ -15,7 +15,7 @@
 		0E2AA638277AEE09005E86E3 /* GradeManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E2AA62A277AA83E005E86E3 /* GradeManager.swift */; };
 		0E2AA639277AEE0B005E86E3 /* Student.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E2AA6262779DB61005E86E3 /* Student.swift */; };
 		0E2AA63A277AEE0D005E86E3 /* GradeManageSystem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E2AA6242779B123005E86E3 /* GradeManageSystem.swift */; };
-		0ECE2C24277DB59D008E554C /* IOManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0ECE2C23277DB59D008E554C /* IOManager.swift */; };
+		0ECE2C24277DB59D008E554C /* InputOutputManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0ECE2C23277DB59D008E554C /* InputOutputManager.swift */; };
 		C7912FBE277479C20027600C /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7912FBD277479C20027600C /* main.swift */; };
 /* End PBXBuildFile section */
 
@@ -37,7 +37,7 @@
 		0E2AA62A277AA83E005E86E3 /* GradeManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GradeManager.swift; sourceTree = "<group>"; };
 		0E2AA630277AD9F5005E86E3 /* GradeManagerUnitTest.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = GradeManagerUnitTest.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		0E2AA632277AD9F6005E86E3 /* GradeManagerUnitTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GradeManagerUnitTest.swift; sourceTree = "<group>"; };
-		0ECE2C23277DB59D008E554C /* IOManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IOManager.swift; sourceTree = "<group>"; };
+		0ECE2C23277DB59D008E554C /* InputOutputManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputOutputManager.swift; sourceTree = "<group>"; };
 		C7912FBA277479C20027600C /* GradeManager */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = GradeManager; sourceTree = BUILT_PRODUCTS_DIR; };
 		C7912FBD277479C20027600C /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -93,7 +93,7 @@
 				0E2AA62A277AA83E005E86E3 /* GradeManager.swift */,
 				0E2AA6262779DB61005E86E3 /* Student.swift */,
 				0E2AA6242779B123005E86E3 /* GradeManageSystem.swift */,
-				0ECE2C23277DB59D008E554C /* IOManager.swift */,
+				0ECE2C23277DB59D008E554C /* InputOutputManager.swift */,
 			);
 			path = GradeManager;
 			sourceTree = "<group>";
@@ -199,7 +199,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				0ECE2C24277DB59D008E554C /* IOManager.swift in Sources */,
+				0ECE2C24277DB59D008E554C /* InputOutputManager.swift in Sources */,
 				C7912FBE277479C20027600C /* main.swift in Sources */,
 				0E2AA6272779DB61005E86E3 /* Student.swift in Sources */,
 				0E2AA6252779B123005E86E3 /* GradeManageSystem.swift in Sources */,

@@ -22,6 +22,54 @@ enum Grade: Double {
     case DPlus = 1.5
     case DZero = 1.0
     case F = 0.0
+    
+    static func gradeForString(for gradeString: String) throws -> Grade {
+        switch gradeString {
+        case "A+":
+            return Grade.APlus
+        case "A0":
+            return Grade.AZero
+        case "B+":
+            return Grade.BPlus
+        case "B0":
+            return Grade.BZero
+        case "C+":
+            return Grade.CPlus
+        case "C0":
+            return Grade.CZero
+        case "D+":
+            return Grade.DPlus
+        case "D0":
+            return Grade.DZero
+        case "F":
+            return Grade.F
+        default:
+            throw InputError.invalidInput
+        }
+    }
+    
+    static func printGradeString(for grade: Grade) {
+        switch grade {
+        case .APlus:
+            print("A+")
+        case .AZero:
+            print("A0")
+        case .BPlus:
+            print("B+")
+        case .BZero:
+            print("B0")
+        case .CPlus:
+            print("C+")
+        case .CZero:
+            print("C0")
+        case .DPlus:
+            print("D+")
+        case .DZero:
+            print("D0")
+        case .F:
+            print("F")
+        }
+    }
 }
 
 let gradeManager = GradeManager()

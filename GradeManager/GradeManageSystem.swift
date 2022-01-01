@@ -9,7 +9,7 @@ import Foundation
 
 class GradeManageSystem {
     
-    let ioManager = IOManager()
+    let ioManager = InputOutputManager()
  
     var isDone = false
     

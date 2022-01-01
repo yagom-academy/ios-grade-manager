@@ -19,28 +19,10 @@ struct Student {
     
     mutating func updateGrade(for subjuct: String, as grade: String) {
         
-        switch grade {
-        case "A+":
-            grades[subjuct] = Grade.APlus
-        case "A0":
-            grades[subjuct] = Grade.AZero
-        case "B+":
-            grades[subjuct] = Grade.BPlus
-        case "B0":
-            grades[subjuct] = Grade.BZero
-        case "C+":
-            grades[subjuct] = Grade.CPlus
-        case "C0":
-            grades[subjuct] = Grade.CZero
-        case "D+":
-            grades[subjuct] = Grade.DPlus
-        case "D0":
-            grades[subjuct] = Grade.DZero
-        case "F":
-            grades[subjuct] = Grade.F
-        default:
+        do {
+            grades[subjuct] = try Grade.gradeForString(for: grade)
+        } catch {
             print(InputError.invalidInput)
-            return
         }
     }
     
@@ -51,26 +33,7 @@ struct Student {
     func printAllGrades() {
         for grade in grades {
             print(grade.key, terminator: ": ")
-            switch grade.value {
-            case .APlus:
-                print("A+")
-            case .AZero:
-                print("A0")
-            case .BPlus:
-                print("B+")
-            case .BZero:
-                print("B0")
-            case .CPlus:
-                print("C+")
-            case .CZero:
-                print("C0")
-            case .DPlus:
-                print("D+")
-            case .DZero:
-                print("D0")
-            case .F:
-                print("F")
-            }
+            Grade.printGradeString(for: grade.value)
         }
     }
     
