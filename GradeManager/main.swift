@@ -131,7 +131,7 @@ class GradeManager {
             print("\(input) 학생의 성적이 없습니다.")
             return
         }
-        gradeChecker.calculateGrade(grades)
+        gradeChecker.calculateAverage(grades)
         
     }
     
