@@ -26,7 +26,7 @@ class AddStudentMenu: Menu {
         guard let name = readLine(), name.isValidName() else {
             throw InputError.wrongName
         }
-        try StudentDictionary.instance.addStudent(name: name)
+        try StudentInformations.instance.addStudent(name: name)
     }
 }
 
@@ -40,7 +40,7 @@ class DeleteStudentMenu: Menu {
         guard let name = readLine(), name.isValidName() else {
             throw InputError.wrongName
         }
-        try StudentDictionary.instance.removeStudent(forName: name)
+        try StudentInformations.instance.removeStudent(forName: name)
     }
 }
 
@@ -60,7 +60,7 @@ class AddOrChangeGradeMenu: Menu {
             throw InputError.wrongForm
         }
         let (name, subject, grade) = try input.toAddGradeForm()
-        try StudentDictionary.instance.addOrChangeGrade(name: name, subject: subject, grade: grade)
+        try StudentInformations.instance.addOrChangeGrade(name: name, subject: subject, grade: grade)
     }
 }
 
@@ -79,7 +79,7 @@ class DeleteGradeMenu: Menu {
             throw InputError.wrongName
         }
         let (name, subject) = try input.toDeleteGradeForm()
-        try StudentDictionary.instance.removeGrade(name: name, subject: subject)
+        try StudentInformations.instance.removeGrade(name: name, subject: subject)
     }
 }
 
@@ -93,7 +93,7 @@ class CheckGradesMenu: Menu {
         guard let name = readLine(), name.isValidName() else {
             throw InputError.wrongName
         }
-        try StudentDictionary.instance.displayGrades(name: name)
+        try StudentInformations.instance.displayGrades(name: name)
     }
     
     

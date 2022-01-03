@@ -7,20 +7,20 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		C21CAC19277D4A8A00C550D7 /* SubjectDictionary.swift in Sources */ = {isa = PBXBuildFile; fileRef = C21CAC18277D4A8A00C550D7 /* SubjectDictionary.swift */; };
-		C21CAC1A277D4D8700C550D7 /* SubjectDictionary.swift in Sources */ = {isa = PBXBuildFile; fileRef = C21CAC18277D4A8A00C550D7 /* SubjectDictionary.swift */; };
 		C21CAC1C277D6F9100C550D7 /* Grade.swift in Sources */ = {isa = PBXBuildFile; fileRef = C21CAC1B277D6F9100C550D7 /* Grade.swift */; };
 		C21CAC1D277D7FA400C550D7 /* Grade.swift in Sources */ = {isa = PBXBuildFile; fileRef = C21CAC1B277D6F9100C550D7 /* Grade.swift */; };
 		C2275410277B032D003A154B /* GradeManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2BDBDEE277B024A008E2FCA /* GradeManagerTests.swift */; };
 		C2275411277B03CB003A154B /* Util.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2BDBDC9277AE2BF008E2FCA /* Util.swift */; };
 		C2275412277B03D0003A154B /* Progress.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2BDBDCB277AF099008E2FCA /* Progress.swift */; };
-		C2275413277B03D2003A154B /* StudentDictionary.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2BDBDCD277AF0BC008E2FCA /* StudentDictionary.swift */; };
+		C2275413277B03D2003A154B /* StudentInformations.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2BDBDCD277AF0BC008E2FCA /* StudentInformations.swift */; };
+		C25E3E712782783C00B68AE4 /* Student.swift in Sources */ = {isa = PBXBuildFile; fileRef = C25E3E702782783C00B68AE4 /* Student.swift */; };
+		C25E3E73278280E300B68AE4 /* Subject.swift in Sources */ = {isa = PBXBuildFile; fileRef = C25E3E72278280E300B68AE4 /* Subject.swift */; };
 		C29C882A277BE3080049D6C1 /* Menu.swift in Sources */ = {isa = PBXBuildFile; fileRef = C29C8829277BE3080049D6C1 /* Menu.swift */; };
 		C29C882C277C45C40049D6C1 /* InputError.swift in Sources */ = {isa = PBXBuildFile; fileRef = C29C882B277C45C40049D6C1 /* InputError.swift */; };
 		C29C882E277C55330049D6C1 /* MenuFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = C29C882D277C55330049D6C1 /* MenuFactory.swift */; };
 		C2BDBDCA277AE2BF008E2FCA /* Util.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2BDBDC9277AE2BF008E2FCA /* Util.swift */; };
 		C2BDBDCC277AF099008E2FCA /* Progress.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2BDBDCB277AF099008E2FCA /* Progress.swift */; };
-		C2BDBDCE277AF0BC008E2FCA /* StudentDictionary.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2BDBDCD277AF0BC008E2FCA /* StudentDictionary.swift */; };
+		C2BDBDCE277AF0BC008E2FCA /* StudentInformations.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2BDBDCD277AF0BC008E2FCA /* StudentInformations.swift */; };
 		C7912FBE277479C20027600C /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7912FBD277479C20027600C /* main.swift */; };
 /* End PBXBuildFile section */
 
@@ -37,14 +37,15 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		C21CAC18277D4A8A00C550D7 /* SubjectDictionary.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubjectDictionary.swift; sourceTree = "<group>"; };
 		C21CAC1B277D6F9100C550D7 /* Grade.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Grade.swift; sourceTree = "<group>"; };
+		C25E3E702782783C00B68AE4 /* Student.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Student.swift; sourceTree = "<group>"; };
+		C25E3E72278280E300B68AE4 /* Subject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Subject.swift; sourceTree = "<group>"; };
 		C29C8829277BE3080049D6C1 /* Menu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Menu.swift; sourceTree = "<group>"; };
 		C29C882B277C45C40049D6C1 /* InputError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputError.swift; sourceTree = "<group>"; };
 		C29C882D277C55330049D6C1 /* MenuFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuFactory.swift; sourceTree = "<group>"; };
 		C2BDBDC9277AE2BF008E2FCA /* Util.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Util.swift; sourceTree = "<group>"; };
 		C2BDBDCB277AF099008E2FCA /* Progress.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Progress.swift; sourceTree = "<group>"; };
-		C2BDBDCD277AF0BC008E2FCA /* StudentDictionary.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudentDictionary.swift; sourceTree = "<group>"; };
+		C2BDBDCD277AF0BC008E2FCA /* StudentInformations.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudentInformations.swift; sourceTree = "<group>"; };
 		C2BDBDEC277B024A008E2FCA /* GradeManagerTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = GradeManagerTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		C2BDBDEE277B024A008E2FCA /* GradeManagerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GradeManagerTests.swift; sourceTree = "<group>"; };
 		C7912FBA277479C20027600C /* GradeManager */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = GradeManager; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -101,12 +102,13 @@
 				C7912FBD277479C20027600C /* main.swift */,
 				C2BDBDC9277AE2BF008E2FCA /* Util.swift */,
 				C2BDBDCB277AF099008E2FCA /* Progress.swift */,
-				C2BDBDCD277AF0BC008E2FCA /* StudentDictionary.swift */,
+				C2BDBDCD277AF0BC008E2FCA /* StudentInformations.swift */,
 				C29C8829277BE3080049D6C1 /* Menu.swift */,
 				C29C882B277C45C40049D6C1 /* InputError.swift */,
 				C29C882D277C55330049D6C1 /* MenuFactory.swift */,
-				C21CAC18277D4A8A00C550D7 /* SubjectDictionary.swift */,
 				C21CAC1B277D6F9100C550D7 /* Grade.swift */,
+				C25E3E702782783C00B68AE4 /* Student.swift */,
+				C25E3E72278280E300B68AE4 /* Subject.swift */,
 			);
 			path = GradeManager;
 			sourceTree = "<group>";
@@ -201,10 +203,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				C2275412277B03D0003A154B /* Progress.swift in Sources */,
-				C21CAC1A277D4D8700C550D7 /* SubjectDictionary.swift in Sources */,
 				C2275410277B032D003A154B /* GradeManagerTests.swift in Sources */,
 				C2275411277B03CB003A154B /* Util.swift in Sources */,
-				C2275413277B03D2003A154B /* StudentDictionary.swift in Sources */,
+				C2275413277B03D2003A154B /* StudentInformations.swift in Sources */,
 				C21CAC1D277D7FA400C550D7 /* Grade.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -213,14 +214,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C21CAC19277D4A8A00C550D7 /* SubjectDictionary.swift in Sources */,
+				C25E3E73278280E300B68AE4 /* Subject.swift in Sources */,
 				C2BDBDCC277AF099008E2FCA /* Progress.swift in Sources */,
 				C21CAC1C277D6F9100C550D7 /* Grade.swift in Sources */,
+				C25E3E712782783C00B68AE4 /* Student.swift in Sources */,
 				C29C882C277C45C40049D6C1 /* InputError.swift in Sources */,
 				C29C882E277C55330049D6C1 /* MenuFactory.swift in Sources */,
 				C7912FBE277479C20027600C /* main.swift in Sources */,
 				C2BDBDCA277AE2BF008E2FCA /* Util.swift in Sources */,
-				C2BDBDCE277AF0BC008E2FCA /* StudentDictionary.swift in Sources */,
+				C2BDBDCE277AF0BC008E2FCA /* StudentInformations.swift in Sources */,
 				C29C882A277BE3080049D6C1 /* Menu.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
