@@ -20,9 +20,9 @@
 		C2083A87277C68E800C1616F /* Student.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2083A58277C361100C1616F /* Student.swift */; };
 		C2083A88277C68FB00C1616F /* Menu.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2083A5C277C5B2C00C1616F /* Menu.swift */; };
 		C234B058277D932F005B9C8A /* Student.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2083A58277C361100C1616F /* Student.swift */; };
-		C234B05A277D987C005B9C8A /* GradeConsoleMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = C234B059277D987C005B9C8A /* GradeConsoleMessage.swift */; };
-		C234B05B277DA099005B9C8A /* GradeConsoleMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = C234B059277D987C005B9C8A /* GradeConsoleMessage.swift */; };
-		C234B05C277DA09A005B9C8A /* GradeConsoleMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = C234B059277D987C005B9C8A /* GradeConsoleMessage.swift */; };
+		C234B05A277D987C005B9C8A /* ResultMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = C234B059277D987C005B9C8A /* ResultMessage.swift */; };
+		C234B05B277DA099005B9C8A /* ResultMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = C234B059277D987C005B9C8A /* ResultMessage.swift */; };
+		C234B05C277DA09A005B9C8A /* ResultMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = C234B059277D987C005B9C8A /* ResultMessage.swift */; };
 		C7912FBE277479C20027600C /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7912FBD277479C20027600C /* main.swift */; };
 /* End PBXBuildFile section */
 
@@ -47,7 +47,7 @@
 		C2083A76277C646100C1616F /* GradeConsoleTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GradeConsoleTest.swift; sourceTree = "<group>"; };
 		C2083A7E277C675000C1616F /* GradeManagerTest.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = GradeManagerTest.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		C2083A80277C675000C1616F /* GradeManagerTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GradeManagerTest.swift; sourceTree = "<group>"; };
-		C234B059277D987C005B9C8A /* GradeConsoleMessage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GradeConsoleMessage.swift; sourceTree = "<group>"; };
+		C234B059277D987C005B9C8A /* ResultMessage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultMessage.swift; sourceTree = "<group>"; };
 		C7912FBA277479C20027600C /* GradeManager */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = GradeManager; sourceTree = BUILT_PRODUCTS_DIR; };
 		C7912FBD277479C20027600C /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -121,7 +121,7 @@
 				C2083A56277C35FC00C1616F /* GradeConsole.swift */,
 				C2083A58277C361100C1616F /* Student.swift */,
 				C2083A5C277C5B2C00C1616F /* Menu.swift */,
-				C234B059277D987C005B9C8A /* GradeConsoleMessage.swift */,
+				C234B059277D987C005B9C8A /* ResultMessage.swift */,
 			);
 			path = GradeManager;
 			sourceTree = "<group>";
@@ -246,7 +246,7 @@
 				C2083A79277C66A600C1616F /* Menu.swift in Sources */,
 				C2083A75277C642A00C1616F /* GradeConsole.swift in Sources */,
 				C2083A77277C646100C1616F /* GradeConsoleTest.swift in Sources */,
-				C234B05B277DA099005B9C8A /* GradeConsoleMessage.swift in Sources */,
+				C234B05B277DA099005B9C8A /* ResultMessage.swift in Sources */,
 				C234B058277D932F005B9C8A /* Student.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -258,7 +258,7 @@
 				C2083A81277C675000C1616F /* GradeManagerTest.swift in Sources */,
 				C2083A86277C677300C1616F /* GradeConsole.swift in Sources */,
 				C2083A85277C676C00C1616F /* GradeManager.swift in Sources */,
-				C234B05C277DA09A005B9C8A /* GradeConsoleMessage.swift in Sources */,
+				C234B05C277DA09A005B9C8A /* ResultMessage.swift in Sources */,
 				C2083A87277C68E800C1616F /* Student.swift in Sources */,
 				C2083A88277C68FB00C1616F /* Menu.swift in Sources */,
 			);
@@ -271,7 +271,7 @@
 				C7912FBE277479C20027600C /* main.swift in Sources */,
 				C2083A57277C35FC00C1616F /* GradeConsole.swift in Sources */,
 				C2083A55277C35EB00C1616F /* GradeManager.swift in Sources */,
-				C234B05A277D987C005B9C8A /* GradeConsoleMessage.swift in Sources */,
+				C234B05A277D987C005B9C8A /* ResultMessage.swift in Sources */,
 				C2083A59277C361100C1616F /* Student.swift in Sources */,
 				C2083A5D277C5B2C00C1616F /* Menu.swift in Sources */,
 			);

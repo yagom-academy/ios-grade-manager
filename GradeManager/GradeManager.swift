@@ -81,25 +81,19 @@ class GradeManager {
     private func averageGradeProcess() {
         do{
             let name = try gradeConsole.getNameInput()
-            guard let student = getStudentElement(by: name) else {
+            guard let student = getStudent(by: name) else {
                 throw InputError.invalidName(name)
             }
-            let subjects = student.subjects
-            subjects.forEach { subject, grade in
+            student.subjects.forEach { subject, grade in
                 self.gradeConsole.showGrade(grade,subject: subject)
             }
-            let averageGrade = try getAverageGrade(grades: Array(subjects.values))
+            guard let averageGrade = student.averageGrade() else {
+                throw InputError.invalidInput
+            }
             gradeConsole.showAverageGrade(averageGrade)
         } catch {
             gradeConsole.printInputError(error)
         }
-    }
-    
-    func getAverageGrade(grades: [Grade]) throws -> Double {
-        guard !grades.isEmpty else { throw InputError.noGrades }
-        let gradeCount = Double(grades.count)
-        let total = grades.reduce(0) {$0 + $1.asScore}
-        return total / gradeCount
     }
     
     @discardableResult
@@ -115,14 +109,14 @@ class GradeManager {
     
     @discardableResult
     func addGrade(subject: String, grade:Grade ,to name: String) -> Bool {
-        guard var student = getStudentElement(by: name) else { return false }
+        guard var student = getStudent(by: name) else { return false }
         student.subjects[subject] = grade
         students.update(with: student)
         return true
     }
     
     func deleteGrade(subject: String, of name: String) throws -> Bool {
-        guard var student = getStudentElement(by: name) else {
+        guard var student = getStudent(by: name) else {
             throw InputError.invalidName(name)
         }
         guard student.subjects[subject] != nil else {
@@ -133,8 +127,7 @@ class GradeManager {
         return true
     }
     
-    func getStudentElement(by name: String) -> Student? {
-        guard let index = students.firstIndex(where: {$0.name == name}) else { return nil }
-       return students[index]
+    private func getStudent(by name: String) -> Student? {
+        students.first(where: {$0.name == name})
     }
 }

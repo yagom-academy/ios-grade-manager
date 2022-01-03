@@ -10,7 +10,7 @@ import Foundation
 struct Student: Hashable {
     let name: String
     var subjects: [String: Grade] = [:]
-    
+
     func hash(into hasher: inout Hasher) {
         hasher.combine(name)
     }
@@ -18,6 +18,15 @@ struct Student: Hashable {
     static func ==(lhs: Student, rhs: Student) -> Bool {
         return lhs.name == rhs.name
     }
+    
+    func averageGrade() -> Double? {
+        let grades = subjects.values
+        guard !grades.isEmpty else { return nil }
+        let gradeCount = Double(grades.count)
+        let total = grades.reduce(0) {$0 + $1.asScore}
+        return total / gradeCount
+    }
+    
 }
 
 enum Grade: String {
