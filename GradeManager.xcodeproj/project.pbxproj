@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		C2FAE268277B0379005BBEF4 /* GradeManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2FAE261277B027F005BBEF4 /* GradeManagerTests.swift */; };
 		C2FAE26A277B04D5005BBEF4 /* Student.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2FAE269277B04D5005BBEF4 /* Student.swift */; };
+		C2FAE29B277D58DB005BBEF4 /* GradeChecker.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2FAE29A277D58DA005BBEF4 /* GradeChecker.swift */; };
 		C7912FBE277479C20027600C /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7912FBD277479C20027600C /* main.swift */; };
 /* End PBXBuildFile section */
 
@@ -29,6 +30,7 @@
 		C2FAE25F277B027F005BBEF4 /* GradeManagerTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = GradeManagerTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		C2FAE261277B027F005BBEF4 /* GradeManagerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GradeManagerTests.swift; sourceTree = "<group>"; };
 		C2FAE269277B04D5005BBEF4 /* Student.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Student.swift; sourceTree = "<group>"; };
+		C2FAE29A277D58DA005BBEF4 /* GradeChecker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GradeChecker.swift; sourceTree = "<group>"; };
 		C7912FBA277479C20027600C /* GradeManager */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = GradeManager; sourceTree = BUILT_PRODUCTS_DIR; };
 		C7912FBD277479C20027600C /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -90,6 +92,7 @@
 			children = (
 				C7912FBD277479C20027600C /* main.swift */,
 				C2FAE269277B04D5005BBEF4 /* Student.swift */,
+				C2FAE29A277D58DA005BBEF4 /* GradeChecker.swift */,
 			);
 			path = GradeManager;
 			sourceTree = "<group>";
@@ -228,6 +231,7 @@
 			files = (
 				C7912FBE277479C20027600C /* main.swift in Sources */,
 				C2FAE26A277B04D5005BBEF4 /* Student.swift in Sources */,
+				C2FAE29B277D58DB005BBEF4 /* GradeChecker.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
