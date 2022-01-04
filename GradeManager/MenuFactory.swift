@@ -12,7 +12,7 @@ class MenuFactory {
     
     static let instruction = """
     원하는 기능을 입력해주세요
-    1: 학생추가, 2: 학생삭제, 3: 성적추가(변경), 4: 성적삭제, 5: 병점보기, X: 종료
+    1: 학생추가, 2: 학생삭제, 3: 성적추가(변경), 4: 성적삭제, 5: 평점보기, X: 종료
     """
     
     static func makeFromInput() throws -> Menu {
@@ -23,6 +23,12 @@ class MenuFactory {
             return AddStudentMenu()
         case "2":
             return DeleteStudentMenu()
+        case "3":
+            return AddOrChangeGradeMenu()
+        case "4":
+            return DeleteGradeMenu()
+        case "5":
+            return CheckGradesMenu()
         case "X":
             return TerminateMenu()
         default:

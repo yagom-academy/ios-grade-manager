@@ -26,7 +26,7 @@ class AddStudentMenu: Menu {
         guard let name = readLine(), name.isValidName() else {
             throw InputError.wrongName
         }
-        StudentDictionary.instance.addStudent(name: name)
+        try StudentInformations.instance.addStudent(name: name)
     }
 }
 
@@ -40,8 +40,63 @@ class DeleteStudentMenu: Menu {
         guard let name = readLine(), name.isValidName() else {
             throw InputError.wrongName
         }
-        StudentDictionary.instance.removeStudent(forName: name)
+        try StudentInformations.instance.removeStudent(forName: name)
     }
+}
+
+class AddOrChangeGradeMenu: Menu {
+    var description: String = "성적추가(변경)"
+    var instruction: String = """
+    성적을 추가할 학생의 이름, 과목 이름, 성적(A+, A0, F 등) 을 띄어쓰기로 구분하여 차례로 작성해주세요
+    입력예) Mickey Swift A+
+    만약에 학생의 성적 중 해당 과목이 존재하면 기존 점수가 갱신됩니다.
+    """
+    
+    var toBeContinued: Bool = true
+    
+    func execute() throws {
+        print(instruction)
+        guard let input = readLine() else {
+            throw InputError.wrongForm
+        }
+        let (name, subject, grade) = try input.toAddGradeForm()
+        try StudentInformations.instance.addOrChangeGrade(name: name, subject: subject, grade: grade)
+    }
+}
+
+class DeleteGradeMenu: Menu {
+    var description: String = "성적삭제"
+    var instruction: String = """
+    성적을 삭제할 학생의 이름, 과목 이름을 띄어쓰기로 구분하여 차례로 작성해주세요.
+    입력예) Mickey Swift
+    """
+    
+    var toBeContinued: Bool = true
+    
+    func execute() throws {
+        print(instruction)
+        guard let input = readLine() else {
+            throw InputError.wrongName
+        }
+        let (name, subject) = try input.toDeleteGradeForm()
+        try StudentInformations.instance.removeGrade(name: name, subject: subject)
+    }
+}
+
+class CheckGradesMenu: Menu {
+    var description: String = "평점보기"
+    var instruction: String = "평점을 알고싶은 학생의 이름을 입력해주세요"
+    var toBeContinued: Bool = true
+    
+    func execute() throws {
+        print(instruction)
+        guard let name = readLine(), name.isValidName() else {
+            throw InputError.wrongName
+        }
+        try StudentInformations.instance.displayGrades(name: name)
+    }
+    
+    
 }
 
 class TerminateMenu: Menu {
