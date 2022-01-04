@@ -9,14 +9,9 @@ import Foundation
 
 class GradeManageSystem {
     
+    let ioManager = InputOutputManager()
+ 
     var isDone = false
-    
-    let menuInputPrompt = "원하는 기능을 입력해주세요\n1: 학생추가, 2: 학생삭제, 3: 성적추가(변경), 4: 성적삭제, 5: 평점보기, X: 종료"
-    let invalidMenuInputPrompt = "뭔가 입력이 잘못되었습니다. 1~5 사이의 숫자 혹은 X를 입력해주세요."
-    let closeProgramPrompt = "프로그램을 종료합니다..."
-    let addStudentPrompt = "추가할 학생의 이름을 입력해주세요"
-    let removeStudentPrompt = "삭제할 학생의 이름을 입력해주세요"
-    let invalidInputPrompt = "입력이 잘못되었습니다. 다시 확인해주세요."
     
     enum MenuType: String {
         case addStudent = "1"
@@ -26,72 +21,48 @@ class GradeManageSystem {
         case lookupGrade = "5"
         case stopProgram = "X"
     }
-
-    var studentDictionary: [String:Student] = [:]
+    
+    var studentDictionary: [String: Student] = [:]
     
     func receiveMenuInput() throws -> String {
-        print(menuInputPrompt)
-        
-        let receivedInput = readLine()
-        guard let receivedInput = receivedInput else {
-            throw InputError.invalidMenuInput
-        }
-        
-        return receivedInput
+        try ioManager.menuInput()
     }
-    
     
     func performMenuAction(menuInput: String) {
-        switch MenuType(rawValue: menuInput) {
-        case .addStudent:
-            do {
-                let inputName = try receiveInput(for: InputType.addNameInput)
-                addStudent(inputName)
-            } catch {
-                print(invalidInputPrompt)
-            }
-        case .removeStudent:
-            do {
-                let inputName = try receiveInput(for: InputType.addNameInput)
-                removeStudent(inputName)
-            } catch {
-                print(invalidInputPrompt)
-            }
-        case .addOrModifyGrade:
-            addOrModifyGrade()
-        case .removeGrade:
-            removeGrade()
-        case .lookupGrade:
-            lookupGrade()
-        case .stopProgram:
-            stopProgram()
+        do {
+            switch MenuType(rawValue: menuInput) {
+            case .addStudent:
+                let studentName = try ioManager.addStudentInput()
+                addStudent(studentName)
             
-        case .none:
-            print(invalidMenuInputPrompt)
-        }
-    }
-    
-    func receiveInput(for inputType: InputType) throws -> String {
-        switch inputType {
-        case .addNameInput:
-            print(addStudentPrompt)
-        case .removeNameInput:
-            print(removeStudentPrompt)
-        }
-        let receivedInput = readLine()
+            case .removeStudent:
+                let studentName = try ioManager.removeStudentInput()
+                removeStudent(studentName)
+            
+            case .addOrModifyGrade:
+                let (studentName, subject, grade) = try ioManager.addOrModifyGradeInput()
+                addOrModifyGrade(for: studentName, withSubject: subject, as: grade)
+            
+            case .removeGrade:
+                let (studentName, subject) = try ioManager.removeGradeInput()
+                removeGrade(for: studentName, withSubject: subject)
+            
+            case .lookupGrade:
+                let studentName = try ioManager.lookupGradeInput()
+                lookupGrade(for: studentName)
         
-        let regexExpression = "^[a-zA-Z0-9]*$"
-        let regexTest = NSPredicate(format:"SELF MATCHES %@", regexExpression)
+            case .stopProgram:
+                stopProgram()
         
-        guard let receivedInput = receivedInput, receivedInput != "", regexTest.evaluate(with: receivedInput) else {
-            throw InputError.invalidInput
+            case .none:
+                ioManager.printInvalidMenuInput()
+            }
+        } catch {
+            ioManager.printInvalidMenuInput()
         }
-        
-        return receivedInput
     }
     
     func addStudent(_ studentName: String) {
-        
         guard studentDictionary[studentName] == nil else {
             print("\(studentName)은 이미 존재하는 학생입니다. 추가하지 않습니다.")
             return
@@ -100,11 +71,9 @@ class GradeManageSystem {
         let newStudentEntity = Student(name: studentName)
         studentDictionary[studentName] = newStudentEntity
         print("\(studentName) 학생을 추가했습니다.")
-
     }
     
     func removeStudent(_ studentName: String) {
-        
         guard studentDictionary[studentName] != nil else {
             print("\(studentName) 학생을 찾지 못했습니다.")
             return
@@ -114,24 +83,49 @@ class GradeManageSystem {
         print("\(studentName) 학생을 삭제하였습니다.")
     }
     
-    func addOrModifyGrade() {
-        print(#function)
-
+    func addOrModifyGrade(for studentName: String, withSubject subject: String, as grade: String ) {
+        guard var student = studentDictionary[studentName] else {
+            print("\(studentName) 학생을 찾지 못했습니다.")
+            return
+        }
+        
+        student.updateGrade(for: subject, as: grade)
+        studentDictionary[studentName] = student
+        
+        print("\(studentName) 학생의 \(subject) 과목이 \(grade)로 추가(변경)되었습니다.")
     }
     
-    func removeGrade() {
-        print(#function)
-
+    func removeGrade(for studentName: String, withSubject subject: String) {
+        guard var student = studentDictionary[studentName] else {
+            print("\(studentName) 학생을 찾지 못했습니다.")
+            return
+        }
+        
+        student.removeGrade(for: subject)
+        studentDictionary[studentName] = student
+        
+        print("\(studentName) 학생의 \(subject) 과목 성적이 삭제되었습니다.")
     }
     
-    func lookupGrade() {
-        print(#function)
+    func lookupGrade(for studentName: String) {
+        
+        guard let student = studentDictionary[studentName] else {
+            print("\(studentName) 학생을 찾지 못했습니다.")
+            return
+        }
+        
+        student.printAllGrades()
+        do {
+            let averageScore = try student.calculateAverageScore()
+            print("평점 : \(averageScore)")
+        } catch {
+            print("\(studentName) 학생은 입력된 성적이 없습니다.")
+        }
 
     }
     
     func stopProgram() {
         isDone = true
-        print(closeProgramPrompt)
+        ioManager.printCloseProgram()
     }
-
 }
